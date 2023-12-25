@@ -1,0 +1,12 @@
+{# SIDEBAR FOR MODULAR PAGE --> ALL STORIES #}
+
+<div class="sticky-top sticky-top-offset">
+    {% if show_featured %}
+        {% include 'partials/sidebar/featured.html.twig'
+        with { 'block_title': 'MUNDANA.SIDEBAR.FEATURED'|t } %}
+    {% endif %}
+    {% if show_categories %}
+        {% include 'partials/sidebar/categories.html.twig'
+        with { 'blog': blog, 'block_title': 'MUNDANA.SIDEBAR.CATEGORIES'|t } %}
+    {% endif %}
+</div>

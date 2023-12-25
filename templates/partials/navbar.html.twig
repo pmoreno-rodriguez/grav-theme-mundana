@@ -1,0 +1,78 @@
+{#Set custom styles for navbar #}
+{% block stylesheets %}
+	<style type="text/css">
+		.navbarCustomStyles {
+			{{ navbarCustomBgcolor ? 'background: ' ~ navbarCustomBgcolor ~ ';' : '' }}
+			{{ navbarHeight ? 'min-height: ' ~ navbarHeight ~ 'px;' : '' }}
+		}
+		.w_logo {
+			{{ widthLogo ? 'width: ' ~ widthLogo ~ 'px;' : '' }} 
+		}	
+		@media (max-width: 768px) {
+			.navbarCustomStyles {
+			{{ navbarHeight ? 'min-height: auto;' : '' }}
+			}
+		}
+		@media (max-width: 480px) {
+			.w_logo {
+				{{ widthLogo ? 'width: ' ~ ( widthLogo * 0.60) ~ 'px;' : '' }} 
+			}
+		}	
+	</style>
+{% endblock %}
+
+{# Set logo image #}
+{% set logo = theme_var('custom_logo_mobile') ?: theme_var('custom_logo') %}
+{% set logo_enabled = theme_var('custom_logo_enabled')|defined(false) %}
+
+{# Navigation bar #}
+<nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-{{navbarStyle}} fixed-top {{ navbarBgcolor }} navbarCustomStyles"  >
+	<div class="{{navbarContainer}}">
+		<a class="navbar-brand" href="{{ base_url == '' ? '/' : base_url }}">
+			{# Show logo if enabled in theme options #}
+			{% if logo_enabled and logo %}
+				{% set logo_file = (logo|first).name %}
+				<div class="mr-3">
+					<img class="align-self-center w_logo" src="{{ url('theme://images/logo/' ~ logo_file) }}" alt="{{ site.title|raw }}"/>
+				</div>
+			{% endif %}
+
+			{% if navbarSiteName or navbarIcon %}
+
+				{# If the navigation bar icon is on and the logo is off, it will be displayed next to the site title #}
+				{% if navbarIcon and logo_enabled == false %}
+					<div>
+						<i class="{{ navbarIconGroup }} fa-{{ navbarIcon }} {{ navbarIconSize }} pr-1"></i>
+					</div>
+				{% endif %}
+
+				{# Show site name if enabled in theme options #}
+				{% if navbarSiteName %}
+					<div>
+						<strong>{{site.title|raw}}</strong>
+					</div>
+				{% endif %}
+			{% endif %}
+		</a>
+
+		{# Toggle navigation #}
+		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="navbar-collapse collapse" id="navbarColor02">
+			{# Navigation menu #}
+			{% block navigation %}
+				{% include 'partials/navigation.html.twig' %}
+			{% endblock %}
+			{# Searchbox (If simplesearch plugin is installed) #}
+			{% if config.plugins.simplesearch.enabled %}
+				<ul class="navbar-nav mx-auto d-flex align-items-center">
+					{% set buttonSearchColor = theme.navbar.custom_bgcolor ?: theme.navbar.bgcolor|defined('secondary')  %}
+					{% set iconSearchColor = 'text-' ~ (navbarStyle == 'dark' ? 'light' : 'dark') %}
+					{% include 'partials/simplesearch_searchbox.html.twig' with { buttonSearchColor, iconSearchColor } %}
+				</ul>
+			{% endif %}
+		</div>
+	</div>
+</nav>

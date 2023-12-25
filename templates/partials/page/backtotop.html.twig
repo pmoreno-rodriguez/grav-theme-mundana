@@ -1,0 +1,8 @@
+
+{% set back_to_top = theme_var('back_to_top_button')|defined(true) %}
+
+{% if back_to_top %}
+    <a id="back-to-top" href="#" class="btn btn-{{ color_style }} back-to-top" role="button" title="{{ 'MUNDANA.MISC.BACK_TO_TOP'|t }}" data-toggle="tooltip"
+       data-placement="left">
+    <span class="fas fa-chevron-up"></span></a>
+{% endif %}

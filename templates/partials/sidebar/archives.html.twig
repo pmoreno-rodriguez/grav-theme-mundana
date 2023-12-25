@@ -1,0 +1,21 @@
+{# ARCHIVES SECTION - SIDEBAR #}
+
+<div class="sidebar-content my-5">
+  <h3 class="h4 font-weight-bold spanborder">
+    <span>{{ block_title }}</span>
+  </h3>
+
+  <ul class="list-unstyled">
+
+  {% for month,items in archives_data %}
+      <li class="mb-4">
+        <a href="{{ base_url }}/{{ config.plugins.archives.taxonomy_names.month }}{{ config.system.param_sep }}{{ month|date('M_Y')|lower|e('url') }}">
+          {% if archives_show_count %}
+          <span class="btn btn-outline-{{ color_style }} btn-sm">{{ items|length }}</span>
+          {% endif %}
+            <span class="btn btn-outline-{{ color_style }} btn-sm">{{ month|date(config.plugins.archives.date_display_format) }} </span>
+          </a>
+      </li>
+  {% endfor %}
+  </ul>
+</div>

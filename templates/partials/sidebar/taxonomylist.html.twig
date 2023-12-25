@@ -1,0 +1,21 @@
+{# TAXONOMY LIST SECTION - SIDEBAR #}
+
+{% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags() : taxonomylist.get() %}
+
+{% if taxlist %}
+
+    <h3 class="h4 font-weight-bold spanborder my-5">
+        <span>{{ block_title }}</span>
+    </h3>
+    <div class="mb-4">
+        <span class="taglist">
+        {% for tax,value in taxlist[taxonomy] %}
+            {% if value is not empty %}
+            <a class="mb-1 btn btn-outline-{{ color_style }} btn-sm" href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax }}">{{ tax }}</a>
+        {% endif %} 
+        {% endfor %}
+        </span>
+    </div>
+
+{% endif %}
+

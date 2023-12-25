@@ -1,0 +1,40 @@
+form:
+  fields:
+
+    _togglesTitle:
+      type: spacer
+      title:  MUNDANA.ADMIN.BLOG.CONFIGURATION.LABEL
+      
+    header.isSticky:
+      type: toggle
+      toggleable: true
+      label:  MUNDANA.ADMIN.ITEM.CONFIGURATION.STICKY
+      help:  MUNDANA.ADMIN.ITEM.CONFIGURATION.STICKY_HELP
+      highlight: 0
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    header.show_sidebar:
+      type: toggle
+      toggleable: true
+      label: MUNDANA.ADMIN.BLOG.CONFIGURATION.SHOW_SIDEBAR
+      highlight: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    
+    header.show_breadcrumbs:
+      type: toggle
+      toggleable: true
+      label: MUNDANA.ADMIN.BLOG.CONFIGURATION.SHOW_BREADCRUMBS
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

@@ -1,0 +1,16 @@
+.media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-body {
+  flex: 1;
+}
+
+@include media-breakpoint-down(sm) {
+.navbar-brand .media {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+}

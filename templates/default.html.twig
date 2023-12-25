@@ -1,0 +1,54 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+    <div class="h-100 tofront">
+        <div class="row {{ (featuredImage and show_image) ? 'justify-content-between' : 'justify-content-center' }}">
+            <div class="{{ (featuredImage and show_image) ? 'col-md-8' : 'col-md-12'}} pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+                <h1 class="display-4 mb-4 article-headline">{{ page_title|raw }}</h1>
+                {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
+                <div class="d-flex align-items-center">
+                    {% if avatar %}
+                        {% include 'partials/blog/avatar.html.twig' with {'avatar_width': 60} %}
+                    {% endif %}
+                    <small class="ml-3">
+                        {% if author %}<span>{{ author|raw }}</span>{% endif %}
+                        {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">Follow</a></span>{% endif %}
+                        {% include 'partials/blog/date.html.twig' %}
+                        {% if config.plugins.readingtime.enabled %}
+                            {% include 'partials/blog/readingtime.html.twig' %}
+                        {% endif %}
+                        </span>
+                    </small>
+                </div>
+            </div>
+            {% if featuredImage and show_image %}
+            <div class="col-md-4 pr-0 align-self-center">
+                {{ featuredImage.loading('eager')
+                .attribute('decoding','async')
+                .attribute('width', '672')
+                .attribute('height', '504')
+                .derivatives(320,672,320)
+			    .sizes('(max-width: 768px) 100vw, 50vw')
+                .html(page_title|raw, page_title|raw,'w-100 h-auto rounded')|raw }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="container-lg pt-4 pb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-12">
+            <article class="article-post">                
+                {{ page.content|raw }}                
+            </article>
+            <!-- Author Box -->
+            {% if author %}
+                {% include 'partials/blog/author.html.twig' %}				
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+    
+

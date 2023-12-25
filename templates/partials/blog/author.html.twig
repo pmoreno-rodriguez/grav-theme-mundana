@@ -1,0 +1,20 @@
+ {# PARTIAL AUTHOR FOR PAGES #}
+
+ <!-- Author Box -->
+<div class="d-flex flex-wrap justify-content-start align-items-start mt-5">
+    <div class="align-self-center mr-2">
+    {% if (avatar ?? null) %}
+        {% include 'partials/blog/avatar.html.twig' with {'avatar_width': 80} %}
+    {% endif %} 
+    </div>
+    <div class="align-self-center">		
+        <p class="font-weight-bold h5">{{ 'MUNDANA.ITEM.WRITTEN_BY'|t }}  
+            {% if page.taxonomy.author %}
+                <a href="{{blog.url|rtrim('/') ~ '/author' ~ config.system.param_sep ~ author}}" class="text-{{ color_style }}">{{ author|raw }}</a>
+            {% else %}
+                {{ author|raw }}
+            {% endif %}
+            {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">{{ 'MUNDANA.MISC.FOLLOW'|t }}</a></span>{% endif %}</p>
+            {% if author_bio %}{{ author_bio|markdown|raw }}{% endif %}
+    </div>
+</div>	

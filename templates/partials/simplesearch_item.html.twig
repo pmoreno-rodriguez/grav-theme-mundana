@@ -1,0 +1,23 @@
+<section class="row">
+
+    {% set blog_image = page.media.images[page.header.featuredImage] ?: page.media.images|filter((v, k) => k != page.header.author.avatarImage)|first %}
+
+    {% if blog_image %}
+        <div class="col-md-2">
+            <a href="{{ page.url }}">{{ blog_image.cropZoom(100,100).loading('lazy').attribute('decoding','async').html|raw }}</a>
+        </div>
+    {% endif %}
+    <div class="col-md-10">
+        <div class="search-title">
+            <h3><a href="{{ page.url }}" class="text-dark">{{ page_title|raw }}</a></h3>
+        </div>
+
+        <div class="search-details">
+            <span class="search-date">{{ page.date|date(config.system.pages.dateformat.short) }}</span>
+        </div>
+
+        <p>{{ page.summary|striptags|raw }}</p>
+
+        <hr/>
+    </div>
+</section>

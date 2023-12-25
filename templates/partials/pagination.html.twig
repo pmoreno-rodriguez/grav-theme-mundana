@@ -1,0 +1,34 @@
+{% set pagination = pagination|default(page.collection.params.pagination) %}
+{% set base_url = base_url|default(page.url) %}
+
+{% if pagination|length > 1 %}
+
+<ul class="pagination">
+{% if pagination.hasPrev %}
+    {% set url =  (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
+    <li class="page-item"><a class="page-link text-{{ color_style }}" rel="prev" href="{{ url }}">&laquo; {{'MUNDANA.BLOG.PAGINATION.PREV'|t}}</a></li>
+{% else %}
+    <li class="page-item disabled"><span class="prev page-link">&laquo;</span></li>
+{% endif %}
+
+{% for paginate in pagination %}
+
+    {% if paginate.isCurrent %}
+        <li class="page-item disabled"><span class="active webjeda page-link">{{ paginate.number }}</span></li>
+    {% elseif paginate.isInDelta %}
+        {% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
+        <li class="page-item"><a  class="page-link text-{{ color_style }}" href="{{ url }}">{{ paginate.number }}</a></li>
+    {% elseif paginate.isDeltaBorder %}
+        <li class="gap"><span>&hellip;</span></li>
+    {% endif %}
+
+{% endfor %}
+
+{% if pagination.hasNext %}
+    {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
+    <li class="page-item"><a class="page-link text-{{ color_style }}" rel="next" href="{{ url }}">{{'MUNDANA.BLOG.PAGINATION.NEXT'|t}} &raquo;</a></li>
+{% else %}
+    <li class="page-item disabled"><span class="next page-link">&raquo;</span></li>
+{% endif %}
+</ul>
+{% endif %}

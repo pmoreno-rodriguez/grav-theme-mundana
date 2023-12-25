@@ -1,0 +1,45 @@
+title: Contact Page
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        contact:
+          type: tab
+          title: MUNDANA.ADMIN.CONTACT.TAB
+          fields:
+
+            columns:
+              type: columns
+              fields:
+                
+                column_address:
+                  type: column
+                  fields:
+                    header.address:
+                      type: list
+                      style: vertical
+                      label: MUNDANA.ADMIN.CONTACT.ADDRESS.LABEL
+                      help: MUNDANA.ADMIN.CONTACT.ADDRESS.HELP
+                      fields: 
+                        .addressField:
+                          type: text
+                          label: MUNDANA.ADMIN.CONTACT.ADDRESS.FIELD
+                        .fieldIcon:
+                          type: text
+                          size: small
+                          label: MUNDANA.ADMIN.CONTACT.ADDRESS.ICON
+                          description: MUNDANA.ADMIN.CONTACT.ADDRESS.ICON_DESCRIPTION
+                column_instructions:
+                  type: column
+                  fields:
+                    _contactHelp:
+                      type: display
+                      label: MUNDANA.ADMIN.CONTACT.ADDRESS.INSTRUCTIONS
+                      style: vertical
+                      markdown: true
+                      content: "The contact page is ready to accept a featured image and the fields you want to enter on the contact card, for example, address, phone, email, etc.\n\nEach field has two possible values, 'Field', which is the text you want to display and 'Icon' which is the icon displayed next to the Field text."

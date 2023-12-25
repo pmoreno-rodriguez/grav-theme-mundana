@@ -1,0 +1,53 @@
+{# PARTIAL PAGINATION IN FOOTER #}
+
+{% set blog_image_prev = page.prevSibling.media[page.prevSibling.header.featuredImage] ?: (page.prevSibling.media.images is not null ? page.prevSibling.media.images|filter((v, k) => k != page.prevSibling.header.author.avatarImage)|first : null) %}
+{% set blog_image_next = page.nextSibling.media[page.nextSibling.header.featuredImage] ?: (page.nextSibling.media.images is not null ? page.nextSibling.media.images|filter((v, k) => k != page.nextSibling.header.author.avatarImage)|first : null) %}
+
+<div class="alertbar">
+	<div class="container">
+		<div class="row prevnextlinks small font-weight-bold">
+			{% if not page.isLast %}
+				<div class="col-md-6 rightborder pl-0">
+					<a class="text-dark" href="{{ page.prevSibling.url }}">
+						<div class="row align-items-center justify-content-start">
+							{% if page.prevSibling ?? null %}
+							<div class="col-1 px-0">
+								{{ blog_image_prev.loading('lazy')
+								.attribute('decoding', 'async')
+								.attribute('width', '30')
+								.attribute('height', '30')
+								.html('', '', 'w-100 h-auto mr-1')|raw
+								}}
+							</div>
+							{% endif %}
+							<div class="col-11">
+							{{ page.prevSibling.title|raw }}
+							</div>
+						</div>
+					</a>
+				</div>
+			{% endif %}
+			{% if not page.isFirst %}
+				<div class="{% if page.isLast %}col-md-12{% else %} col-md-6{% endif %} text-right pr-0">
+					<a class="text-dark" href="{{ page.nextSibling.url }}">
+						<div class="row align-items-center justify-content-end">
+							<div class="col-11">
+							{{ page.nextSibling.title|raw }}
+							</div>
+							{% if page.nextSibling ?? null %}
+							<div class="col-1 px-0">
+								{{ blog_image_next.loading('lazy')
+								.attribute('decoding', 'async')
+								.attribute('width', '30')
+								.attribute('height', '30')
+								.html('', '', 'w-100 h-auto mr-1')|raw
+								}}
+							</div>
+							{% endif %}
+						</div>
+					</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>

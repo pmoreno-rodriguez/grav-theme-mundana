@@ -1,0 +1,51 @@
+{# CATEGORIES SECTION - SIDEBAR #}
+
+<h4 class="font-weight-bold spanborder">
+    <span>{{ block_title }}</span>
+</h4>
+<div class="row align-items-center">
+    {% set terms = [] %}
+    {% for item in blog.children %}
+        {% for term in  item.taxonomy.category %}
+            {% if term not in terms %}
+                {% set terms = terms|merge([term]) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    {% set catItemsCounts = [] %}
+    {% for item in blog.children %}
+        {% for cat in item.taxonomy.category %}
+            {% set catItemsCounts = catItemsCounts|merge({(cat): (catItemsCounts[cat]|default(0)) + 1}) %}
+        {% endfor %}
+    {% endfor %}
+
+    {% for term in terms %}
+        {% set blog_image = null %}
+        {% for p in taxonomy.findTaxonomy({'category' : term}).order('date', 'desc').random(1) %}
+            {% set blog_image = p.media.images[p.header.featuredImage] ?: p.media.images|filter((v, k) => k != p.header.author.avatarImage)|first %}
+        {% endfor %}
+
+		{% if blog_image %}
+        <div class="{{ blog_image ? 'col-3' : 'col-12' }} py-2">
+            {{ blog_image.cropZoom(100, 60).loading('lazy')
+            .attribute('decoding','async')
+            .attribute('width','100')
+            .attribute('height','60')
+            .html(('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, ('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, 'w-100 h-auto mr-2 rounded')|raw }}
+        </div>
+		{% endif %}
+        <div class="{{ blog_image ? 'col-9' : 'col-12' }}">
+            <span class="font-weight-bold text-uppercase">
+                <a href="{{ blog.url ~ '/category:' ~ term }}" class="text-{{ color_style }}">{{ term|raw }}</a>
+            </span>
+            <small class="d-block text-muted">
+                <a href="{{ blog.url ~ '/category:' ~ term }}">
+                    <div class="text-muted mt-1">{{ catItemsCounts[term] }}
+                        {{ 'MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t }}
+                        {{ term|capitalize|raw }}</div>
+                </a>
+            </small>
+        </div>
+    {% endfor %}
+</div>

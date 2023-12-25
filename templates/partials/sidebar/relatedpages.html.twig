@@ -1,0 +1,41 @@
+{# RELATED SECTION - SIDEBAR #}
+
+<div class="sidebar-content my-5">
+    <h3 class="h4 font-weight-bold spanborder">
+        <span>{{ block_title }}</span>
+    </h3>
+    
+    {% for related_path, score in related_pages %}
+    {% set related = grav['pages'].get(related_path) %}
+    {% set related_title = related.title|raw %}
+    {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
+
+    {% if related %}
+        <div class="media py-1 align-items-center">
+
+        {% if related_image is not empty %}  
+                {{ related_image.cropZoom(100,60)
+                .loading('lazy')
+                .attribute('decoding', 'async')
+                .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
+            {% endif %}
+
+            <div class="media-body">
+                <span class="font-weight-bold">
+                    <a class="text-dark" href="{{ related.url }}" title="{{ related_title }}" rel="nofollow">{{ related_title }}</a>
+                </span>
+                
+                {% if related.taxonomy.category %}
+                <small class="d-block text-muted">
+                    {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
+                    {% for category in related.taxonomy.category %}
+                        <a class="text-capitalize text-muted smoothscroll" href="{{ base_url }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                    {% endfor %}
+                    </span>
+                </small>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+</div>

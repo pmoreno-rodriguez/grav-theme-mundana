@@ -1,0 +1,14 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="row" style="height: 50vh">
+        <div class="col my-auto text-center">
+            <i class="fas fa-exclamation-triangle fa-3x text-danger py-3"></i>
+            <h1 class="font-weight-bold spanborder">
+                <span>{{ 'PLUGIN_ERROR.ERROR'|t }} {{ page.header.http_response_code }}</span>
+            </h1>
+            
+            <div class="lead py-2">{{ page.content|raw }}</div>
+        </div>
+    </div>
+{% endblock %}

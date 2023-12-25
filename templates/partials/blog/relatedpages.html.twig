@@ -1,0 +1,59 @@
+{# PARTIAL RELATED PAGES #}
+{# Show at the bottom of the page, the Related Pages section if it is disabled show them in the sidebar #}
+
+<h2 class="font-weight-bold spanborder my-5 h4">
+    <span>{{ block_title }}</span>
+</h4>
+<div class="row justify-content-between my-3">
+    {% for related_path, score in related_pages|slice(0,3) %}
+    {% set related = grav['pages'].get(related_path) %}
+    {% set related_title = related.title|raw %}
+    {% set related_author = related.header.author.name ?? related.taxonomy.author[0] %}
+    {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
+    {% if related %}
+    <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
+        <div class="card border-0">
+            <a href="{{ related.url }}" arial-label="{{ related.title|raw }}">
+                {{ related_image.loading('lazy')
+                .attribute('decoding', 'async')
+                .attribute('width', '672')
+                .attribute('height', '504')
+                .derivatives(320,672,320)
+                .sizes('(max-width: 768px) 100vw, 50vw')
+                .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
+            </a>
+
+            <div class="card-body">
+                <a href="{{ related.url }}" class="text-dark">
+                <h2 class="h5">{{ related.title|raw }}</h2>
+                </a>
+                <div class="small mt-auto">
+                <span class="author-meta">
+                    {% if related_author %}
+                    <span class="post-name">
+                        <a class="text-muted text-capitalize" href="https://themepush.com/demo-mundana/author/wowthemesnet/ ">
+                            {{ related_author }}
+                        </a>
+                        </span>
+                        {% endif %}
+                        {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
+                        {% for category in related.taxonomy.category %}
+                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                        {% endfor %}
+                    </span>
+                    <div>
+                        <span class="post-date text-muted"> 
+                            {% include 'partials/blog/date.html.twig' with {'page': related} %}
+                        </span>
+                        {% if config.plugins.readingtime.enabled %}
+                            {% include 'partials/blog/readingtime.html.twig' with {'page': related} %}
+                        {% endif %}
+                    </div>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

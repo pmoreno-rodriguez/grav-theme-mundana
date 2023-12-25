@@ -1,0 +1,161 @@
+<!--
+    Original Mundana Theme from Jekyll is licensed under MIT,
+	designed & developed by Sal @wowthemes.net
+
+	Ported to Grav CMS by Pedro Moreno
+	https://github.com/pmoreno-rodriguezm/grav-theme-mundana
+-->
+{% apply spaceless %}
+
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+
+
+{# SET DEFAULT GRAV LANGUAGE #}
+{% set lang = grav.language.getActive ?: grav.config.site.default_lang %}
+
+{# Tile settings #}
+{% set page_title = page.title %}
+{% set site_title = site.title|e('html') %}
+{% set page_subtitle = page.header.subtitle %}
+{% set classLead = page.header.subtitleLead|defined(true) ? 'lead' : '' %}
+{% set meta_title = page_title is defined ? page_title|e ~ ' | ' ~ site_title : site_title %}
+
+{# Canonical URL #}
+{% set canonical_url = page.url(true, true) %}
+
+{# Set Author #}
+{% set author = page.header.author.name ?? page.taxonomy.author[0] %}
+{% set author_twitter = page.header.author.twitter ?? '' %}
+{% set author_bio = page.header.author.bio ?? '' %}
+
+{# Set Avatar image #}
+{% if author %}
+    {% set avatar = page.media[page.header.author.avatarImage]  %}
+{% endif %}
+
+{# Description #}
+{% if not page.home() %}
+  {% set meta_description = page.summary|trim|striptags|convert_encoding('ISO-8859-1', 'HTML-ENTITIES') %}
+{% elseif site.metadata.description %}
+  {% set meta_description = site.metadata.description %}
+{% else %}
+  {% set meta_description = site_title %}
+{% endif %}
+
+{# Style classes to apply to the body #}
+{% set body_classes = body_class(['homefirstpage']) %}
+
+{# Container classes #}
+{% set containerClass = show_sidebar ? 'container' : 'container-lg' %}
+
+{# Styles defined in theme #}
+{% set override_style = theme_var('override_page_style')|defined(false) %}
+{% set hover_color_mapping = {	
+	'primary':'#007bff', 
+	'secondary': '#6c757d', 
+	'success': '#28a745', 
+	'info': '#17a2b8', 
+	'warning': '#ffc107', 
+	'danger': '#dc3545', 
+	'dark': '#0a0c0d'
+} %}
+
+{# Set page color style #}
+{% set color_style = override_style ? theme_var('default_page_style')|defined('primary') : page.header.style|defined('primary') %}
+
+{# Set styles for navbar #}
+{% set navbarStyle = theme_var('navbar.style')|defined('dark') %}
+{% if not theme_var('navbar.custom_bgcolor') %}
+	{% set navbarBgcolor = theme_var('navbar.bgcolor')|defined('secondary') ? 'bg-' ~ theme_var('navbar.bgcolor')|defined('secondary') : ''  %}
+{% endif %}
+
+{% set navbarIconGroup = theme_var('navbar.icon_group')|defined('fas') %}
+{% set navbarIconSize = theme_var('navbar.icon_size')|defined('') %}
+{% set navbarIcon = theme_var('navbar.icon') %}
+{% set navbarSiteName = theme_var('navbar.display_site_name')|defined(true) %}
+{% set navbarContainer = theme_var('navbar.container_fluid') ? 'container-fluid' : 'container' %}
+{% set navbarCustomBgcolor = theme_var('navbar.custom_bgcolor') %}
+{% set navbarHeight = theme_var('navbar.height')|default(70) %}
+{% set widthLogo = theme_var('custom_logo_width') %}
+
+{# Image settings #}
+{% set featuredImage = page.media[page.header.featuredImage] ?: page.media.images|filter((v, k) => k != page.header.author.avatarImage)|first %}
+{% set img_width = header_var('image_width')|default(1038) %}
+{% set img_height = header_var('image_height')|default(437) %}
+{% set show_image = header_var('show_image')|defined(true) %}
+
+{# Options for network sharing defined in the theme #}
+{% set mailchimp = theme_var('mailchimp_enable')|defined(false) %}
+{% set mailchimpTitle = theme_var('mailchimp_title') %}
+{% set mailchimpDescription = theme_var('mailchimp_description') %}
+{% set mailchimpAddress = theme_var('mailchimp_address') %}
+{% set disqus = theme_var('disqus_enable')|defined(false) %}
+{% set disqus_name = theme_var('disqus_name') %}
+{% set share = theme_var('share_enable')|defined(false) %}
+
+{# Sidebar Settings #}
+{% set showRelatedPages = config.plugins.relatedpages.enabled and related_pages|length > 0 and theme_var('sidebar_showrelatedpages')|defined(true)%}
+{% set showTaxonomyList = config.plugins.taxonomylist.enabled and theme_var('sidebar_showtaxonomy')|defined(true) %}
+{% set random = config.plugins.random.enabled  and theme_var('sidebar_showrandom')|defined(true) %}
+{% set archives = config.plugins.archives.enabled and theme_var('sidebar_showarchives')|defined(true) %}
+{% set feeds = config.plugins.feed.enabled and theme_var('sidebar_showfeeds')|defined(true) %}
+{% set show_featured = header_var('show_featured')|defined(true) %}
+{% set show_categories = header_var('show_categories')|defined(true) %}
+
+{# Set blog settings #}
+{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
+{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
+{% set new_base_url = blog.url == '/' ? '' : blog.url %}
+
+{# Theme configuration for featured posts #}
+{% set featured = theme_var('featuredposts')|defined(true) %}
+{% set featuredposts_number = theme_var('featuredposts_number')|defined(5) %}
+{% set featuredposts_tag = theme_var('featuredposts_tag')|defined('featured') %}
+
+{% endapply %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+
+	{% block head %}
+		{% include 'partials/head.html.twig' %}
+	{% endblock %}
+
+	<body class="{% block body_classes %}{{ body_classes }}{% endblock %}">
+
+		{% block navbar %}
+			<!-- Navbar -->
+			{% include 'partials/navbar.html.twig' %}
+		{% endblock %}
+
+		{% block main %}
+			<!-- Content -->
+			<main role="main" class="site-content">
+				<div class="{{ containerClass }}">
+
+					{# System messages block #}
+					{% block messages %}
+						{% include 'partials/messages.html.twig' ignore missing %}
+					{% endblock %}
+
+					{% block content %}{% endblock %}
+				</div>
+			</main>
+		{% endblock %}
+
+		{% block footer %}
+			{% include 'partials/footer.html.twig' %}
+		{% endblock %}
+
+		{% include 'partials/page/backtotop.html.twig' %}
+
+		{% block bottom %}
+			<!-- Scripts: popper, bootstrap, theme, -->
+			{{ assets.js('bottom')|raw }}
+		{% endblock %}
+
+		{% include 'partials/tracking-footer.html.twig' %}
+
+	</body>
+
+</html>

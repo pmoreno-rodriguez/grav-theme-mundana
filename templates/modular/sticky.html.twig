@@ -1,0 +1,43 @@
+{# MODULAR PAGE - STICKY POST #}
+
+{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
+{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set override_style = theme_var('override_page_style')|defined(false) %}
+{% set color_style = override_style ? theme_var('default_page_style')|default('primary') : page.parent.header.style|defined('primary') %}
+{% set page_title = page.title %}
+{% set show_title = page.header.show_title|defined(false) %}
+
+{% if page_title and show_title %}
+	<h4 class="font-weight-bold spanborder">
+		<span>{{ page_title|raw }}</span>
+	</h4>
+	{% endif %}
+	{% if page.content is not empty %}
+	<div class="page-content">
+		{{ page.content|raw }}
+	</div>
+{% endif %}
+<!-- Sticky - add sticky tag to the post you want to highlight here - page.header.isSticky: true -->
+{% for post in blog.children %}
+    {% if post.header.isSticky %}
+	{% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
+	{% set is_even = loop.index is even %}
+
+	<div class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 my-5 mb-2rem bg-lightblue position-relative">
+		<div class="pr-0 h-100 tofront">
+			<div class="row justify-content-between">
+				<div class="col-md-6 {% if is_even %}order-md-2{% endif %} pt-6 pb-6 pl-lg-4 pr-lg-4 align-self-center">
+					<h2 class="mb-3 h1">{{post.title|raw}}</h2>
+					<div class="mb-3 lead">
+						{{ post.summary|striptags|raw }}
+					</div>
+					<a href="{{post.url}}" class="btn btn-{{ color_style }}" title="Read article {{post.title|raw}}" role="button" aria-label="Read article {{post.title|raw}}">Read article</a>
+				</div>
+				{% if (blog_image ?? null) %}
+					<div class="col-md-6 {% if is_even %}order-md-1{% endif %} pr-0" style="background-size:cover;background-image:url({{ blog_image.url }});"></div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+{% endfor %}

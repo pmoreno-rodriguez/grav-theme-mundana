@@ -1,0 +1,48 @@
+extends@: default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        blog:
+          type: tab
+          title: MUNDANA.ADMIN.ITEM.TAB
+
+          fields:
+            _summaryConfig:
+              type: spacer
+              title: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.LABEL
+            header.summary.enabled:
+              type: toggle
+              toggleable: true
+              label: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.ENABLED
+              highlight: 1
+              options:
+                1: Enabled
+                0: Disabled
+            header.summary.format:
+              type: select
+              toggleable: true
+              label: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.FORMAT.LABEL
+              classes: fancy
+              options:
+                'short': MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.FORMAT.SHORT
+                'long': MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.FORMAT.LONG
+            header.summary.size:
+              type: text
+              toggleable: true
+              label: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.SIZE
+              classes: large
+              placeholder: 300
+              validate:
+                type: int
+                min: 1
+            header.summary.delimiter:
+              type: text
+              toggleable: true
+              label: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.DELIMITER
+              classes: large
+              placeholder: ===
+          import@:
+            type: partials/item-bits

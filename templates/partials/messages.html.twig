@@ -1,0 +1,25 @@
+{% set type_mapping = {'info':'success', 'error': 'danger', 'warning': 'warning'} %}
+{% set icon_mapping = {'info':'check', 'error':'times', 'warning':'exclamation'} %}
+{% block content %}
+
+{% if grav.messages.all %}
+<div class="mt-3">
+    <div id="messages">
+    {% for message in grav.messages.fetch %}
+
+        {% set scope = message.scope|e %}
+        {% set type = type_mapping[scope] %}
+        {% set icon = icon_mapping[scope] %}
+
+        <div class="alert alert-{{ type }} {{ scope }} alert-dismissible my-3 p-3 fade show" role="alert">
+          <i class="fas fa-{{ icon }}"></i> {{ message.message|raw }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

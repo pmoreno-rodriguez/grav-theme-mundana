@@ -1,0 +1,26 @@
+{# SHORTCODE TEMPLATE FOR BOOTSTRAP ACCORDION #}
+
+{% if hash ?? null %}
+    <div class="accordion" id="{{ hash }}">
+        {% for item in collapse_items %}
+            {% set isOpen = item.getParameter('open') == true %}
+            {% set opened = isOpen ? 'show' : '' %}
+            <div class="card">
+                <div class="card-header" id="heading{{ loop.index }}">
+                    <h3 class="my-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ hash ~ loop.index }}" aria-expanded="{{ isOpen ? 'true' : 'false' }}" aria-controls="collapse{{ hash ~ loop.index }}">
+                            {{ item.getParameter('title', 'Collapsible Group Item #' ~ loop.index) }}
+                        </button>
+                    </h3>
+                </div>
+                <div id="collapse{{ hash ~ loop.index }}" class="collapse {{ opened }}" aria-labelledby="heading{{ loop.index }}" data-parent="#{{ hash }}">
+                    <div class="card-body" style="font-size: 1rem;">
+                        {{ item.content|raw }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+

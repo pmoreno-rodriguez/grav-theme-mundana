@@ -1,0 +1,97 @@
+{# Set classes for div tags #}
+{% set rowClasses = 'row ' ~ (featuredImage and show_image ? 'justify-content-between' : 'justify-content-center') %}
+{% set columnClasses = (featuredImage and show_image ? 'col-md-6' : 'col-md-12') ~ ' pr-0 pr-md-4 pt-4 pb-4 align-self-center' %}
+{% set shareClasses = 'col-md-12 ' ~ (share ? 'col-lg-10' : 'col-lg-12') %}
+{% set sidebarClasses = show_sidebar ? '' ~ ' pt-4 pb-4' : 'container-lg' %}
+
+<!-- Post Header Content -->
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+    <div class="h-100 tofront">
+        <div class="{{ rowClasses }}">
+            <div class="{{ columnClasses }}">
+                <p class="text-uppercase font-weight-bold">
+                    <span class="catlist">
+                    {% for category in page.taxonomy.category %}
+                        <a class="sscroll text-{{ color_style }}" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                    {% endfor %}
+                    </span>
+                </p>
+                <{{title_level}} class="display-4 mb-4 article-headline">{{ page_title|raw }}</{{title_level}}>
+                {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
+                {# If summary is enabled it will displayed #}
+                {% if page.header.summary.enabled ?? true %}
+                    {% include 'partials/blog/page-summary.html.twig' %}
+                {% endif %}
+                <div class="d-flex align-items-center">
+                    {# Show avatar image if it's defined #}
+                    {% if avatar %}
+                        {% include 'partials/blog/avatar.html.twig' with {'avatar_width': 60} %}
+                    {% endif %}
+                    {# Show author if it's defined #}
+                    <small class="ml-3">
+                        {% if author %}<span>{{ author|raw }}</span>{% endif %}
+                        {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">{{ 'MUNDANA.MISC.FOLLOW'|t }}</a></span>{% endif %}
+                        {# Show post date #}
+                        {% include 'partials/blog/date.html.twig' %}
+                        {# Show post read time if the Reading Time plugin is enabled #}
+                        {% if config.plugins.readingtime.enabled %}
+                            {% include 'partials/blog/readingtime.html.twig' %}
+                        {% endif %}
+                        </span>
+                    </small>
+                </div>
+            </div>
+            {# Show featured image if it's defined and show_image is true #}
+            {% if featuredImage and show_image %}
+            <div class="col-md-6 pr-0 align-self-center">
+                {{ featuredImage.loading('eager')
+                .attribute('decoding','async')
+                .attribute('width', '672')
+                .attribute('height', '504')
+                .derivatives(320,672,320).sizes('(max-width: 768px) 100vw, 50vw')
+                .html(page_title, page_title,'w-100 h-auto rounded')|raw }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- Blog Item Content -->
+<div class="{{ sidebarClasses }}">
+	<div class="row justify-content-center">
+        {# Show share buttons if they are defined #}
+        {% if share %}
+            {% include 'partials/blog/share.html.twig' %}
+        {% endif %}
+		<div class="{{ shareClasses }}">
+            <!-- Article -->
+			<article class="article-post">                
+			    {{ page.content|raw }}                
+			</article>
+            <!-- Tags -->
+            <div class="mb-4">
+                <span class="taglist">
+                {% for tag in page.taxonomy.tag %}
+                    <a class="sscroll btn btn-outline-{{ color_style }} btn-sm font-weight-bold" href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag|raw }}</a>
+                {% endfor %}
+                </span>
+            </div>
+            {% if mailchimp is same as(true) %}
+                {% include 'partials/blog/mailchimp.html.twig' %}
+            {% endif %}
+            {% if author %}				
+                {% include 'partials/blog/author.html.twig' %}
+            {% endif %}
+            {% if disqus is same as(true) and disqus_name is not empty %}
+                {% include 'partials/blog/disqus.html.twig' with { 'short_name': disqus_name } %}
+            {% endif %}
+		</div>
+	</div>
+</div>
+
+{# Show related pages at the bottom of the page if they are disabled in the sidebar #}
+{% if not show_sidebar and showRelatedPages %}
+    {% include 'partials/blog/relatedpages.html.twig' with { 'block_title': 'MUNDANA.SIDEBAR.RELATEDPAGES'|t } %}
+{% endif %}
+
+<!-- Alertbar Prev/Next -->
+{% include 'partials/blog/footer_pagination.html.twig' %}

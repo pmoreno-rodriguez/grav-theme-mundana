@@ -1,0 +1,33 @@
+{# PARTIAL SHARE ICONS #}
+
+<!-- Share -->
+{% set color_mapping = {
+    'primary': '#007bff', 
+    'secondary': '#6c757d',
+    "success": '#28a745',
+    "info": '#17a2b8',
+    "warning": '#ffc107',
+    'danger': '#dc3545',
+    "light": '#f8f9fa',
+    "dark": '#212529'
+    } %}
+{% set a2a_icon_color = color_mapping[color_style] %}
+
+<div class="col-lg-2 pr-4 mb-4 col-md-12">
+    <div class="sticky-top sticky-top-offset text-center">
+        <div class="text-muted">
+            {{ 'MUNDANA.MISC.SHARE_THIS'|t }}
+        </div>
+        <div class="share d-inline-block">
+            <!-- AddToAny BEGIN -->
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="{{a2a_icon_color}}">
+                {% for item in theme_config.share_icons %}
+                <a class="a2a_button_{{item.name|raw}}"></a>
+                {% endfor %}
+                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+            </div>
+            <script async src="https://static.addtoany.com/menu/page.js"></script>
+            <!-- AddToAny END -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+enabled: true
+production-mode: true
+blog-page: '/blog'

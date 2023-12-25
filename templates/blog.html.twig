@@ -1,0 +1,63 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set collection = page.collection() %}
+{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
+{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
+{# Set sidebar option for page #}
+{% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
+{# Set pagination option for page #}
+{% set show_pagination = header_var('show_pagination', [page, blog])|defined(true) %}
+
+{# Set page filtered #}
+{% import 'macros/macros.html.twig' as filters %}
+{% set titleFiltered = filters.generateFilteredTitle(uri) %}
+
+{% block content %}
+
+<div class="row mt-3">
+{% embed 'partials/layout.html.twig' with { blog: page } %}
+    {% block item %}
+        <h2 class="font-weight-bold title h3 text-uppercase mb-4 spanborder">
+        <span>{{titleFiltered}}</span>
+        </h2>
+        {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ subtitle|raw }}</p>{% endif %}
+        
+        {# isFirstItem is used to pass loading attribute to blog list #}
+        {# Loading the first item as "eager" in the blog list greatly improves page speed #}
+        {% set isFirstItem = true %}
+        {% for child in collection %}
+            {% set childImage = child.media.images[child.header.featuredImage] ?: child.media.images|filter((v, k) => k != child.header.author.avatarImage)|first %}
+			{% set childTitle = child.title|raw %}
+            {% set child_showImage = child.header.show_image|defined(true) %}
+            {% set datePublished = include('partials/page/date.html.twig', { 'page': child }) %}
+            {% set loadLazy = not isFirstItem %}
+            {% include 'partials/blog-list-item.html.twig' with { 
+                'blog': page, 
+                'page': child, 
+                'show_image': child_showImage, 
+                'featuredImage': childImage, 
+                'page_title': childTitle, 
+                'title_level': 'h3',
+                'loadLazy': loadLazy
+            } %}
+            {% set isFirstItem = false %}
+        {% endfor %}
+
+        {% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
+            <!-- Pagination links -->
+            <div class="mt-5">
+                {% include 'partials/pagination.html.twig' with {base_url: page.url, pagination: collection.params.pagination} %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block sidebar %}
+        {% include 'partials/sidebar.html.twig' %}
+    {% endblock %}
+{% endembed %}
+</div>
+{% endblock %}
+
+
+

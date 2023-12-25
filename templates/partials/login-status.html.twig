@@ -1,0 +1,8 @@
+
+{% if grav.user.authenticated %}
+<div class="navbar-text pl-lg-2">
+    <i class="fas fa-lock"></i>
+    {# <strong>{{ grav.user.fullname ?: grav.user.username }}</strong>,  #}
+    <strong><a class="nav-item" href="{{ uri.addNonce((base_url_relative ~ uri.path)|trim('/') ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce')|e }}">{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}</a></strong>
+</div>
+{% endif %}

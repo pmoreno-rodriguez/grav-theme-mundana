@@ -1,0 +1,26 @@
+{% extends 'partials/base.html.twig' %}
+
+{# Set sidebar option for page #}
+{% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(false)  %}
+{# Set breadcrumbs option for page #}
+{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog])|defined(true) %}
+
+{% block content %}
+
+<div class="row mt-3">
+{% embed 'partials/layout.html.twig' %}
+    {% block item %}
+        {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+            {% include 'partials/breadcrumbs.html.twig' %}
+        {% endif %}
+
+        {% include 'partials/blog-item.html.twig' with { title_level: 'h1' } %}
+    {% endblock %}
+
+    {% block sidebar %}
+        {% include 'partials/sidebar.html.twig' %}
+    {% endblock %}
+{% endembed %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+title: Sticky
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            _Headings:
+              fields:
+                _TitleToggle:
+                  fields:
+                    header.show_title:
+                      replace-options@: true
+                      default: 0
+                      highlight: 0
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+        PageOptions:
+          fields:
+            _configTitle:
+              type: section
+              title: MUNDANA.ADMIN.BLOG.CONFIGURATION.LABEL
+              ordering@: -99
+              import@:
+                type: partials/blog-url
+                context: blueprints://pages

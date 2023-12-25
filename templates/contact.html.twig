@@ -1,0 +1,49 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h3 class="font-weight-bold spanborder"><span>{{ page_title|raw }}</span></h3>
+        {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
+        <div class="row">
+            {% if page.header.address is not empty %}
+                <!-- Left column with icon list -->
+                <div class="col-md-4 rounded py-3 bg-light">
+                    <div class="card h-100">
+                        {% if featuredImage and show_image %}
+                            {{ featuredImage.loading('eager')
+                            .attribute('decoding','async')
+                            .attribute('width', '672')
+                            .attribute('height', '504')
+                            .derivatives(320,672,320)
+                            .sizes('(max-width: 768px) 100vw, 50vw')
+                            .html(page_title|raw, page_title|raw,'h-auto w-100 card-img-top')|raw }}
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title px-4">{{ 'MUNDANA.CONTACT.ADDRESS'|t }}</h4>
+                            <ul class="list-group pb-2 rounded py-2">
+                                {% for item in page.header.address %}
+                                    {% if item.addressField ?? null %}
+                                        <li class="list-group-item border-0">
+                                            {% if item.fieldIcon ?? null %}
+                                                <span><i class="{{ item.fieldIcon }}"></i></span>
+                                            {% endif %}
+                                            <span class="pl-2">{{ item.addressField|raw }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right column with the form -->
+                <div class="col-md-8 py-3">
+            {% else %}
+                <!-- Right column with the form (occupying 12 columns) -->
+                <div class="col-12 py-3">
+            {% endif %}
+                {% include "forms/form.html.twig" with { form: forms('contact-form')} %}
+            </div> 
+        </div>
+    </div>  
+{% endblock %}

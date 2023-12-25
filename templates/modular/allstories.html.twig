@@ -1,0 +1,59 @@
+{# MODULAR PAGE - ALL STORIES #}
+
+{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
+{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set collection = blog.collection() %}
+{% set new_base_url = blog.url == '/' ? '' : blog.url %}
+{% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
+{% set featuredposts_number = theme_var('featuredposts_number')|defined(5) %}
+{% set featuredposts_tag = theme_var('featuredposts_tag')|defined('featured') %}
+{% set show_featured = header_var('show_featured')|defined(true) %}
+{% set show_categories = header_var('show_categories')|defined(true) %}
+{% set override_style = theme_var('override_page_style')|defined(false) %}
+{% set color_style = override_style ? theme_var('default_page_style')|default('primary') : page.parent.header.style|defined('primary') %}
+{% set page_title = page.title %}
+{% set show_title = page.header.show_title|defined(false) %}
+
+{% if blog ?? null %}
+<div class="row my-5">
+	{% embed 'partials/layout.html.twig' %}
+		{% block item %}
+			{% if page_title and show_title %}
+				<h2 class="h3 font-weight-bold spanborder">
+					<span>{{ page_title|raw }}</span>
+				</h2>
+			{% endif %}
+			{% if page.content is not empty %}
+				<div class="page-content">
+					{{ page.content|raw }}
+				</div>
+			{% endif %}
+			{# isFirstItem is used to pass loading attribute to blog list #}
+			{# Loading the first item as "eager" in the blog list greatly improves page speed #}
+			{% set isFirstItem = true %}
+			{% for child in collection.slice(0, 5)%}
+				{% set childImage = child.media.images[child.header.featuredImage] ?: child.media.images|filter((v, k) => k != child.header.author.avatarImage)|first %}
+				{% set childTitle = child.title|raw %}
+				{% set loadLazy = not isFirstItem %}
+				{% include 'partials/blog-list-item.html.twig' with { 
+					'base_url': new_base_url,
+					page: child,
+					'title_level': 'h3',
+					'featuredImage': childImage,
+					'page_title': childTitle,
+					show_image: true,
+					'loadLazy': loadLazy
+				} %}
+            	{% set isFirstItem = false %}
+				{% endfor %}
+			<a href="{{new_base_url}}" class="btn btn-{{ color_style }} mb-4">View all posts</a>
+		{% endblock %}
+		
+		{% if show_sidebar %}
+		{% block sidebar %}
+			{% include 'modular/partials/sidebar.html.twig' %}
+		{% endblock %}
+		{% endif %}
+	{% endembed %}
+</div>
+{% endif %}

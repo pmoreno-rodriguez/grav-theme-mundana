@@ -1,0 +1,11 @@
+form:
+  fields:
+  
+    header.blog_url:
+      type: text
+      toggleable: true
+      label: MUNDANA.ADMIN.BLOG.CONFIGURATION.BLOG_ROUTE
+      help: MUNDANA.ADMIN.BLOG.CONFIGURATION.BLOG_ROUTE_HELP
+      default: '/blog'
+      placeholder: '/blog'
+      size: medium

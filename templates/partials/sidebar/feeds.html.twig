@@ -1,0 +1,18 @@
+{# FEEDS SECTION - SIDEBAR #}
+
+<div class="sidebar-content my-5">
+    <h3 class="h4 font-weight-bold spanborder">
+        <span>{{ block_title }}</span>
+    </h3>
+    <a class="btn btn-outline-{{ color_style }}" href="{{ feed_url }}.atom">
+        <i class="fa fa-rss-square"></i>
+        Atom 1.0</a>
+    <a class="btn btn-outline-{{ color_style }}" href="{{ feed_url }}.rss">
+        <i class="fa fa-rss-square"></i>
+        RSS</a>
+    {% if config.plugins.feed.enable_json_feed %}
+        <a class="btn btn-{{ color_style }}" href="{{ feed_url }}.json">
+            <i class="fa fa-rss-square"></i>
+            JSON</a>
+    {% endif %}
+</div>

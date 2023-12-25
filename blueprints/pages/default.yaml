@@ -1,0 +1,181 @@
+title: Generic Page
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          fields:
+            header.title:
+              replace@: true
+            content:
+              replace@: true
+            header.media_order:
+              replace@: true
+            _Headings_Section:
+              type: section
+              underline: true
+              title: MUNDANA.ADMIN.DEFAULT.HEADINGS_SECTION
+            _Headings:
+              type: columns
+              fields:
+                _Title:
+                  type: column
+                  fields:
+                    header.title:
+                      type: text
+                      autofocus: true
+                      style: vertical
+                      label: PLUGIN_ADMIN.TITLE
+                    header.show_title:
+                      type: toggle
+                      style: vertical
+                      label: MUNDANA.ADMIN.DEFAULT.SHOW_TITLE
+                      help: MUNDANA.ADMIN.DEFAULT.SHOW_TITLE_HELP
+                      default: 1
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+                _Subtitle:
+                  type: column
+                  fields:
+                    header.subtitle:
+                      type: text
+                      style: vertical
+                      label: MUNDANA.ADMIN.DEFAULT.SUBTITLE
+                    header.subtitleLead:
+                      type: toggle
+                      style: vertical
+                      markdown: true
+                      label: MUNDANA.ADMIN.DEFAULT.SUBTITLE_LEAD
+                      description: MUNDANA.ADMIN.DEFAULT.SUBTITLE_LEAD_HELP
+                      default: 1
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+                
+            _Content_Section:
+              type: section
+              underline: true
+              title: MUNDANA.ADMIN.DEFAULT.CONTENT
+            _ContentOptions:
+              type: column
+              fields:
+                 content:
+                  type: markdown
+                  validate:
+                    type: textarea
+            _Media_Section:
+              type: section
+              underline: true
+              title: MUNDANA.ADMIN.DEFAULT.IMAGE_OPTIONS      
+            _MediaOptions:
+              type: columns
+              fields:
+                _MediaContent:
+                  type: column
+                  fields:
+                    header.media_order:
+                      type: pagemedia
+                      label: PLUGIN_ADMIN.PAGE_MEDIA
+                _ImageOptions:
+                  type: column
+                  fields:
+                    header.show_image:
+                      type: toggle
+  
+                      label: MUNDANA.ADMIN.DEFAULT.SHOW_FEATURED_IMAGE
+                      help: MUNDANA.ADMIN.DEFAULT.SHOW_FEATURED_IMAGE_HELP
+                      default: 1
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+                      validate:
+                        type: bool
+                    header.featuredImage:
+                      ordering@: header.subtitle
+                      size: large
+                      type: pagemediaselect
+                      label: MUNDANA.ADMIN.DEFAULT.FEATURED_IMAGE.LABEL
+                      help: MUNDANA.ADMIN.DEFAULT.FEATURED_IMAGE.HELP
+                      preview_images: true
+                    header.image_width:
+                      type: number
+                      label: MUNDANA.ADMIN.DEFAULT.FEATURED_IMAGE.WIDTH
+                      size: small
+                      default: 1000
+                    header.image_height:
+                      type: number
+                      label: MUNDANA.ADMIN.DEFAULT.FEATURED_IMAGE.HEIGHT
+                      size: small
+                      default: 300
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                   fields:
+                    header.body_classes:
+                      markdown: true
+                      label: MUNDANA.ADMIN.DEFAULT.BODY_CLASSES
+                      help: MUNDANA.ADMIN.DEFAULT.BODY_CLASSES_HELP
+                      description: MUNDANA.ADMIN.DEFAULT.BODY_CLASSES_DESCRIPTION
+            overrides:
+              fields:
+                header.icon_menu:
+                  type: text
+                  label: MUNDANA.ADMIN.DEFAULT.ICON_MENU
+                  description: MUNDANA.ADMIN.DEFAULT.ICON_MENU_DESCRIPTION
+                  ordering@: header.menu
+                  toggleable: true
+                  size: medium
+        PageOptions:
+          type: tab
+          title: MUNDANA.ADMIN.DEFAULT.SETTINGS
+          fields:
+            _Style_Section:
+              type: section
+              underline: true
+              title: MUNDANA.ADMIN.DEFAULT.STYLES_SECTION
+            header.style:
+              type: select
+              label: MUNDANA.ADMIN.THEME.PAGE_STYLE.LABEL
+              help: MUNDANA.ADMIN.THEME.PAGE_STYLE.HELP
+              description: MUNDANA.ADMIN.THEME.PAGE_STYLE.DESCRIPTION
+              size: medium
+              toggleable: true
+              data-options@: '\Grav\Theme\Mundana::getPageStyles'
+            _Author_Section:
+              type: section
+              underline: true
+              title: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.LABEL
+            header.author.name:
+              type: text
+              toggleable: true
+              size: medium
+              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.NAME
+            header.author.twitter:
+              type: text
+              toggleable: true
+              size: medium
+              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.TWITTER
+            header.author.bio:
+              type: textarea
+              toggleable: true
+              rows: 3
+              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.BIOGRAPHY
+            header.author.avatarImage:
+              type: pagemediaselect
+              toggleable: true
+              size: medium
+              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.AVATAR
+              preview_images: true

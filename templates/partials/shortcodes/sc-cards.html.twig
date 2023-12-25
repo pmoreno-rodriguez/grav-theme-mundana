@@ -1,0 +1,22 @@
+{# SHORTCODE TEMPLATE FOR BOOTSTRAP CARDS #}
+
+<div class="row" id="cards-{{ hash }}">
+    {% for card in cards %}
+        {% set columnSize = card.getParameter('column-size', 'col-sm-6') %}
+        <div class="{{ columnSize }} my-2">
+            <div class="card h-100 my-1">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.getParameter('title') }}</h5>
+                    <p class="card-text">
+                        {{ card.getContent()|replace({'<p>': '', '</p>': ''})|raw }}
+                    </p>
+                    {% if card.getParameter('button-text') and card.getParameter('button-url') %}
+                        {% set buttonColor = card.getParameter('button-color', 'primary') %}
+                        <a href="{{ card.getParameter('button-url') }}" class="btn btn-{{ buttonColor }}">{{ card.getParameter('button-text') }}</a>
+                    {% endif %}
+                    {# Add other card components as needed #}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

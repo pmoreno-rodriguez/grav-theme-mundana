@@ -1,0 +1,61 @@
+{# Initialize settings for custom menu #}
+{% set dropdown = theme.dropdown.enabled|defined(true) %}
+{% set c_menu_items = theme_var('custom_menu_items') %}
+{% set c_menu_enabled = theme_var('custom_menu_enabled')|defined(true) %}
+
+{# Navigation menu #}
+<ul class="navbar-nav mx-auto d-flex align-items-center">
+{% for page in pages.children.visible %}
+{% set icon_menu = page.header.icon_menu is defined ? '<i class="' ~ page.header.icon_menu ~ '"></i>' : '' %}
+    {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+        {% if dropdown and page.children.visible.count > 0 %}
+            <li class="nav-item dropdown {{ current_page }}">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ icon_menu|raw }}
+                    {{page.menu}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for child in page.children.visible %}
+                    {% set current_child = (child.active or child.activeChild) ? 'active' : '' %}
+                    <a class="dropdown-item {{ current_child }}" href="{{ child.url }}">{{ child.menu }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+        {% else %}
+        <li class="nav-item {{ current_page }}">
+            <a class="nav-link" href="{{ page.url }}">
+                {{ icon_menu|raw }}
+                {{ page.menu }}
+            </a>
+        </li>
+        {% endif %}
+        
+        
+{% endfor %}
+
+{# Custom menu links #}
+{% if c_menu_enabled %}
+    {% for c_item in c_menu_items %}
+        <li class="nav-item">
+            <a href="{{ c_item.url }}" target="{{ c_item.target }}" class="nav-link">
+                {% if c_item.icon %}
+                    <i class="{{ c_item.icon }}"></i>
+                {% endif %}
+                <span>{{ c_item.text }}</span>
+            </a>
+        </li>
+    {% endfor %}
+{% endif %}
+    
+{# Login and logout link #}
+{% if config.plugins.login.enabled %}
+<li class="nav-item">
+    {% if not grav.user.authenticated %}
+        <a class="nav-link" href="{{ base_url }}/login"><b>{{ 'MUNDANA.MISC.LOGIN_LABEL'|t }}</b></a>
+    {% else %}
+        {% include 'partials/login-status.html.twig' %}
+    {% endif %}
+</li>
+    
+{% endif %}
+</ul>

@@ -1,0 +1,23 @@
+{% set footerTextLeft = theme_var('footer_text_left') %}
+{% set footerTextRight = theme_var('footer_text_right') %}
+
+<!-- Footer -->
+<footer class="bg-white border-top p-3 text-muted small">
+    <div class="{{ containerClass }}">
+    <div class="row justify-content-between align-items-end">
+        <div>
+            <div class="d-flex flex-column">
+                <div>
+                    <span class="navbar-brand mr-2 mb-0"><strong>{{ site.title|raw}}</strong></span>
+                </div>
+                <div>
+                    {{ footerTextLeft|markdown|replace({'<p>': '', '</p>': ''})|raw }} 
+                </div>
+            </div>
+        </div>
+        <div>
+            {{ footerTextRight|markdown|replace({'<p>': '', '</p>': ''})|raw }}
+        </div>
+    </div>
+    </div>
+</footer>

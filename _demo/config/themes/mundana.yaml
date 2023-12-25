@@ -1,0 +1,63 @@
+enabled: true
+production-mode: false
+blog-page: /blog
+dropdown:
+  enabled: true
+back_to_top_button: true
+custom_logo_enabled: true
+custom_logo_width: 45
+custom_css: '1'
+custom_js: '1'
+menu_langswitcher: true
+menu_search: true
+menu_login: true
+override_page_style: false
+navbar:
+  container_fluid: false
+  display_site_name: true
+  icon_group: fas
+  style: dark
+  bgcolor: danger
+  height: 70
+  icon_size: null
+  icon: home
+custom_menu_enabled: true
+sidebar_showtaxonomy: '0'
+sidebar_showarchives: '0'
+sidebar_showrelatedpages: '1'
+sidebar_showfeeds: '0'
+sidebar_showrandom: '0'
+blog_route: /blog
+featuredposts: true
+featuredposts_category: featured
+featuredposts_number: 4
+share_enable: true
+mailchimp_enable: true
+mailchimp_address: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+disqus_enable: true
+disqus_name: demowebsite
+footer_text_left: '© 2023 All rights reserved.<a href="https://github.com/pmoreno-rodriguez/grav-theme-mundana" class="text-dark font-weight-bolder ml-1" target="_blank">Fork on <i class="fab fa-github"></i> Github</a>'
+footer_text_right: 'Mundana Grav Theme ported from <a href="https://github.com/wowthemesnet/mundana-theme-jekyll" class="text-dark font-weight-bolder" target="_blank">Mundana Jekyll Theme</a>'
+custom_logo:
+  user/themes/mundana/images/logo/Grav_logo_white.png:
+    name: Grav_logo_white.png
+    full_path: Grav_logo_white.png
+    type: image/png
+    size: 25654
+    path: user/themes/mundana/images/logo/Grav_logo_white.png
+custom_logo_mobile: {  }
+share_icons:
+  -
+    name: facebook
+  -
+    name: twitter
+  -
+    name: mastodon
+mailchimp_title: 'Join Newsletter'
+mailchimp_description: 'Get the latest news right in your inbox. We never spam! '
+custom_menu_items:
+  -
+    text: Grav
+    icon: 'fab fa-grav'
+    url: 'https://getgrav.org'
+    target: _blank

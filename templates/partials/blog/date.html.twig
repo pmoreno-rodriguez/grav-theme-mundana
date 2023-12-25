@@ -1,0 +1,10 @@
+{# PARTIAL DATE FOR PAGES #}
+
+{% set datePublished = include('partials/page/date.html.twig') %}
+
+<span class="text-muted d-block mt-1">
+    <time datetime="{{ datePublished }}">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i> {{ datePublished }}
+    </time>
+</span>
+

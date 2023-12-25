@@ -1,0 +1,14 @@
+{# Macro to show filtered title in blog searches #}
+{% macro generateFilteredTitle(uri) %}
+    {% if uri.param('category') %}
+        {% set title = theme_config.listing_title.taxonomy.category | default('MUNDANA.BLOG.LISTING_TITLE_CATEGORY'|t) ~ uri.param('category') %}
+    {% elseif uri.param('tag') %}
+        {% set title = theme_config.listing_title.taxonomy.tag | default('MUNDANA.BLOG.LISTING_TITLE_TAG'|t) ~ uri.param('tag') %}
+    {% elseif uri.param('author') %}
+        {% set title = theme_config.listing_title.taxonomy.author | default('MUNDANA.BLOG.LISTING_TITLE_AUTHOR'|t) ~ uri.param('author') %}
+    {% else %}
+        {% set title = theme_config.listing_title.blog | default('Blog') %}
+    {% endif %}
+    
+    {{ title }}
+{% endmacro %}

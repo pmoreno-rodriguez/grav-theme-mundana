@@ -1,0 +1,9 @@
+{# PARTIAL PAGE SUMMARY #}
+
+<div class="excerpt mb-3 text-body">
+    {% if page.summary != page.content %}
+        {{ page.summary|truncate(header.summary.size)|striptags|raw }}
+    {% else %}
+        {{ page.content|truncate(site.summary.size)|striptags|raw }}
+    {% endif %}
+</div>
