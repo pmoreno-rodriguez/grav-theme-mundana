@@ -1,3 +1,7 @@
+{# Set login and lang links in navbar #}
+{% set menu_login = theme_var('menu_login')|defined(true) %}
+{% set menu_lang = theme_var('menu_langswitcher')|defined(true) %}
+
 {# Initialize settings for custom menu #}
 {% set dropdown = theme.dropdown.enabled|defined(true) %}
 {% set c_menu_items = theme_var('custom_menu_items') %}
@@ -30,7 +34,6 @@
         </li>
         {% endif %}
         
-        
 {% endfor %}
 
 {# Custom menu links #}
@@ -46,9 +49,9 @@
         </li>
     {% endfor %}
 {% endif %}
-    
+
 {# Login and logout link #}
-{% if config.plugins.login.enabled %}
+{% if config.plugins.login.enabled and menu_login %}
 <li class="nav-item">
     {% if not grav.user.authenticated %}
         <a class="nav-link" href="{{ base_url }}/login"><b>{{ 'MUNDANA.MISC.LOGIN_LABEL'|t }}</b></a>
@@ -56,6 +59,11 @@
         {% include 'partials/login-status.html.twig' %}
     {% endif %}
 </li>
-    
 {% endif %}
 </ul>
+
+{# Langswitcher (If langswitcher plugin is installed) #}
+{% if config.plugins.langswitcher.enabled and menu_lang and system.languages.supported is not null %}
+    {% include 'partials/langswitcher.html.twig' %}
+{% endif %}
+
