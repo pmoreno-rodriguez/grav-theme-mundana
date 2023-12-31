@@ -25,6 +25,9 @@
 {% set logo = theme_var('custom_logo_mobile') ?: theme_var('custom_logo') %}
 {% set logo_enabled = theme_var('custom_logo_enabled')|defined(false) %}
 
+{# Set searchbox in navbar #}
+{% set menu_search = theme_var('menu_search')|defined(true) %}
+
 {# Navigation bar #}
 <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-{{navbarStyle}} fixed-top {{ navbarBgcolor }} navbarCustomStyles"  >
 	<div class="{{navbarContainer}}">
@@ -66,7 +69,7 @@
 				{% include 'partials/navigation.html.twig' %}
 			{% endblock %}
 			{# Searchbox (If simplesearch plugin is installed) #}
-			{% if config.plugins.simplesearch.enabled %}
+			{% if config.plugins.simplesearch.enabled and menu_search %}
 				<ul class="navbar-nav mx-auto d-flex align-items-center">
 					{% set buttonSearchColor = theme.navbar.custom_bgcolor ?: theme.navbar.bgcolor|defined('secondary')  %}
 					{% set iconSearchColor = 'text-' ~ (navbarStyle == 'dark' ? 'light' : 'dark') %}
