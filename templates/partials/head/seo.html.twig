@@ -52,7 +52,7 @@
         "headline": "' ~ page_title|raw ~ '",
         "image": {
             "@type": "ImageObject",
-            "url": "' ~ featuredImage.url|e ~ '"
+            "url": "' ~ canonical_url ~ '/' ~ page.header.featuredImage ~ '"
         },
         "datePublished": "' ~ datePublished ~ '",
         "inLanguage": "' ~ lang ~ '",
