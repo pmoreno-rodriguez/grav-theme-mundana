@@ -31,7 +31,7 @@
 					<div class="mb-3 lead">
 						{{ post.summary|striptags|raw }}
 					</div>
-					<a href="{{post.url}}" class="btn btn-{{ color_style }}" title="Read article {{post.title|raw}}" role="button" aria-label="Read article {{post.title|raw}}">Read article</a>
+					<a href="{{post.url}}" class="btn btn-{{ color_style }}" title="{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }} {{post.title|raw}}" role="button" aria-label="{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }} {{post.title|raw}}">{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }}</a>
 				</div>
 				{% if (blog_image ?? null) %}
 					<div class="col-md-6 {% if is_even %}order-md-1{% endif %} pr-0" style="background-size:cover;background-image:url({{ blog_image.url }});"></div>
