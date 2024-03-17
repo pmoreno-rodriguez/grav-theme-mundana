@@ -193,6 +193,8 @@ en:
         CONTENT:
           SUMMARY:
             LABEL: Summary Item
+            SHOW: Show summary on page
+            SHOW_HELP: Show summary on the page, below the subtitle. This is separate from the summary in the blog list.
             ENABLED: Enabled Summary
             FORMAT: 
               LABEL: Summary Format
@@ -217,6 +219,7 @@ en:
       PAGINATION: 
         PREV: Previous
         NEXT: Next
+      READ_ARTICLE: Read article
     ITEM:
       POSTED_ON: Posted on
       SEE_OTHER_POSTS_OF: See other posts by
@@ -441,6 +444,8 @@ es:
         CONTENT:
           SUMMARY:
             LABEL: Resumen del artículo
+            SHOW: Mostrar resumen en la página
+            SHOW_HELP: Mostrar resumen en la página, debajo del subtítulo. Esto es independiente del resumen en la lista del blog.
             ENABLED: Activar resumen del artículo
             FORMAT: 
               LABEL: Formato del resumen
@@ -465,6 +470,7 @@ es:
       PAGINATION:
         PREV: Anterior
         NEXT: Siguiente
+      READ_ARTICLE: Leer artículo
     ITEM:
       POSTED_ON: Publicado el
       SEE_OTHER_POSTS_OF: Ver otras publicaciones de
