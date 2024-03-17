@@ -13,14 +13,23 @@ form:
             _summaryConfig:
               type: spacer
               title: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.LABEL
+            header.show_summary:
+              type: toggle
+              toggleable: true
+              label: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.SHOW
+              help: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.SHOW_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
             header.summary.enabled:
               type: toggle
               toggleable: true
               label: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.ENABLED
               highlight: 1
               options:
-                1: Enabled
-                0: Disabled
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
             header.summary.format:
               type: select
               toggleable: true

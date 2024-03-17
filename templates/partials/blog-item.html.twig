@@ -3,6 +3,7 @@
 {% set columnClasses = (featuredImage and show_image ? 'col-md-6' : 'col-md-12') ~ ' pr-0 pr-md-4 pt-4 pb-4 align-self-center' %}
 {% set shareClasses = 'col-md-12 ' ~ (share ? 'col-lg-10' : 'col-lg-12') %}
 {% set sidebarClasses = show_sidebar ? '' ~ ' pt-4 pb-4' : 'container-lg' %}
+{% set show_summary = page.header.show_summary|defined(true) %}
 
 <!-- Post Header Content -->
 <div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
@@ -19,7 +20,7 @@
                 <{{title_level}} class="display-4 mb-4 article-headline">{{ page_title|raw }}</{{title_level}}>
                 {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
                 {# If summary is enabled it will displayed #}
-                {% if page.header.summary.enabled ?? true %}
+                {% if page.header.summary.enabled ?? true and show_summary ?? true %}
                     {% include 'partials/blog/page-summary.html.twig' %}
                 {% endif %}
                 <div class="d-flex align-items-center">
