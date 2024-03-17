@@ -40,30 +40,32 @@
 <meta property="twitter:card" content="summary_large_image">
 
 {# Basic Schema.org json #}
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "{{ canonical_url }}"
-    },
-    "headline": "{{ page_title|raw }}",
-    "image": {
-        "@type": "ImageObject",
-        "url": "{{ featuredImage.url|e }}"
-      },
-    "datePublished": "{{ datePublished }}",
-    "inLanguage": "{{ lang }}",
-    "author": {
-        "@type": "Person",
-        "name": "{{ author|raw }}",
-        "description": "{{ author_bio|raw }}",
-        "url": "{{ author_twitter }}"
-    },
-    "description": "{{ meta_description }}"
-  }
-  </script>
+{% block javascripts %}
+  {% do assets.addInlineJs('
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "' ~ canonical_url ~ '"
+        },
+        "headline": "' ~ page_title|raw ~ '",
+        "image": {
+            "@type": "ImageObject",
+            "url": "' ~ featuredImage.url|e ~ '"
+        },
+        "datePublished": "' ~ datePublished ~ '",
+        "inLanguage": "' ~ lang ~ '",
+        "wordCount": "' ~ page.content|wordcount ~ '",
+        "author": {
+            "@type": "Person",
+            "name": "' ~ author|raw ~ '",
+            "description": "' ~ author_bio|raw ~ '",
+            "url": "' ~ author_twitter ~ '"
+        },
+        "description": "' ~ meta_description ~ '"
+      }', {group:'bottom', type: 'application/ld+json'}) %}
+  {% endblock %}
 
 {# Load Site and Page Specific Metadata Overloads #}
 {% for meta in page.metadata %}

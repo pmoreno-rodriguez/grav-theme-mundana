@@ -1,9 +1,12 @@
 <?php
+
 namespace Grav\Theme;
 
 use Grav\Common\Theme;
 use RocketTheme\Toolbox\Event\Event;
 use Grav\Common\Page\Interfaces\PageInterface;
+use Grav\Theme\Mundana\WordCountTwigExtension;
+
 
 /**
  * Mundana Theme
@@ -27,6 +30,7 @@ class Mundana extends Theme
             'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
             'onTwigInitialized' => ['onTwigInitialized', 0],
+            'onTwigExtensions' => ['onTwigExtensions', 0]
         ];
     }
 
@@ -101,6 +105,16 @@ class Mundana extends Theme
 
         $twig->twig_vars = array_merge($twig->twig_vars, $form_class_variables);
 
+        
+
+    }
+
+    public function onTwigExtensions()
+    {
+        $twig = $this->grav['twig'];
+
+        include_once __DIR__ . '/twig/WordCountTwigExtension.php';
+        $twig->twig->addExtension(new WordCountTwigExtension());
     }
     
 
