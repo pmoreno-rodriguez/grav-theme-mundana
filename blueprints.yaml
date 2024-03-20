@@ -1,7 +1,7 @@
 name: Mundana
 slug: mundana
 type: theme
-version: 1.1.0
+version: 1.1.1
 description: Mundana Jekyll Theme ported to Grav
 icon:  microchip
 author:
@@ -395,10 +395,10 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-            featuredposts_category:
+            featuredposts_tag:
               type: text
-              label: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.CATEGORY
-              help: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.CATEGORY_HELP
+              label: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.TAG
+              help: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.TAG_HELP
               size: medium
               default: 'featured'
 

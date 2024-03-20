@@ -7,6 +7,10 @@
 {% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
 {% set featuredposts_number = theme_var('featuredposts_number')|defined(5) %}
 {% set featuredposts_tag = theme_var('featuredposts_tag')|defined('featured') %}
+{# Code for backward compatibility with posts with featuredposts_category #}
+{% if config.theme_var('featuredposts_category') %}
+    {% set featuredposts_tag = config.theme_var('featuredposts_category') %}
+{% endif %}
 {% set show_featured = header_var('show_featured')|defined(true) %}
 {% set show_categories = header_var('show_categories')|defined(true) %}
 {% set override_style = theme_var('override_page_style')|defined(false) %}
@@ -46,7 +50,7 @@
 				} %}
             	{% set isFirstItem = false %}
 				{% endfor %}
-			<a href="{{new_base_url}}" class="btn btn-{{ color_style }} mb-4">View all posts</a>
+			<a href="{{new_base_url}}" class="btn btn-{{ color_style }} mb-4">{{ 'MUNDANA.BLOG.ALL_POSTS'|t }}</a>
 		{% endblock %}
 		
 		{% if show_sidebar %}

@@ -112,6 +112,10 @@
 {% set featured = theme_var('featuredposts')|defined(true) %}
 {% set featuredposts_number = theme_var('featuredposts_number')|defined(5) %}
 {% set featuredposts_tag = theme_var('featuredposts_tag')|defined('featured') %}
+{# Code for backward compatibility with posts with featuredposts_category #}
+{% if config.theme_var('featuredposts_category') %}
+    {% set featuredposts_tag = config.theme_var('featuredposts_category') %}
+{% endif %}
 
 {% endapply %}
 <!DOCTYPE html>

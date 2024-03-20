@@ -1,3 +1,12 @@
+# v1.1.1
+## 03/19/2024
+
+1.  [](#improved)
+    * Fixed translation for "View all posts" in Allstories template (issue [#6](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/6))
+
+2.  [](#bugfix)
+    * Fixed `featuredposts_tag` in base and allstories templates
+
 # v1.1.0
 ## 03/17/2024
 

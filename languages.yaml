@@ -95,8 +95,8 @@ en:
             BLOG_ROUTE_HELP: The route to the main blog page.
             FEATURED_POSTS: 
               LABEL: Show featured posts
-              CATEGORY: Featured posts category
-              CATEGORY_HELP: 'Set name to featured posts category.You must include this name in Options -> Taxonomy -> Category'
+              TAG: Featured posts tag
+              TAG_HELP: 'Set name to featured posts tag.You must include this name in Options -> Taxonomy -> Tag'
               NUMBER: Featured posts number to show
               NUMBER_HELP: Number of featured posts that will be showed in sidebar
         SHARE:
@@ -220,6 +220,7 @@ en:
         PREV: Previous
         NEXT: Next
       READ_ARTICLE: Read article
+      ALL_POSTS: View all posts
     ITEM:
       POSTED_ON: Posted on
       SEE_OTHER_POSTS_OF: See other posts by
@@ -345,8 +346,8 @@ es:
             BLOG_ROUTE_HELP: La ruta a la página principal del blog
             FEATURED_POSTS: 
               LABEL: Mostrar publicaciones destacadas
-              CATEGORY: Categoría de publicaciones destacadas
-              CATEGORY_HELP: 'Establezca el nombre en la categoría de publicaciones destacadas. Debe incluir este nombre en Opciones -> Taxonomía -> Categoría'
+              TAG: Etiqueta de publicaciones destacadas
+              TAG_HELP: 'Establezca el nombre en la etiqueta de publicaciones destacadas. Debe incluir este nombre en Opciones -> Taxonomía -> Etiqueta'
               NUMBER: Número de publicaciones destacadas para mostrar
               NUMBER_HELP: Número de publicaciones destacadas que se mostrarán en la barra lateral
         SHARE:
@@ -471,6 +472,7 @@ es:
         PREV: Anterior
         NEXT: Siguiente
       READ_ARTICLE: Leer artículo
+      ALL_POSTS: Ver todos los artículos
     ITEM:
       POSTED_ON: Publicado el
       SEE_OTHER_POSTS_OF: Ver otras publicaciones de
