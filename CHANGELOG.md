@@ -1,5 +1,5 @@
 # v1.1.1
-## 03/19/2024
+## 03/22/2024
 
 1.  [](#new)
     * French translation (thanks to [ventoux84](https://github.com/ventoux84))
