@@ -171,7 +171,7 @@ You can view some examples of shortcodes in the demo page.
 
 ## Documentation 
 
-You can read extra documentation of Mundana Theme at [https://pmoreno-rodriguez.github.io/#/./gravthemes/mundana/index](https://pmoreno-rodriguez.github.io/#/./gravthemes/mundana/index)
+You can read extra documentation of Mundana Theme at [https://pmoreno-rodriguez.github.io/#/./gravthemes/mundana/index](https://pmoreno-rodriguez.github.io/#/./gravthemes/mundana/index). This is [Spanish document site for Mundana Theme](https://pmdesign.dev/temas/mundana)
 
 ## Future plans
 
