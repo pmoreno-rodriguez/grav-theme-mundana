@@ -3,10 +3,8 @@
 
 1.  [](#new)
     * French translation (thanks to [ventoux84](https://github.com/ventoux84))
-
 2.  [](#improved)
     * Fixed translation for "View all posts" in Allstories template (issue [#6](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/6))
-
 3.  [](#bugfix)
     * Fixed `featuredposts_tag` in base and allstories templates
 
