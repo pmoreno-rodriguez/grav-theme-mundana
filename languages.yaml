@@ -567,11 +567,11 @@ fr:
           ITEMS: 
             LABEL: 'Éléments du menu personnalisé' 
             TEXT: Texte
-            TEXT_DESCRIPTION: 'Texte de l&apos;étiquette pour élément du menu personnalisé.'
+            TEXT_DESCRIPTION: "Texte de l'étiquette pour élément du menu personnalisé."
             ICON: Icône
-            ICON_DESCRIPTION: '<a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Icône Fontawesome</a> pour l&apos;élément du menu.'
+            ICON_DESCRIPTION: '<a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Icône Fontawesome</a> pour l&rsquo;élément du menu.'
             URL: URL
-            URL_DESCRIPTION: 'URL de l&apos;élément du menu.'
+            URL_DESCRIPTION: "URL de l'élément du menu."
             TARGET:
               LABEL: Cible
               BLANK: 'Ouvrir dans une nouvelle fenêtre'
@@ -598,8 +598,8 @@ fr:
             BLOG_ROUTE_HELP: Le chemin vers la page principale du blog.
             FEATURED_POSTS: 
               LABEL: Montrer les articles en vedette
-              CATEGORY: Étiquette des articles en vedette
-              CATEGORY_HELP: 'Saisir le nom de l&apos;étiquette des articles en vedette.Vous devez inclure ce nom dans Options -> Taxonomy -> Étiquettes'
+              TAG: Étiquette des articles en vedette
+              TAG_HELP: "Saisir le nom de l'étiquette des articles en vedette.Vous devez inclure ce nom dans Options -> Taxonomy -> Étiquettes"
               NUMBER: Nombre d'articles en vedette à montrer
               NUMBER_HELP: Nombre d'articles en vedette qui seront montrés dans le bandeau latéral
         SHARE:
@@ -607,7 +607,7 @@ fr:
           SECTION: Configuration de partage
           ENABLED: Activer l'option de partage dans les articles
           ICONS: Icône de partage
-          ICONS_HELP: 'Écrire seulement le nom de l&apos;icône (Facebook, Twitter, etc.).'
+          ICONS_HELP: "Écrire seulement le nom de l'icône (Facebook, Twitter, etc.)."
           ICONS_DESCRIPTION: Voir les icônes disponibles dans <a href="https://www.addtoany.com/share/preferences" target="_blank">AddToAny</a>
           ICON_NAME: Nom de l'icône
         MAILCHIMP: 
@@ -648,7 +648,7 @@ fr:
         BODY_CLASSES_HELP: 'Vous pouvez créer de nouvelles classes CSS pour le corps et les ajouter ici'
         BODY_CLASSES_DESCRIPTION: 'Classes disponibles dans le thème Mundana (séparées par une espace):<br />`homefirstpage`'
         ICON_MENU: Icônes du menu
-        ICON_MENU_DESCRIPTION: 'Écrivez seulement le nom de l&apos;icône avec le préfixe approprié. Vous pouvez rechercher dans `<a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Fontawesome icons</a>`'
+        ICON_MENU_DESCRIPTION: 'Écrivez seulement le nom de l&rsquo;icône avec le préfixe approprié. Vous pouvez rechercher dans `<a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Fontawesome icons</a>`'
         SETTINGS: Paramètres de page
         STYLES_SECTION: Section des styles
       MODULAR:
@@ -712,7 +712,7 @@ fr:
           HELP: Configurez votre adresse ici.
           FIELD: Champ
           ICON: Icône
-          ICON_DESCRIPTION: 'Saisissez juste le nom de l&apos;icône avec le préfixe approprié. Vous pouvez recherche des icônes dans <a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Fontawesome icons</a>'
+          ICON_DESCRIPTION: 'Saisissez juste le nom de l&rsquo;icône avec le préfixe approprié. Vous pouvez recherche des icônes dans <a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Fontawesome icons</a>'
           INSTRUCTIONS: Instructions
     BLOG:
       LISTING_TITLE_CATEGORY: 'Publications de la catégorie: '
@@ -752,3 +752,4 @@ fr:
       LOGIN_LABEL: Connexion
       SHARE_THIS: Partager cela
       FOLLOW: Suivre
+
