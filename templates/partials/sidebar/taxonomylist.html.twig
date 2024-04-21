@@ -1,6 +1,6 @@
 {# TAXONOMY LIST SECTION - SIDEBAR #}
 
-{% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags() : taxonomylist.get() %}
+{% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags(of_page) : taxonomylist.get() %}
 
 {% if taxlist %}
 
