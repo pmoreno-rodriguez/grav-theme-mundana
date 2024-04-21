@@ -31,7 +31,7 @@
 {# Navigation bar #}
 <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-{{navbarStyle}} fixed-top {{ navbarBgcolor }} navbarCustomStyles"  >
 	<div class="{{navbarContainer}}">
-		<a class="navbar-brand" href="{{ base_url == '' ? '/' : base_url }}">
+		<a class="navbar-brand" href="{{ home_url }}">
 			{# Show logo if enabled in theme options #}
 			{% if logo_enabled and logo %}
 				{% set logo_file = (logo|first).name %}
