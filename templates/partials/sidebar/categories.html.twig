@@ -3,7 +3,7 @@
 <h4 class="font-weight-bold spanborder">
     <span>{{ block_title }}</span>
 </h4>
-<div class="row align-items-center">
+
     {% set terms = [] %}
     {% for item in blog.children %}
         {% for term in  item.taxonomy.category %}
@@ -25,17 +25,17 @@
         {% for p in taxonomy.findTaxonomy({'category' : term}).order('date', 'desc').random(1) %}
             {% set blog_image = p.media.images[p.header.featuredImage] ?: p.media.images|filter((v, k) => k != p.header.author.avatarImage)|first %}
         {% endfor %}
-
+    <div class="row align-items-center py-2">
 		{% if blog_image %}
-        <div class="{{ blog_image ? 'col-3' : 'col-12' }} py-2">
-            {{ blog_image.cropZoom(100, 60).loading('lazy')
+        <div class="col-4">
+            {{ blog_image.loading('lazy')
             .attribute('decoding','async')
             .attribute('width','100')
             .attribute('height','60')
             .html(('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, ('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, 'w-100 h-auto mr-2 rounded')|raw }}
         </div>
 		{% endif %}
-        <div class="{{ blog_image ? 'col-9' : 'col-12' }}">
+        <div class="col-8">
             <span class="font-weight-bold text-uppercase">
                 <a href="{{ blog.url ~ '/category:' ~ term }}" class="text-{{ color_style }}">{{ term|raw }}</a>
             </span>
@@ -47,5 +47,6 @@
                 </a>
             </small>
         </div>
+    </div>
     {% endfor %}
-</div>
+
