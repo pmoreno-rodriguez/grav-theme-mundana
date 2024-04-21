@@ -1,3 +1,14 @@
+# v1.2.1
+## 04/21/2024
+
+1.  [](#new)
+    * New `thankyou` page in demo content, for contact form
+
+2.  [](#improved)
+    * Fixed some French translations ([PR#10](https://github.com/pmoreno-rodriguez/grav-theme-mundana/pull/10))
+    * Updated `taxonomylist` partial template to latest changes of [taxonomylist plugin](https://github.com/getgrav/grav-plugin-taxonomylist/releases/tag/1.3.6)
+    * Improved design of partial templates for categories and related pages.
+  
 # v1.2.0
 ## 03/22/2024
 
