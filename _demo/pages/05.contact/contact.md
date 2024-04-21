@@ -51,12 +51,13 @@ form:
         -
             name: Privacy
             type: checkbox
-            label: 'Privacy Policy'
+            markdown: true
+            label: 'By using this form you agree with our <a href="privacy">Privacy Policy</a>'
             classes: null
             outerclasses: 'col-12 py-2'
             validate:
                 required: false
-                message: 'By using this form you agree with our Privacy Policy'
+                message: 'Este campo es obligatorio'
     buttons:
         -
             type: submit
@@ -74,7 +75,7 @@ form:
             extension: txt
             body: '{% include ''forms/data.txt.twig'' %}'
         email:
-            subject: '[Formulario de juanvillen.es] {{ form.value.name|e }}'
+            subject: '[Form example from Mundana] {{ form.value.name|e }}'
             body: '{% include ''forms/data.html.twig'' %}'
         display: /thankyou
         reset: true
