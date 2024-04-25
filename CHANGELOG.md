@@ -1,3 +1,11 @@
+# v1.3.0
+## 04/24/2024
+
+1.  [](#improved)
+    * Redesigned Bootstrap Shortcodes for Mundana Theme
+    * Updated contact page in demo content
+    * Added Shortcode-core to dependencies in theme blueprints
+  
 # v1.2.1
 ## 04/21/2024
 
