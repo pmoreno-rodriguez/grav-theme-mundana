@@ -6,12 +6,12 @@ form:
     classes: row
     fields:
         -
-            name: Nombre
-            label: false
-            placeholder: Nombre
+            name: Name
+            label: Name
+            placeholder: Name
             validate:
                 required: true
-                message: 'Este campo es obligatorio'
+                message: 'This field is required'
             autofocus: 'off'
             autocomplete: 'on'
             type: text
@@ -19,31 +19,31 @@ form:
             classes: null
         -
             name: Email
-            label: false
+            label: Email
             placeholder: Email
             validate:
                 required: true
-                message: 'Este campo es obligatorio'
+                message: 'This field is required'
             type: email
             outerclasses: 'col-md-6 py-2'
             classes: null
         -
-            name: Asunto
-            label: false
+            name: Subject
+            label: Subject
             type: text
-            placeholder: Asunto
+            placeholder: Subject
             validate:
                 required: true
-                message: 'Este campo es obligatorio'
+                message: 'This field is required'
             outerclasses: 'col-12 py-2'
             classes: null
         -
-            name: Mensaje
-            label: false
-            placeholder: Mensaje
+            name: Message
+            label: Message
+            placeholder: Message
             validate:
                 required: true
-                message: 'Este campo es obligatorio'
+                message: 'This field is required'
             type: textarea
             outerclasses: 'col-12 py-2'
             classes: null
@@ -57,7 +57,7 @@ form:
             outerclasses: 'col-12 py-2'
             validate:
                 required: false
-                message: 'Este campo es obligatorio'
+                message: 'This field is required'
     buttons:
         -
             type: submit
