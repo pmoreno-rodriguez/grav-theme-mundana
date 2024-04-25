@@ -1,0 +1,28 @@
+{# SHORTCODE TEMPLATE FOR BOOTSTRAP ALERTS #}
+
+{% set alertClass = shortcode.getParameter('class', 'primary') %}
+{% set alertDismissible = shortcode.getParameter('dismissible', 'false') %}
+{% set alertHeading = shortcode.getParameter('heading') %}
+{% set alertText = shortcode.getContent() %}
+
+{% set classDismissible = '' %}
+{% set closeButton = '' %}
+
+{% if alertDismissible == 'true' %}
+    {% set classDismissible = 'alert-dismissible fade show' %}
+    {% set closeButton = '
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>' %}
+{% endif %}
+
+{% if alertHeading is not empty %}
+    <div class="alert {{ classDismissible }} alert-{{ alertClass }}" role="alert">
+        <h4 class="alert-heading">{{ alertHeading }}</h4>
+        {{ alertText|raw }}{{ closeButton|raw }}
+    </div>
+{% else %}
+    <div class="alert {{ classDismissible }} alert-{{ alertClass }}" role="alert">
+        {{ alertText|raw }}{{ closeButton|raw }}
+    </div>
+{% endif %}

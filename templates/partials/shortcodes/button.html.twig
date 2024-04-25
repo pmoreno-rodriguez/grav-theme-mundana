@@ -1,0 +1,36 @@
+{# SHORTCODE TEMPLATE FOR BOOTSTRAP BUTTONS #}
+
+{% set buttonUrl = shortcode.getParameter('url', '') %}
+{% set buttonTarget = shortcode.getParameter('target', '') %}
+{% set buttonType = shortcode.getParameter('type', '') %}
+{% set buttonSize = shortcode.getParameter('size', '') %}
+{% set buttonClasses = shortcode.getParameter('classes', '') %}
+{% set buttonLabel = shortcode.getParameter('label', '') %}
+{% set buttonOutline = shortcode.getParameter('outline', 'false') %}
+
+{% set buttonAttributes = 'btn' %}
+
+{% if buttonType %}
+    {% if buttonOutline == 'true' %}
+        {% set buttonAttributes = buttonAttributes ~ ' btn-outline-' ~ buttonType %}
+    {% else %}
+        {% set buttonAttributes = buttonAttributes ~ ' btn-' ~ buttonType %}
+    {% endif %}
+{% endif %}
+
+{% if buttonSize %}
+    {% set buttonAttributes = buttonAttributes ~ ' btn-' ~ buttonSize %}
+{% endif %}
+
+{% if buttonClasses %}
+    {% set buttonAttributes = buttonAttributes ~ ' ' ~ buttonClasses %}
+{% endif %}
+
+{% set targetAttribute = buttonTarget ? 'target="_' ~ buttonTarget ~ '"' : '' %}
+
+{% if buttonUrl and buttonLabel %}
+    <a href="{{ buttonUrl }}" {{ targetAttribute }} class="{{ buttonAttributes }}">{{ buttonLabel }}</a>
+{% elseif buttonLabel %}
+    <button type="button" class="{{ buttonAttributes }}">{{ buttonLabel }}</button>
+{% endif %}
+

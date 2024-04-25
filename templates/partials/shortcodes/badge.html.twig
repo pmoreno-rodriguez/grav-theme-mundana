@@ -1,0 +1,14 @@
+{# SHORTCODE TEMPLATE FOR BOOTSTRAP BADGES #}
+
+{% set badgeClass = shortcode.getParameter('class', 'secondary') %}
+{% set badgeLabel = shortcode.getParameter('label', '') %}
+{% set badgeUrl = shortcode.getParameter('url', '') %}
+{% set badgeTarget = shortcode.getParameter('target', '_self') %}
+
+{% if badgeLabel is not empty %}
+    {% if badgeUrl is not empty %}
+        <a href="{{ badgeUrl }}" target="{{ badgeTarget }}" class="badge badge-{{ badgeClass }}">{{ badgeLabel }}</a>
+    {% else %}
+        <span class="badge badge-{{ badgeClass }}">{{ badgeLabel }}</span>
+    {% endif %}
+{% endif %}
