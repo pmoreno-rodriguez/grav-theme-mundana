@@ -517,16 +517,16 @@ a.text-dark:hover {
 	color:#e6e6e6;
 }
 .alert-light {
-	color:#fff;
-	background-color:#f8f9fa;
-	border-color:#f8f9fa;
-}
-.alert-light hr {
-	border-top-color:#e9ecef;
-}
-.alert-light .alert-link {
-	color:#e6e6e6;
-}
+	color: #818182;
+	background-color: #fefefe;
+	border-color: #fdfdfe;
+  }
+  .alert-light hr {
+	border-top-color: #ececf6;
+  }
+  .alert-light .alert-link {
+	color: #686868;
+  }
 .alert-dark {
 	color:#fff;
 	background-color:#212529;
