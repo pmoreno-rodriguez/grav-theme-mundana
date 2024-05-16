@@ -78,7 +78,7 @@ form:
             subject: '[Form example from Mundana] {{ form.value.name|e }}'
             body: '{% include ''forms/data.html.twig'' %}'
         display: /thankyou
-        reset: true
+        reset: false
 title: Contact
 subtitle: 'Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit'
 show_title: '1'

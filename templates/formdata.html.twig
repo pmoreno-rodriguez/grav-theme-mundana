@@ -9,10 +9,10 @@
 
     {% if form %}
         {% include 'partials/form-messages.html.twig' %}
-
+    <div class="alert alert-light" role="alert">
         <p>{{ 'PLUGIN_FORM.DATA_SUMMARY'|t }}</p>
-
         {% include "forms/data.html.twig" %}
+    </div>
     {% else %}
         <div class="alert alert-warning" role="alert"><p>{{ 'PLUGIN_FORM.NO_FORM_DATA'|t }}</p></div>
     {% endif %}
