@@ -1,3 +1,12 @@
+# v1.3.1
+## 05/16/2024
+
+1.  [](#new)
+    * New `data.html.twig` template with rendered markdown on labels.
+2.  [](#improved)
+    * Fixed no summary data on `thankyou` page [#14](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/14)
+    * Fixed `alert-light` color in theme.css [#15](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/15)
+  
 # v1.3.0
 ## 04/24/2024
 
