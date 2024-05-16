@@ -26,8 +26,8 @@
             <div class="col-md-4 pr-0 align-self-center">
                 {{ featuredImage.loading('eager')
                 .attribute('decoding','async')
-                .attribute('width', '672')
-                .attribute('height', '504')
+                .attribute('width', img_width)
+                .attribute('height', img_height)
                 .derivatives(320,672,320)
 			    .sizes('(max-width: 768px) 100vw, 50vw')
                 .html(page_title|raw, page_title|raw,'w-100 h-auto rounded')|raw }}

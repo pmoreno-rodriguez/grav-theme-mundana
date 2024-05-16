@@ -112,12 +112,12 @@ form:
                       type: number
                       label: MUNDANA.ADMIN.DEFAULT.FEATURED_IMAGE.WIDTH
                       size: small
-                      default: 1000
+                      placeholder: 672
                     header.image_height:
                       type: number
                       label: MUNDANA.ADMIN.DEFAULT.FEATURED_IMAGE.HEIGHT
                       size: small
-                      default: 300
+                      placeholder: 504
         advanced:
           fields:
             columns:

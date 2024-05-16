@@ -16,8 +16,8 @@
             <a href="{{ related.url }}" arial-label="{{ related.title|raw }}">
                 {{ related_image.loading('lazy')
                 .attribute('decoding', 'async')
-                .attribute('width', '672')
-                .attribute('height', '504')
+                .attribute('width', img_width)
+                .attribute('height', img_height)
                 .derivatives(320,672,320)
                 .sizes('(max-width: 768px) 100vw, 50vw')
                 .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}

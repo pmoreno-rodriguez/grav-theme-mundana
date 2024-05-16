@@ -63,8 +63,8 @@
                 <a href="{{post.url}}" title="{{ post_title }}" aria-label="{{ post_title }}">
                     {{ blog_image.loading('lazy')
                         .attribute('decoding','async')
-                        .attribute('width', '672')
-                        .attribute('height', '504')
+                        .attribute('width', img_width)
+                        .attribute('height', img_height)
                         .derivatives(320,672,320)
                         .sizes('(max-width: 768px) 100vw, 50vw')
                         .html(title, title,'w-100 h-auto rounded')|raw }}
