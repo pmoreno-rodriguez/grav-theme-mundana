@@ -1,3 +1,10 @@
+# 1.3.2
+## 24/10/2024
+
+1.  [](#improved)
+    * Replaced `convert_encoding('ISO-8859-1', 'HTML-ENTITIES')` with `|e('html_attr')` for better HTML attribute handling
+    * Prepared for Grav 1.8
+
 # v1.3.1
 ## 05/16/2024
 
