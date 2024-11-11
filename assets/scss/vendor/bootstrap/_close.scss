@@ -9,7 +9,7 @@
 
   // Override <a>'s hover style
   @include hover() {
-    color: $close-color;
+    color: invert($close-color);
     text-decoration: none;
   }
 
