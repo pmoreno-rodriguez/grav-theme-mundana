@@ -1,3 +1,10 @@
+# 1.3.3
+# 11/11/2024
+
+1.  [](#improved)
+    * Normalized some css styles [(PR#16)](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/16)
+    * Removed the `custom.js` and `custom.css` files from the theme, to avoid overwriting user customizations with the release of new versions. These files are now loaded, if they exist in the theme's `assets/css` or `assets/js` folder, using the `onTwigSiteVariables` function within `mundana.php` and can be enabled from the theme settings [(PR#16)](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/16).
+
 # 1.3.2
 ## 11/10/2024
 
