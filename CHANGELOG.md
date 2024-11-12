@@ -1,5 +1,5 @@
 # 1.3.3
-# 11/11/2024
+## 11/11/2024
 
 1.  [](#improved)
     * Normalized some css styles [(PR#16)](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/16)
