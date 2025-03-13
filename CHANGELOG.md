@@ -1,3 +1,9 @@
+# 1.3.4
+## 03/13/2025
+
+1.  [](#improved)
+    * Updated `partials/taxonomylist.html.twig` to support latest updates in that plugin
+
 # 1.3.3
 ## 11/11/2024
 
