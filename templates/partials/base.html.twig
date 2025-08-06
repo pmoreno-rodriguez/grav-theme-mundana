@@ -1,9 +1,14 @@
+{% set version = (grav.theme.getBlueprint()).get('version') %}
 <!--
     Original Mundana Theme from Jekyll is licensed under MIT,
 	designed & developed by Sal @wowthemes.net
 
 	Ported to Grav CMS by Pedro Moreno
 	https://github.com/pmoreno-rodriguezm/grav-theme-mundana
+
+	{% if version %}
+      Grav theme version: v{{ version }}
+  	{% endif %} 
 -->
 {% apply spaceless %}
 
