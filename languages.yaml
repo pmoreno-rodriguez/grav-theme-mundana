@@ -8,6 +8,9 @@ en:
         PRODUCTION_MODE_HELP: When enabled, MUNDANA will render with minified CSS
         BACK_TO_TOP_BUTTON: '<strong>Back to Top</strong> button'
         BACK_TO_TOP_BUTTON_HELP: Enable `Back to Top` button when scroll page.
+        GOOGLE_FONTS_LOCAL: Use locally hosted Google Fonts
+        FONT_AWESOME_LOCAL: Use locally hosted Font Awesome
+        BOOTSTRAP_LOCAL: Use locally hosted Bootstrap files
         HEADER_OPTIONS: Header Options
         FAVICON: Choose your own favicon
         FAVICON_DESCRIPTION: Will be used instead of default favicon `theme://images/favicon.png`
@@ -259,6 +262,9 @@ es:
         PRODUCTION_MODE_HELP: Si está activado, MUNDANA rederizará los estilos CSS minificados.
         BACK_TO_TOP_BUTTON: 'Botón <strong>Volver arriba</strong>'
         BACK_TO_TOP_BUTTON_HELP: 'Habilita el botón `Volver arriba` cuando se desplaza por la página.'
+        GOOGLE_FONTS_LOCAL: Usar fuentes de Google alojadas localmente
+        FONT_AWESOME_LOCAL: Usar fuentes de Font Awesome alojadas localmente
+        BOOTSTRAP_LOCAL: Usar archivos Bootstrap alojados localmente
         HEADER_OPTIONS: Opciones de encabezado
         FAVICON: Elige tu propio favicon
         FAVICON_DESCRIPTION: Se usará en lugar del favicon predeterminado `theme://images/favicon.png`
@@ -511,6 +517,9 @@ fr:
         PRODUCTION_MODE_HELP: Si activé, Mundana affichera minified CSS
         BACK_TO_TOP_BUTTON: 'Bouton de <strong>retour en haut</strong>'
         BACK_TO_TOP_BUTTON_HELP: Active le bouton de `Retour en haut` en faisant défiler la page.
+        GOOGLE_FONTS_LOCAL: Utiliser les polices Google hébergées localement
+        FONT_AWESOME_LOCAL: Utiliser les polices Font Awesome hébergées localement
+        BOOTSTRAP_LOCAL: Utiliser les fichiers Bootstrap hébergés localement
         HEADER_OPTIONS: Option de titre
         FAVICON: Choisissez votre propre favicon
         FAVICON_DESCRIPTION: Elle sera utilisée à la place de celle par défaut `theme://images/favicon.png`
