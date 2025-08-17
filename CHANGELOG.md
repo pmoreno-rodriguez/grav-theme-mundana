@@ -1,3 +1,10 @@
+# 1.4.0
+## 08/17/2025
+
+1. [](#improved)  
+   * Updated `bootstrap.min.js` to version `v4.6.2`. Thanks to [https://github.com/Librist-org](https://github.com/Librist-org)
+   * Added option to load Google Fonts and Bootstrap styles locally or remotely. Thanks to [https://github.com/Librist-org](https://github.com/Librist-org)
+
 # 1.3.4
 ## 03/13/2025
 
