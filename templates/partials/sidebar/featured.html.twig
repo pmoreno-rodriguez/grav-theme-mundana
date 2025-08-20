@@ -8,9 +8,9 @@
         {% for p in page.evaluate({'@taxonomy.tag':featuredposts_tag}).order('date', 'desc').slice(0,featuredposts_number) %}
             <li class="mb-4">
                 <span>
-                    <h3 class="h2 font-weight-bold h6">
+                    <span class="h2 font-weight-bold h6">
                         <a href="{{ p.url }}" class="text-dark">{{ p.title|raw }}</a>
-                    </h2>
+                    </span>
                     <span class="d-block text-muted">
                         {{ 'MUNDANA.MISC.IN'|t }}
                         <span class="catlist">
