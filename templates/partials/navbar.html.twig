@@ -1,26 +1,3 @@
-{#Set custom styles for navbar #}
-{% block stylesheets %}
-	<style type="text/css">
-		.navbarCustomStyles {
-			{{ navbarCustomBgcolor ? 'background: ' ~ navbarCustomBgcolor ~ ';' : '' }}
-			{{ navbarHeight ? 'min-height: ' ~ navbarHeight ~ 'px;' : '' }}
-		}
-		.w_logo {
-			{{ widthLogo ? 'width: ' ~ widthLogo ~ 'px;' : '' }} 
-		}	
-		@media (max-width: 768px) {
-			.navbarCustomStyles {
-			{{ navbarHeight ? 'min-height: auto;' : '' }}
-			}
-		}
-		@media (max-width: 480px) {
-			.w_logo {
-				{{ widthLogo ? 'width: ' ~ ( widthLogo * 0.60) ~ 'px;' : '' }} 
-			}
-		}	
-	</style>
-{% endblock %}
-
 {# Set logo image #}
 {% set logo = theme_var('custom_logo_mobile') ?: theme_var('custom_logo') %}
 {% set logo_enabled = theme_var('custom_logo_enabled')|defined(false) %}
