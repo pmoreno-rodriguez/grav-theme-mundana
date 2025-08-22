@@ -50,7 +50,7 @@
 				<ul class="navbar-nav mx-auto d-flex align-items-center">
 					{% set buttonSearchColor = theme.navbar.custom_bgcolor ?: theme.navbar.bgcolor|defined('secondary')  %}
 					{% set iconSearchColor = 'text-' ~ (navbarStyle == 'dark' ? 'light' : 'dark') %}
-					{% include 'partials/simplesearch_searchbox.html.twig' with { buttonSearchColor, iconSearchColor } %}
+					<li>{% include 'partials/simplesearch_searchbox.html.twig' with { buttonSearchColor, iconSearchColor } %}</li>
 				</ul>
 			{% endif %}
 		</div>
