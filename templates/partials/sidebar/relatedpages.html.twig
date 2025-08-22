@@ -16,7 +16,7 @@
         {% if related_image %}
         <div class="col-4">
             {{ related_image.loading('lazy')
-            .attribute('decoding', 'async')
+            .decoding('async')
             .attribute('width','100')
             .attribute('height','60')
             .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}

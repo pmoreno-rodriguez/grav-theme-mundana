@@ -12,7 +12,7 @@
                     <div class="card h-100">
                         {% if featuredImage and show_image %}
                             {{ featuredImage.loading('eager')
-                            .attribute('decoding','async')
+                            .decoding('async')
                             .attribute('width', '672')
                             .attribute('height', '504')
                             .derivatives(320,672,320)

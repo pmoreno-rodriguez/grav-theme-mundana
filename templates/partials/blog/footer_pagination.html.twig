@@ -13,7 +13,7 @@
 							{% if page.prevSibling ?? null %}
 							<div class="col-1 px-0">
 								{{ blog_image_prev.loading('lazy')
-								.attribute('decoding', 'async')
+								.decoding('async')
 								.attribute('width', '30')
 								.attribute('height', '30')
 								.html('', '', 'w-100 h-auto mr-1')|raw

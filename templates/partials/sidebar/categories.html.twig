@@ -29,7 +29,7 @@
 		{% if blog_image %}
         <div class="col-4">
             {{ blog_image.loading('lazy')
-            .attribute('decoding','async')
+            .decoding('async')
             .attribute('width','100')
             .attribute('height','60')
             .html(('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, ('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, 'w-100 h-auto mr-2 rounded')|raw }}

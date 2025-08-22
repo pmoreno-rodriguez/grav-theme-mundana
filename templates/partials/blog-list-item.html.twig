@@ -26,7 +26,7 @@
 	<div class="col-12 mt-0 col-sm-4 mt-0 mt-sm-0 text-lg-end">
 		<a href="{{page.url}}" aria-label="{{ page_title|raw }}">
 			{{ featuredImage.loading(loadLazy ? 'lazy' : 'eager')
-			.attribute('decoding','async')
+			.decoding('async')
 			.attribute('width', '424')
             .attribute('height', '318')
 			.derivatives(320,424,320)
