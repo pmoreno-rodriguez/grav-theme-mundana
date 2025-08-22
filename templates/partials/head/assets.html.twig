@@ -17,13 +17,31 @@
     {% else %}
         {% do assets.addCSS('https://fonts.googleapis.com/css?family=Lora:400,400i,700&display=swap', {rel: 'stylesheet'}) %}
     {% endif %}
-    {# CSS styles to change hover color on links dynamically #}
     {% set styles %}
+        {# CSS styles to change hover color on links dynamically #}
         a.text-dark:hover {
-            color: {{ hover_color_mapping[color_style] }} !important;    
+            color: {{ hover_color_mapping[color_style] }} !important;
         }
+        {# Custom styles for navbar #}
+        .navbarCustomStyles {
+			{{ navbarCustomBgcolor ? 'background: ' ~ navbarCustomBgcolor ~ ';' : '' }}
+			{{ navbarHeight ? 'min-height: ' ~ navbarHeight ~ 'px;' : '' }}
+		}
+		.w_logo {
+			{{ widthLogo ? 'width: ' ~ widthLogo ~ 'px;' : '' }}
+		}
+		@media (max-width: 768px) {
+			.navbarCustomStyles {
+			{{ navbarHeight ? 'min-height: auto;' : '' }}
+			}
+		}
+		@media (max-width: 480px) {
+			.w_logo {
+				{{ widthLogo ? 'width: ' ~ ( widthLogo * 0.60) ~ 'px;' : '' }}
+			}
+		}
     {% endset %}
-    {% do assets.addInlineCss(styles, 1) %} 
+    {% do assets.addInlineCss(styles, 1) %}
 {% endblock %}
 
 {% block javascripts %}
