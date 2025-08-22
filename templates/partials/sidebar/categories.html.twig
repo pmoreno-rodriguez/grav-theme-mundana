@@ -41,9 +41,9 @@
             </span>
             <small class="d-block text-muted">
                 <a href="{{ blog.url ~ '/category:' ~ term }}">
-                    <div class="text-muted mt-1">{{ catItemsCounts[term] }}
+                    <span class="text-muted mt-1">{{ catItemsCounts[term] }}
                         {{ 'MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t }}
-                        {{ term|capitalize|raw }}</div>
+                        {{ term|capitalize|raw }}</span>
                 </a>
             </small>
         </div>
