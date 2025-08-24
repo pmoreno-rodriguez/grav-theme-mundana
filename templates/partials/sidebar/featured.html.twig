@@ -7,10 +7,10 @@
     <ol class="list-featured">
         {% for p in page.evaluate({'@taxonomy.tag':featuredposts_tag}).order('date', 'desc').slice(0,featuredposts_number) %}
             <li class="mb-4">
-                <span>
-                    <span class="h2 font-weight-bold h6">
+                <div>
+                    <h3 class="h2 font-weight-bold h6">
                         <a href="{{ p.url }}" class="text-dark">{{ p.title|raw }}</a>
-                    </span>
+                    </h3>
                     <span class="d-block text-muted">
                         {{ 'MUNDANA.MISC.IN'|t }}
                         <span class="catlist">
@@ -20,7 +20,7 @@
                             {% endfor %}
                         </span>
                     </span>
-                </span>
+                </div>
             </li>
         {% endfor %}
     </ol>
