@@ -44,7 +44,9 @@
                 </span>                   
         </small>
         <small class="d-block text-muted">
-            {% include 'partials/blog/date.html.twig' %}
+            {% include 'partials/blog/date.html.twig' with {
+                page: post
+            } %}
         </small>
     </div>
     </div>
@@ -82,7 +84,9 @@
                         </span>                   
                     </small>
                     <small class="d-block text-muted">
-                        {% include 'partials/blog/date.html.twig' %}
+                        {% include 'partials/blog/date.html.twig' with {
+                            page: post
+                        } %}
                     </small>
                 </div>
             </div>
