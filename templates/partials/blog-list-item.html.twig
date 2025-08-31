@@ -31,7 +31,7 @@
             .attribute('height', '318')
 			.derivatives(320,424,320)
 			.sizes('(max-width: 768px) 100vw, 50vw')
-			.html(page_title|raw, page_title|raw,'w-100 h-auto rounded')|raw }}
+			.html(page_title, page_title,'w-100 h-auto rounded')|replace({'&amp;': '&'})|raw }}
 		</a>
 	</div>
 	{% endif %}

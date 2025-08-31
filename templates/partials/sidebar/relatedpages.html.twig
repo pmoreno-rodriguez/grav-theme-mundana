@@ -7,7 +7,6 @@
     
     {% for related_path, score in related_pages %}
     {% set related = grav['pages'].get(related_path) %}
-    {% set related_title = related.title|raw %}
     {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
 
     {% if related %}
@@ -19,13 +18,13 @@
             .decoding('async')
             .attribute('width','100')
             .attribute('height','60')
-            .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
+            .html(related.title, related.title, 'w-100 h-auto mr-2 rounded')|replace({'&amp;': '&'})|raw }}
         </div>
         {% endif %}
 
         <div class="col-8">
             <span class="font-weight-bold">
-                <a class="text-dark" href="{{ related.url }}" title="{{ related_title }}" rel="nofollow">{{ related_title }}</a>
+                <a class="text-dark" href="{{ related.url }}" title="{{ related.title|raw }}" rel="nofollow">{{ related.title|raw }}</a>
             </span>
             
             {% if related.taxonomy.category %}
