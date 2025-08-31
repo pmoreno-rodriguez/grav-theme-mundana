@@ -89,7 +89,7 @@ en:
             SHOW_RELATED_PAGES: Show Related Pages
             SHOW_RELATED_PAGES_HELP: 'Related pages plugin must be installed'
             SHOW_FEEDS: Show Feeds
-            SHOW_FEEDS_HELP: 'Feeds plugin must be installed'
+            SHOW_FEEDS_HELP: 'Feed plugin must be installed'
             SHOW_RANDOM: Show Random Post
             SHOW_RANDOM_HELP: 'Random plugin must be installed'
           CONFIGURATION:
@@ -343,7 +343,7 @@ es:
             SHOW_RELATED_PAGES: Mostrar Páginas Relacionadas
             SHOW_RELATED_PAGES_HELP: 'El plugin Related pages debe estar instalado'
             SHOW_FEEDS: Mostrar Feeds
-            SHOW_FEEDS_HELP: 'El plugin Feeds debe estar instalado'
+            SHOW_FEEDS_HELP: 'El plugin Feed debe estar instalado'
             SHOW_RANDOM: Mostrar Publicación Aleatoria
             SHOW_RANDOM_HELP: 'El plugin Random debe estar instalado'
           CONFIGURATION:
@@ -567,7 +567,7 @@ fr:
           ICON_SIZE: Taille d'icône
           ICON: Icône de la barre de navigation
           ICON_HELP: Vous avez juste à écrire le nom de l'icône. Il ne sera visible que si le logo est désactivé.
-          ICON_DESCRIPTION: 'Mundana utilse les <a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">icones Fontawesome </a>'
+          ICON_DESCRIPTION: 'Mundana utilise les <a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">icônes Font Awesome </a>'
         CUSTOM_MENU:
           TITLE: Options du menu personnalisé
           ENABLED: 
@@ -598,7 +598,7 @@ fr:
             SHOW_RELATED_PAGES: Montrer les pages en relation
             SHOW_RELATED_PAGES_HELP: 'Le plugin Related pages doit être installé'
             SHOW_FEEDS: Montrer les flux de données
-            SHOW_FEEDS_HELP: 'Le plugin Feeds doit être installé'
+            SHOW_FEEDS_HELP: 'Le plugin Feed doit être installé'
             SHOW_RANDOM: Montrer un article au hasard
             SHOW_RANDOM_HELP: 'Le plugin Random doit être installé'
           CONFIGURATION:
@@ -608,7 +608,7 @@ fr:
             FEATURED_POSTS: 
               LABEL: Montrer les articles en vedette
               TAG: Étiquette des articles en vedette
-              TAG_HELP: "Saisir le nom de l'étiquette des articles en vedette.Vous devez inclure ce nom dans Options -> Taxonomy -> Étiquettes"
+              TAG_HELP: "Saisir le nom de l'étiquette des articles en vedette. Vous devez inclure ce nom dans Options -> Taxonomy -> Étiquettes"
               NUMBER: Nombre d'articles en vedette à montrer
               NUMBER_HELP: Nombre d'articles en vedette qui seront montrés dans le bandeau latéral
         SHARE:
@@ -620,13 +620,13 @@ fr:
           ICONS_DESCRIPTION: Voir les icônes disponibles dans <a href="https://www.addtoany.com/share/preferences" target="_blank">AddToAny</a>
           ICON_NAME: Nom de l'icône
         MAILCHIMP: 
-          SECTION: Configuration du mailchimp
-          ENABLED: Activer le mailchimp dans les articles
-          TITLE: Titre du mailchimp
-          TITLE_HELP: Saisir le titre pour la boîte du mailchimp
-          DESCRIPTION: Description du mailchimp
-          DESCRIPTION_HELP: Saisir un texte descriptif pour la boîte du mailchimp
-          ADDRESS: Adresse pou le mailchimp
+          SECTION: Configuration de Mailchimp
+          ENABLED: Activer Mailchimp dans les articles
+          TITLE: Titre de Mailchimp
+          TITLE_HELP: Saisir le titre pour la boîte de Mailchimp
+          DESCRIPTION: Description de Mailchimp
+          DESCRIPTION_HELP: Saisir un texte descriptif pour la boîte de Mailchimp
+          ADDRESS: Adresse pour Mailchimp
         DISQUS: 
           SECTION: Commentaires Disqus
           ENABLED: Activer les commentaires Disqus
@@ -636,7 +636,7 @@ fr:
           TEXT_RIGHT: Texte du pied de page droit
           TEXT_LEFT: Texte du pied de page gauche
           TEXT_RIGHT_HELP: Texte du pied de page situé à droite. Markdown et HTML supportés
-          TEXT_LEFT_HELP: Texte du pied de page situé à gauche. Markdown and HTML supportés
+          TEXT_LEFT_HELP: Texte du pied de page situé à gauche. Markdown et HTML supportés
       DEFAULT:
         CONTENT: Contenu
         SUBTITLE: Sous-titre
@@ -648,7 +648,7 @@ fr:
         IMAGE_OPTIONS: Options des images
         FEATURED_IMAGE: 
           LABEL: Image en vedette
-          HELP: Défini l'image pricipale de la page
+          HELP: Définir l'image principale de la page
           WIDTH: largeur
           HEIGHT: Hautreur
         SHOW_FEATURED_IMAGE: Montrer l'image
@@ -685,7 +685,7 @@ fr:
               BY_DATE: Date
               BY_TITLE: Titre
               BY_FOLDER: Dossier
-              BY_DEFAULT: Default
+              BY_DEFAULT: Défaut
               DIR: Direction
               DIR_ASC: Montant
               DIR_DESC: Descendant
@@ -710,7 +710,7 @@ fr:
             ENABLED: Résumé activé
             FORMAT: 
               LABEL: Format du résumé
-              SHORT: Utiliser la première occurence du délimiteur ou la taille
+              SHORT: Utiliser la première occurrence du délimiteur ou la taille
               LONG: Le délimiteur de résumé sera ignoré
             SIZE: Taille
             DELIMITER: Délimiteur de résumé
@@ -745,8 +745,8 @@ fr:
         LABEL: Catégories
         POSTS_IN: Publications dans
       FEATURED: En vedette
-      TAXONOMYLIST: Etiquettes populaires
-      RELATEDPAGES: Pages en rlation
+      TAXONOMYLIST: Étiquettes populaires
+      RELATEDPAGES: Pages en relation
       RANDOM_ARTICLE:
         LABEL: Un article au hazard
         BUTTON: Je vais avoir de la chance !
