@@ -36,7 +36,7 @@
 			{# Loading the first item as "eager" in the blog list greatly improves page speed #}
 			{% set isFirstItem = true %}
 			{% for child in collection.slice(0, 5)%}
-				{% set childImage = child.media.images[child.header.featuredImage] ?: child.media.images|filter((v, k) => k != child.header.author.avatarImage)|first %}
+				{% set childImage = child.media[child.header.featuredImage] ?: child.media|filter((v, k) => k != child.header.author.avatarImage)|first %}
 				{% set childTitle = child.title|raw %}
 				{% set loadLazy = not isFirstItem %}
 				{% include 'partials/blog-list-item.html.twig' with { 

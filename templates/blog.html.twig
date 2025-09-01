@@ -27,7 +27,7 @@
         {# Loading the first item as "eager" in the blog list greatly improves page speed #}
         {% set isFirstItem = true %}
         {% for child in collection %}
-            {% set childImage = child.media.images[child.header.featuredImage] ?: child.media.images|filter((v, k) => k != child.header.author.avatarImage)|first %}
+            {% set childImage = child.media[child.header.featuredImage] ?: child.media|filter((v, k) => k != child.header.author.avatarImage)|first %}
 			{% set childTitle = child.title|raw %}
             {% set child_showImage = child.header.show_image|defined(true) %}
             {% set datePublished = include('partials/page/date.html.twig', { 'page': child }) %}

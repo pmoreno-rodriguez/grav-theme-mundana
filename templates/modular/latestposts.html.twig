@@ -22,7 +22,7 @@
 <div class="row my-5">
     <!-- latest post -->
     {% for post in blog.children.order('date', 'desc').slice(0, 1) %}
-    {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
+    {% set blog_image = post.media[post.header.featuredImage] ?: post.media|filter((v, k) => k != post.header.author.avatarImage)|first %}
     <div class="col-md-6">
     <div class="card border-0 mb-4 box-shadow"> 
     {% if (blog_image ?? null) %}  
@@ -55,7 +55,7 @@
     <div class="col-md-6">
         {% for post in blog.children.order('date', 'desc').slice(1, 3) %}
         {% set post_title = post.title|raw %}
-        {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
+        {% set blog_image = post.media[post.header.featuredImage] ?: post.media|filter((v, k) => k != post.header.author.avatarImage)|first %}
               
         <div class="mb-3 d-flex align-items-center">                
                 {% if (blog_image ?? null) %}
