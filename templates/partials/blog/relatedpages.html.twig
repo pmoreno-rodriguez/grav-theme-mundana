@@ -9,7 +9,7 @@
     {% set related = grav['pages'].get(related_path) %}
     {% set related_title = related.title|raw %}
     {% set related_author = related.header.author.name ?? related.taxonomy.author[0] %}
-    {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
+    {% set related_image = related.media[related.header.featuredImage] ?: related.media|filter((v, k) => k != related.header.author.avatarImage)|first %}
     {% if related %}
     <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
         <div class="card border-0">

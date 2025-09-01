@@ -23,7 +23,7 @@
     {% for term in terms %}
         {% set blog_image = null %}
         {% for p in taxonomy.findTaxonomy({'category' : term}).order('date', 'desc').random(1) %}
-            {% set blog_image = p.media.images[p.header.featuredImage] ?: p.media.images|filter((v, k) => k != p.header.author.avatarImage)|first %}
+            {% set blog_image = p.media[p.header.featuredImage] ?: p.media|filter((v, k) => k != p.header.author.avatarImage)|first %}
         {% endfor %}
     <div class="row align-items-center py-2">
 		{% if blog_image %}

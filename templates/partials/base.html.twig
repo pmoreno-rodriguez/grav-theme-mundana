@@ -84,7 +84,7 @@
 {% set widthLogo = theme_var('custom_logo_width') %}
 
 {# Image settings #}
-{% set featuredImage = page.media[page.header.featuredImage] ?: page.media.images|filter((v, k) => k != page.header.author.avatarImage)|first %}
+{% set featuredImage = page.media[page.header.featuredImage] ?: page.media|filter((v, k) => k != page.header.author.avatarImage)|first %}
 {% set img_width = header_var('image_width')|default(672) %}
 {% set img_height = header_var('image_height')|default(504) %}
 {% set show_image = header_var('show_image')|defined(true) %}

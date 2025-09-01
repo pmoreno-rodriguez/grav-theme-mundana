@@ -1,6 +1,6 @@
 <section class="row">
 
-    {% set blog_image = page.media.images[page.header.featuredImage] ?: page.media.images|filter((v, k) => k != page.header.author.avatarImage)|first %}
+    {% set blog_image = page.media[page.header.featuredImage] ?: page.media|filter((v, k) => k != page.header.author.avatarImage)|first %}
 
     {% if blog_image %}
         <div class="col-md-2">
