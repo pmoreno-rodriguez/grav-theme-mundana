@@ -2,6 +2,7 @@
 
 {% set themeBlog = theme_var('blog_route')|defined('/blog') %}
 {% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set collection = blog.collection().order('date', 'desc') %}
 {% set page_title = page.title %}
 {% set show_title = page.header.show_title|defined(false) %}
 {% set override_style = theme_var('override_page_style')|defined(false) %}
@@ -21,7 +22,7 @@
 <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
 <div class="row my-5">
     <!-- latest post -->
-    {% for post in blog.children.order('date', 'desc').slice(0, 1) %}
+    {% for post in collection.slice(0, 1)%}
     {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
     <div class="col-md-6">
     <div class="card border-0 mb-4 box-shadow"> 
@@ -44,7 +45,7 @@
                 </span>                   
         </small>
         <small class="d-block text-muted">
-            {% include 'partials/blog/date.html.twig' %}
+            {% include 'partials/blog/date.html.twig' with { 'page': post } %}
         </small>
     </div>
     </div>
@@ -83,7 +84,7 @@
                         </span>                   
                     </small>
                     <small class="d-block text-muted">
-                        {% include 'partials/blog/date.html.twig' %}
+                        {% include 'partials/blog/date.html.twig' with { 'page': post } %}
                     </small>
                 </div>
             </div>

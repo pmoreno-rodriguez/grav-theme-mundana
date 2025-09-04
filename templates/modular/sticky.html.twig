@@ -2,6 +2,7 @@
 
 {% set themeBlog = theme_var('blog_route')|defined('/blog') %}
 {% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set collection = blog.collection() %}
 {% set override_style = theme_var('override_page_style')|defined(false) %}
 {% set color_style = override_style ? theme_var('default_page_style')|default('primary') : page.parent.header.style|defined('primary') %}
 {% set page_title = page.title %}
@@ -18,7 +19,7 @@
 	</div>
 {% endif %}
 <!-- Sticky - add sticky tag to the post you want to highlight here - page.header.isSticky: true -->
-{% for post in blog.children %}
+{% for post in collection %}
     {% if post.header.isSticky %}
 	{% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
 	{% set is_even = loop.index is even %}
