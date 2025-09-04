@@ -39,18 +39,19 @@ class Mundana extends Theme
     **/ 
     public function onTwigSiteVariables()
     {
+        $activeTheme = $this->config->get('system.pages.theme');
+        $themePath   = GRAV_ROOT . "/user/themes/" . $activeTheme;
 
-        $themeConfig = $this->config->get('themes.mundana');
+        $themeConfig = $this->config->get("themes.$activeTheme");
 
-        if (isset($themeConfig['custom_css']) && $themeConfig['custom_css'] && file_exists(__DIR__ . '/assets/css/custom.css')) {
-            $this->grav['assets']->addCss('theme://assets/css/custom.css', ['priority' => 10]);
+        if (!empty($themeConfig['custom_css']) && file_exists($themePath . '/assets/css/custom.css')) {
+            $this->grav['assets']->addCss("theme://assets/css/custom.css", ['priority' => 10]);
         }
 
-        if (isset($themeConfig['custom_js']) && $themeConfig['custom_js'] && file_exists(__DIR__ . '/assets/js/custom.js')) {
-            $this->grav['assets']->addJs('theme://assets/js/custom.js', ['group' => 'bottom', 'priority' => 15]);
+        if (!empty($themeConfig['custom_js']) && file_exists($themePath . '/assets/js/custom.js')) {
+            $this->grav['assets']->addJs("theme://assets/js/custom.js", ['group' => 'bottom', 'priority' => 15]);
         }
     }
-    
     
     public function onThemeInitialized()
     {
