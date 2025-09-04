@@ -1,5 +1,5 @@
-{# Favicon = favicon_file_url #}
-{% set favicon = theme_var('favicon') %}
+
+{% set favicon = theme_config.favicon ? theme_config.favicon|first : { type:'image/png', path: url('theme://images/favicon.png') } %}
 
 {% if favicon %}
 {% set favicon_file = (favicon|first).name %}
