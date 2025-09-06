@@ -19,8 +19,7 @@
 	</div>
 {% endif %}
 <!-- Sticky - add sticky tag to the post you want to highlight here - page.header.isSticky: true -->
-{% for post in collection %}
-    {% if post.header.isSticky %}
+{% for post in collection if post.header.isSticky %}
 	{% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
 	{% set is_even = loop.index is even %}
 
@@ -40,5 +39,4 @@
 			</div>
 		</div>
 	</div>
-	{% endif %}
 {% endfor %}
