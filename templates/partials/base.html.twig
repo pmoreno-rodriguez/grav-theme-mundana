@@ -40,9 +40,9 @@
 
 {# Description #}
 {% if not page.home() %}
-{% set meta_description = page.summary|trim|striptags|raw|e('html_attr') %}
+	{% set meta_description = page.summary|striptags|trim|raw %}
 {% elseif site.metadata.description %}
-  {% set meta_description = site.metadata.description %}
+  {% set meta_description = site.metadata.description|striptags|trim|raw %}
 {% else %}
   {% set meta_description = site_title %}
 {% endif %}
