@@ -1,14 +1,17 @@
 {# FEATURED SECTION - SIDEBAR #}
 
+{% set featured_posts = page.evaluate({'@taxonomy.tag':featuredposts_tag}).order('date', 'desc').slice(0,featuredposts_number) %}
+
+{% if featured_posts.count() > 0 %}
 <div class="sidebar-content my-5">
     <h3 class="h4 font-weight-bold spanborder">
         <span>{{ block_title }}</span>
     </h3>
     <ol class="list-featured">
-        {% for p in page.evaluate({'@taxonomy.tag':featuredposts_tag}).order('date', 'desc').slice(0,featuredposts_number) %}
+        {% for p in featured_posts %}
             <li class="mb-4">
                 <span>
-                    <span class="h2 font-weight-bold h6">
+                    <span class="font-weight-bold h6">
                         <a href="{{ p.url }}" class="text-dark">{{ p.title|raw }}</a>
                     </span>
                     <span class="d-block text-muted">
@@ -25,3 +28,4 @@
         {% endfor %}
     </ol>
 </div>
+{% endif %}
