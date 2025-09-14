@@ -17,7 +17,7 @@
                     {% endfor %}
                     </span>
                 </p>
-                <{{title_level}} class="display-4 mb-4 article-headline">{{ page_title|raw }}</{{title_level}}>
+                <{{title_level}} class="display-4 mb-4 article-headline">{{ page_title|e('html') }}</{{title_level}}>
                 {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
                 {# If summary is enabled it will displayed #}
                 {% if page.header.summary.enabled ?? true and show_summary ?? true %}
@@ -38,7 +38,6 @@
                         {% if config.plugins.readingtime.enabled %}
                             {% include 'partials/blog/readingtime.html.twig' %}
                         {% endif %}
-                        </span>
                     </small>
                 </div>
             </div>
@@ -50,7 +49,7 @@
                 .attribute('width', img_width)
                 .attribute('height', img_height)
                 .derivatives(320,672,320).sizes('(max-width: 768px) 100vw, 50vw')
-                .html(page_title, page_title,'w-100 h-auto rounded')|raw }}
+                .html(page_title|e('html'), page_title|e('html'),'w-100 h-auto rounded')|raw }}
             </div>
             {% endif %}
         </div>

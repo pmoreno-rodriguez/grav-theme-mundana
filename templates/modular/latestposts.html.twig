@@ -10,7 +10,7 @@
 
 {% if page_title and show_title %}
 <h4 class="font-weight-bold spanborder">
-    <span>{{ page_title|raw }}</span>
+    <span>{{ page_title|e('html') }}</span>
 </h4>
 {% endif %}
 {% if page.content is not empty %}
@@ -20,27 +20,28 @@
 {% endif %}
 
 <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
+
 <div class="row my-5">
     <!-- latest post -->
-    {% for post in collection.slice(0, 1)%}
+    {% for post in collection.slice(0, 1) %}
     {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
     <div class="col-md-6">
     <div class="card border-0 mb-4 box-shadow"> 
     {% if (blog_image ?? null) %}  
-    <a href="{{post.url}}" title="{{post.title|raw}}" aria-label="{{post.title|raw}}">
+    <a href="{{post.url}}" title="{{post.title}}" aria-label="{{post.title|e('html')}}">
     <div class="topfirstimage rounded" style="background-image: url({{ blog_image.url}}); height: 200px;background-size: cover;    background-repeat: no-repeat;"></div>     
     </a>
     {% endif %}
     <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
     <h2 class="h4 font-weight-bold">
-    <a class="text-dark" href="{{post.url}}">{{ post.title|raw }}</a>
+    <a class="text-dark" href="{{post.url}}">{{ post.title|e('html') }}</a>
     </h2>
     {% include 'partials/blog/page-summary.html.twig' with {'page': post} %}
     <div>
         <small class="d-block text-muted">
             {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                 {% for category in post.taxonomy.category %}
-                    <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a><span class="sep">, </span>
+                    <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category }}</a><span class="sep">, </span>
                 {% endfor %}
                 </span>                   
         </small>
@@ -54,21 +55,21 @@
     {% endfor %}
     
     <div class="col-md-6">
-        {% for post in blog.children.order('date', 'desc').slice(1, 3) %}
-        {% set post_title = post.title|raw %}
+        {% for post in blog.children.published(true).order('date', 'desc').slice(1, 3) %}
+        {% set post_title = post.title %}
         {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
               
         <div class="mb-3 d-flex align-items-center">                
                 {% if (blog_image ?? null) %}
                 <div class="col-md-4">
-                <a href="{{post.url}}" title="{{ post_title }}" aria-label="{{ post_title }}">
+                <a href="{{post.url}}" title="{{ post_title }}" aria-label="{{ post_title|e('html') }}">
                     {{ blog_image.loading('lazy')
                         .attribute('decoding','async')
                         .attribute('width', img_width)
                         .attribute('height', img_height)
                         .derivatives(320,672,320)
                         .sizes('(max-width: 768px) 100vw, 50vw')
-                        .html(title, title,'w-100 h-auto rounded')|raw }}
+                        .html(post_title, post_title,'w-100 h-auto rounded')|raw }}
                 </a>
                 </div>
                 {% endif %}                
@@ -79,7 +80,7 @@
                     <small class="d-block text-muted">
                         {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                          {% for category in post.taxonomy.category %}
-                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a><span class="sep">, </span>
+                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category }}</a><span class="sep">, </span>
                         {% endfor %}
                         </span>                   
                     </small>

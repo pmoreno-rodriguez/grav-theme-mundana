@@ -24,7 +24,7 @@
 		{% block item %}
 			{% if page_title and show_title %}
 				<h2 class="h3 font-weight-bold spanborder">
-					<span>{{ page_title|raw }}</span>
+					<span>{{ page_title|e('html') }}</span>
 				</h2>
 			{% endif %}
 			{% if page.content is not empty %}
@@ -35,9 +35,9 @@
 			{# isFirstItem is used to pass loading attribute to blog list #}
 			{# Loading the first item as "eager" in the blog list greatly improves page speed #}
 			{% set isFirstItem = true %}
-			{% for child in collection.slice(0, 5)%}
+			{% for child in collection.slice(0, 5) %}
 				{% set childImage = child.media.images[child.header.featuredImage] ?: child.media.images|filter((v, k) => k != child.header.author.avatarImage)|first %}
-				{% set childTitle = child.title|raw %}
+				{% set childTitle = child.title %}
 				{% set loadLazy = not isFirstItem %}
 				{% include 'partials/blog-list-item.html.twig' with { 
 					'base_url': new_base_url,
