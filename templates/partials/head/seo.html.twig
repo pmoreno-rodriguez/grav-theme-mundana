@@ -18,10 +18,10 @@
 
 {# Site Description #}
 {% if meta_description %}
-<meta name="description" content="{{ meta_description }}">
-<meta property="og:description" content="{{ meta_description }}">
-<meta property="twitter:description" content="{{ meta_description }}">
-<meta itemprop="description" content="{{ meta_description }}">
+<meta name="description" content="{{ meta_description|raw }}">
+<meta property="og:description" content="{{ meta_description|raw }}">
+<meta property="twitter:description" content="{{ meta_description|raw }}">
+<meta itemprop="description" content="{{ meta_description|raw }}">
 {% endif %}
 
 {# Date Published #}
@@ -63,7 +63,7 @@
             "description": "' ~ author_bio|raw ~ '",
             "url": "' ~ author_twitter ~ '"
         },
-        "description": "' ~ meta_description ~ '"
+        "description": "' ~ meta_description|raw ~ '"
       }', {group:'bottom', type: 'application/ld+json'}) %}
   {% endblock %}
 
