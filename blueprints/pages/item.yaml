@@ -5,13 +5,24 @@ form:
     tabs:
 
       fields:
+        content:
+          type: tab
+          fields:
+            _Headings:
+              type: columns
+              fields:
+                _Title:
+                  type: column
+                  fields:
+                    header.show_title:
+                      unset@: true
         blog:
           type: tab
           title: MUNDANA.ADMIN.ITEM.TAB
 
           fields:
             _summaryConfig:
-              type: spacer
+              type: section
               title: MUNDANA.ADMIN.ITEM.CONTENT.SUMMARY.LABEL
             header.show_summary:
               type: toggle

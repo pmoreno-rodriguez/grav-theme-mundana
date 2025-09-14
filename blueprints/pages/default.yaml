@@ -138,14 +138,12 @@ form:
                   ordering@: header.menu
                   toggleable: true
                   size: medium
-        PageOptions:
-          type: tab
-          title: MUNDANA.ADMIN.DEFAULT.SETTINGS
+        options:
           fields:
-            _Style_Section:
+            PageOptions:
               type: section
-              underline: true
-              title: MUNDANA.ADMIN.DEFAULT.STYLES_SECTION
+              title: MUNDANA.ADMIN.DEFAULT.SETTINGS
+              ordering@: -10
             header.style:
               type: select
               label: MUNDANA.ADMIN.THEME.PAGE_STYLE.LABEL
@@ -154,28 +152,4 @@ form:
               size: medium
               toggleable: true
               data-options@: '\Grav\Theme\Mundana::getPageStyles'
-            _Author_Section:
-              type: section
-              underline: true
-              title: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.LABEL
-            header.author.name:
-              type: text
-              toggleable: true
-              size: medium
-              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.NAME
-            header.author.twitter:
-              type: text
-              toggleable: true
-              size: medium
-              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.TWITTER
-            header.author.bio:
-              type: textarea
-              toggleable: true
-              rows: 3
-              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.BIOGRAPHY
-            header.author.avatarImage:
-              type: pagemediaselect
-              toggleable: true
-              size: medium
-              label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.AVATAR
-              preview_images: true
+              ordering@: PageOptions
