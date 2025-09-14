@@ -2,7 +2,7 @@ form:
   fields:
 
     _togglesTitle:
-      type: spacer
+      type: section
       title:  MUNDANA.ADMIN.BLOG.CONFIGURATION.LABEL
       
     header.isSticky:
@@ -38,3 +38,28 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    
+    _Author_Section:
+      type: section
+      title: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.LABEL
+    header.author.name:
+      type: text
+      toggleable: true
+      size: medium
+      label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.NAME
+    header.author.twitter:
+      type: text
+      toggleable: true
+      size: medium
+      label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.TWITTER
+    header.author.bio:
+      type: textarea
+      toggleable: true
+      rows: 3
+      label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.BIOGRAPHY
+    header.author.avatarImage:
+      type: pagemediaselect
+      toggleable: true
+      size: medium
+      label: MUNDANA.ADMIN.ITEM.AUTHOR_OPTIONS.AVATAR
+      preview_images: true
