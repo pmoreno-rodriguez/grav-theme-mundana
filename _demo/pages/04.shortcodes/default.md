@@ -105,7 +105,7 @@ This is a danger small button in block [sc-button type="danger" url="https://get
 
 ### Example
 
-This is a primary button [sc-button type="success" url="https:/getgrav.org" label="Button" target="blank" size="lg" classes=""][/sc-button]
+This is a primary button [sc-button type="success" url="https://getgrav.org" label="Button" target="blank" size="lg" classes=""][/sc-button]
 
 This is a danger small button [sc-button type="danger" url="https://getgrav.org" label="Button" target="blank" size="sm" classes=""][/sc-button]
 
