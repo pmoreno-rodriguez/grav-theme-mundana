@@ -1,9 +1,11 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set collection = page.collection() %}
+{# Set blog settings #}
 {% set themeBlog = theme_var('blog_route')|defined('/blog') %}
 {% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
 {% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
+{% set new_base_url = blog.url == '/' ? '' : blog.url %}
+{% set collection = page.collection() %}
 {# Set sidebar option for page #}
 {% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(true)  %}
 {# Set pagination option for page #}
@@ -19,7 +21,7 @@
 {% embed 'partials/layout.html.twig' with { blog: page } %}
     {% block item %}
         <h2 class="font-weight-bold title h3 text-uppercase mb-4 spanborder">
-        <span>{{titleFiltered}}</span>
+        <span>{{ titleFiltered|e('html') }}</span>
         </h2>
         {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ subtitle|raw }}</p>{% endif %}
         
@@ -28,7 +30,7 @@
         {% set isFirstItem = true %}
         {% for child in collection %}
             {% set childImage = child.media.images[child.header.featuredImage] ?: child.media.images|filter((v, k) => k != child.header.author.avatarImage)|first %}
-			{% set childTitle = child.title|raw %}
+			{% set childTitle = child.title %}
             {% set child_showImage = child.header.show_image|defined(true) %}
             {% set datePublished = include('partials/page/date.html.twig', { 'page': child }) %}
             {% set loadLazy = not isFirstItem %}

@@ -40,11 +40,11 @@
 
 {# Description #}
 {% if not page.home() %}
-	{% set meta_description = page.summary|striptags|trim|raw %}
+	{% set meta_description = page.summary|striptags|trim %}
 {% elseif site.metadata.description %}
-  {% set meta_description = site.metadata.description|striptags|trim|raw %}
+  	{% set meta_description = site.metadata.description|striptags|trim %}
 {% else %}
-  {% set meta_description = site_title %}
+  	{% set meta_description = site_title %}
 {% endif %}
 
 {# Style classes to apply to the body #}
@@ -106,12 +106,6 @@
 {% set feeds = config.plugins.feed.enabled and theme_var('sidebar_showfeeds')|defined(true) %}
 {% set show_featured = header_var('show_featured')|defined(true) %}
 {% set show_categories = header_var('show_categories')|defined(true) %}
-
-{# Set blog settings #}
-{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
-{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
-{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
-{% set new_base_url = blog.url == '/' ? '' : blog.url %}
 
 {# Theme configuration for featured posts #}
 {% set featured = theme_var('featuredposts')|defined(true) %}
