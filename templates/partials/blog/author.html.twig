@@ -15,6 +15,6 @@
                 {{ author|raw }}
             {% endif %}
             {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">{{ 'MUNDANA.MISC.FOLLOW'|t }}</a></span>{% endif %}</p>
-            {% if author_bio %}{{ author_bio|markdown|raw }}{% endif %}
+            {% if author_bio %}{{ author_bio|markdown }}{% endif %}
     </div>
 </div>	

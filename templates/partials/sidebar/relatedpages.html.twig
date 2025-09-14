@@ -7,7 +7,7 @@
     
     {% for related_path, score in related_pages %}
     {% set related = grav['pages'].get(related_path) %}
-    {% set related_title = related.title|raw %}
+    {% set related_title = related.title %}
     {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
 
     {% if related %}
