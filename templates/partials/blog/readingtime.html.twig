@@ -1,7 +1,10 @@
 {# PARTIAL READING TIME #}
 {#This code will work if the reading time plugin is enabled #}
+{% set min = page.content|readingtime({'format': '{minutes_short_count}'}) %}
+{% set sec = page.content|readingtime({'format': '{seconds_short_count}'}) %}
+
 <span class="text-muted d-block mt-1">
-<time class="dt-published">
-        <i class="fas fa-clock"></i> {{ page.content|readingtime }}
-    </time>
+<time class="dt-published" datetime="PT{{ min }}M{{ sec }}S">
+    <i class="fas fa-clock"></i> {{ page.content|readingtime }}
+</time>
 </span>
