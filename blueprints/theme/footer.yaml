@@ -1,0 +1,16 @@
+form:
+  validation: loose
+
+  fields:
+    footer_text_left:
+      type: textarea
+      row: 3
+      markdown: true
+      label: MUNDANA.ADMIN.THEME.FOOTER.TEXT_LEFT
+      help: MUNDANA.ADMIN.THEME.FOOTER.TEXT_LEFT_HELP
+    footer_text_right:
+      type: textarea
+      row: 3
+      markdown: true
+      label: MUNDANA.ADMIN.THEME.FOOTER.TEXT_RIGHT
+      help: MUNDANA.ADMIN.THEME.FOOTER.TEXT_RIGHT_HELP

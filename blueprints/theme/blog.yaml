@@ -1,0 +1,88 @@
+form:
+  validation: loose
+
+  fields:
+    sidebar_section:
+      type: section
+      title: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.LABEL
+      underline: true
+    sidebar_showtaxonomy:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_TAXONOMY
+      help: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_TAXONOMY_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    sidebar_showarchives:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_ARCHIVES
+      help: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_ARCHIVES_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    sidebar_showrelatedpages:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_RELATED_PAGES
+      help: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_RELATED_PAGES_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    sidebar_showfeeds:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_FEEDS
+      help: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_FEEDS_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    sidebar_showrandom:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_RANDOM
+      help: MUNDANA.ADMIN.THEME.BLOG.SIDEBAR.SHOW_RANDOM_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    blog_section:
+      type: section
+      title: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.LABEL
+      underline: true
+    blog_route:
+      type: text
+      label: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.BLOG_ROUTE
+      help: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.BLOG_ROUTE_HELP
+      size: medium
+      default: '/blog'
+    featuredposts:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.LABEL
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    featuredposts_tag:
+      type: text
+      label: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.TAG
+      help: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.TAG_HELP
+      size: medium
+      default: 'featured'
+
+    featuredposts_number:
+      type: range
+      label: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.NUMBER
+      help: MUNDANA.ADMIN.THEME.BLOG.CONFIGURATION.FEATURED_POSTS.NUMBER_HELP
+      default: 3
+      validate:
+        min: 1
+        max: 5

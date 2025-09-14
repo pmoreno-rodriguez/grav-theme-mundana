@@ -1,0 +1,70 @@
+form:
+  validation: loose
+
+  fields:
+    share_section:
+      type: section
+      title: MUNDANA.ADMIN.THEME.SHARE.SECTION
+      underline: true
+    share_enable:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.SHARE.ENABLED
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    share_icons:
+      type: list
+      markdown: true
+      label: MUNDANA.ADMIN.THEME.SHARE.ICONS
+      help: MUNDANA.ADMIN.THEME.SHARE.ICONS_HELP
+      description: MUNDANA.ADMIN.THEME.SHARE.ICONS_DESCRIPTION
+      fields:
+        .name:
+          type: text
+          label: MUNDANA.ADMIN.THEME.SHARE.ICON_NAME               
+    mailchimp_section:
+      type: section
+      title: MUNDANA.ADMIN.THEME.MAILCHIMP.SECTION
+      underline: true
+    mailchimp_enable:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.MAILCHIMP.ENABLED
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    mailchimp_title:
+      type: text
+      label: MUNDANA.ADMIN.THEME.MAILCHIMP.TITLE
+      help: MUNDANA.ADMIN.THEME.MAILCHIMP.TITLE_HELP
+    mailchimp_description:
+      type: text
+      label: MUNDANA.ADMIN.THEME.MAILCHIMP.DESCRIPTION
+      help: MUNDANA.ADMIN.THEME.MAILCHIMP.DESCRIPTION_HELP
+    mailchimp_address:
+      type: text
+      label: MUNDANA.ADMIN.THEME.MAILCHIMP.ADDRESS
+    disqus:
+      type: section
+      title: MUNDANA.ADMIN.THEME.DISQUS.SECTION
+      underline: true
+    disqus_enable:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.DISQUS.ENABLED
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    disqus_name:
+      type: text
+      label: MUNDANA.ADMIN.THEME.DISQUS.SHORT_NAME
