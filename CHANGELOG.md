@@ -1,32 +1,35 @@
 # v2.0.0
-## 09/14/2025
+## 09/15/2025
 
-1. [](#improved)
-   * Modular blueprint structure: Split main `blueprints.yaml` file into organized components within `blueprints/theme/` directory
-   * Moved default template page options from "Page Settings" tab to "Options" tab for better organization
-   * Relocated author page options from default template blueprint to `item.yaml` template (now only appears on blog articles)
-   * Enhanced reading time template with proper datetime attributes (`PT{minutes}M{seconds}S`) for better accessibility and SEO. Thanks to [Librist-org](https://github.com/Librist-org)
-   * Replaced `|raw` filter with `|e('html')` filter across all page titles in Twig templates for improved security
-   * Fixed `featured.html.twig` to display Featured section only when posts are tagged with 'featured' taxonomy
-2. [](#bugfix)
-   * Removed redundant `<span>` tags from various templates. Thanks to [Librist-org](https://github.com/Librist-org)
-   * Fixed `latestposts.html.twig` to show only published posts in listings
-   * Fixed `categories.html.twig` error when unpublished posts were present on pages with categories partial
-   * Corrected `favicon.html.twig` to properly display favicon image instead of just the file path
+1.  [](#new)
+    * New `navbar.use_page_color` setting to automatically match navbar color with individual page colors
+2.  [](#improved)
+    * Modular blueprint structure: Split main `blueprints.yaml` file into organized components within `blueprints/theme/` directory
+    * Moved default template page options from "Page Settings" tab to "Options" tab for better organization
+    * Relocated author page options from default template blueprint to `item.yaml` template (now only appears on blog articles)
+    * Enhanced reading time template with proper datetime attributes (`PT{minutes}M{seconds}S`) for better accessibility and SEO. Thanks to [Librist-org](https://github.com/Librist-org)
+    * Replaced `|raw` filter with `|e('html')` filter across all page titles in Twig templates for improved security
+    * Fixed `featured.html.twig` to display Featured section only when posts are tagged with 'featured' taxonomy
+    * Automatic text style adjustment (light/dark) based on navbar background color
+3.  [](#bugfix)
+    * Removed redundant `<span>` tags from various templates. Thanks to [Librist-org](https://github.com/Librist-org)
+    * Fixed `latestposts.html.twig` to show only published posts in listings
+    * Fixed `categories.html.twig` error when unpublished posts were present on pages with categories partial
+    * Corrected `favicon.html.twig` to properly display favicon image instead of just the file path
 
 # 1.4.1
 ## 08/23/2025
 
-1. [](#improved)  
-   * HTML error corrections. Thanks to [Librist-org](https://github.com/Librist-org)
-   * Remove trailing slashes from void HTML tags
+1.  [](#improved)  
+    * HTML error corrections. Thanks to [Librist-org](https://github.com/Librist-org)
+    * Remove trailing slashes from void HTML tags
 
 # 1.4.0
 ## 08/17/2025
 
-1. [](#improved)  
-   * Updated `bootstrap.min.js` to version `v4.6.2`. Thanks to [Librist-org](https://github.com/Librist-org)
-   * Added option to load Google Fonts and Bootstrap styles locally or remotely. Thanks to [Librist-org](https://github.com/Librist-org)
+1.  [](#improved)  
+    * Updated `bootstrap.min.js` to version `v4.6.2`. Thanks to [Librist-org](https://github.com/Librist-org)
+    * Added option to load Google Fonts and Bootstrap styles locally or remotely. Thanks to [Librist-org](https://github.com/Librist-org)
 
 # 1.3.4
 ## 03/13/2025

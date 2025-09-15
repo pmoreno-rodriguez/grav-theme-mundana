@@ -49,10 +49,13 @@ en:
           DISPLAY_SITE_NAME_HELP: Show your site name from Grav options
           STYLE: 
             LABEL: Navbar style
-            HELP: 'Use dark style for use with light background colors or light style for use with dark background colors'
+            HELP: "Text color style for the navbar. When 'Use page color' is enabled, this setting is automatically calculated based on the page color and this manual setting is ignored."
             LIGHT: Light
-            DARK: Dark 
-          BGCOLOR: Navbar background color defined in Bootstrap
+            DARK: Dark
+            USE_PAGE_COLOR: "Use page color"
+            USE_PAGE_COLOR_HELP: "When enabled, the navigation bar will use the same color that is configured for each individual page. The text style (light/dark) will automatically adjust based on the chosen color." 
+          BGCOLOR: "Default navbar color"
+          BGCOLOR_HELP: "Bootstrap color used for the navbar when 'Use page color' is disabled. If 'Use page color' is enabled, this setting is ignored and the navbar will match each page's individual color instead."
           CUSTOM_BGCOLOR: NavBar background custom color
           ICON_GROUP: Choose icon group
           ICON_SIZE: Icon size
@@ -303,10 +306,13 @@ es:
           DISPLAY_SITE_NAME_HELP: Muestra el nombre de tu sitio desde las opciones de Grav
           STYLE: 
             LABEL: Estilo de la barra de navegación
-            HELP: 'Seleccione un estilo oscuro para utilizarlo con fondos claros o un estilo claro para utilizarlo con fondos oscuros'
+            HELP: "Estilo de color del texto para la barra de navegación. Cuando 'Usar color de página' está activado, esta configuración se calcula automáticamente según el color de la página y esta configuración manual se ignora."
             LIGHT: Claro
-            DARK: Oscuro 
-          BGCOLOR: Color de fondo de la barra de navegación por defecto de Bootstrap
+            DARK: Oscuro
+            USE_PAGE_COLOR: "Usar color de página"
+            USE_PAGE_COLOR_HELP: "Cuando está habilitado, la barra de navegación usará el mismo color que esté configurado para cada página individual. El estilo del texto (claro/oscuro) se ajustará automáticamente según el color elegido." 
+          BGCOLOR: "Color por defecto de navbar"
+          BGCOLOR_HELP: "Color de Bootstrap usado para la barra de navegación cuando 'Usar color de página' está desactivado. Si 'Usar color de página' está activado, esta configuración se ignora y la navbar coincidirá con el color individual de cada página."
           CUSTOM_BGCOLOR: Color de fondo de la barra de navegación personalizado
           ICON_GROUP: Elegir grupo de iconos
           ICON_SIZE: Tamaño del icono

@@ -256,6 +256,30 @@ form:
         fa-xs: xs
         fa-sm: sm
         fa-lg: lg
+    navbar.use_page_color:
+      type: toggle
+      label: MUNDANA.ADMIN.THEME.NAVBAR.STYLE.USE_PAGE_COLOR
+      help: MUNDANA.ADMIN.THEME.NAVBAR.STYLE.USE_PAGE_COLOR_HELP
+      highlight: 0
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    navbar.bgcolor:
+      type: select
+      size: small
+      label: MUNDANA.ADMIN.THEME.NAVBAR.BGCOLOR
+      help: MUNDANA.ADMIN.THEME.NAVBAR.BGCOLOR_HELP
+      data-options@: '\Grav\Theme\Mundana::getPageStyles'
+    navbar.custom_bgcolor:
+      type: colorpicker
+      label: MUNDANA.ADMIN.THEME.NAVBAR.CUSTOM_BGCOLOR
+      help:
+      toggleable: true
+      size: small
+      default: '#ffffff' 
     navbar.style:
       type: select
       size: small
@@ -265,19 +289,6 @@ form:
       options:
         dark: MUNDANA.ADMIN.THEME.NAVBAR.STYLE.LIGHT
         light: MUNDANA.ADMIN.THEME.NAVBAR.STYLE.DARK
-    navbar.bgcolor:
-      type: select
-      size: small
-      label: MUNDANA.ADMIN.THEME.NAVBAR.BGCOLOR
-      help:
-      data-options@: '\Grav\Theme\Mundana::getPageStyles' 
-    navbar.custom_bgcolor:
-      type: colorpicker
-      label: MUNDANA.ADMIN.THEME.NAVBAR.CUSTOM_BGCOLOR
-      help:
-      toggleable: true
-      size: small
-      default: '#ffffff'
     custom_menu:
       type: section         
       title: MUNDANA.ADMIN.THEME.CUSTOM_MENU.TITLE

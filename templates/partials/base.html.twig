@@ -68,10 +68,24 @@
 {# Set page color style #}
 {% set color_style = override_style ? theme_var('default_page_style')|defined('primary') : page.header.style|defined('primary') %}
 
+{# Define light colors that require dark text (navbar-light) #}
+{% set light_colors = ['light', 'warning'] %}
+
 {# Set styles for navbar #}
-{% set navbarStyle = theme_var('navbar.style')|defined('dark') %}
-{% if not theme_var('navbar.custom_bgcolor') %}
-	{% set navbarBgcolor = theme_var('navbar.bgcolor')|defined('secondary') ? 'bg-' ~ theme_var('navbar.bgcolor')|defined('secondary') : ''  %}
+{% if theme_var('navbar.use_page_color')|defined(false) %}
+    {# MODE: Use page color for navbar #}
+    {# Set background color based on page color #}
+    {% if not theme_var('navbar.custom_bgcolor') %}
+        {% set navbarBgcolor = 'bg-' ~ color_style %}
+    {% endif %}
+    {# Automatically adjust text style based on color #}
+    {% set navbarStyle = color_style in light_colors ? 'light' : 'dark' %}
+{% else %}
+    {# MODE: Use fixed theme configuration (original behavior) #}
+    {% set navbarStyle = theme_var('navbar.style')|defined('light') %}
+    {% if not theme_var('navbar.custom_bgcolor') %}
+        {% set navbarBgcolor = theme_var('navbar.bgcolor')|defined('secondary') ? 'bg-' ~ theme_var('navbar.bgcolor')|defined('secondary') : '' %}
+    {% endif %}
 {% endif %}
 
 {% set navbarIconGroup = theme_var('navbar.icon_group')|defined('fas') %}
