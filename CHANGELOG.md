@@ -1,5 +1,5 @@
-# v2.1.0
-# 09/25/2025
+# 2.1.0
+## 09/25/2025
 
 1.  [](#improved)
     * **Asset Management**: Replaced `file_exists()` method with `$grav['locator']->findResource()` for better stream compatibility and custom assets detection
@@ -7,7 +7,7 @@
     * **Twig Templates**: Updated output filtering practices following security best practices
     * **Template Structure**: Moved avatar and author display to blog-specific templates for clearer content type separation
 
-# v2.0.0
+# 2.0.0
 ## 09/15/2025
 
 1.  [](#new)
@@ -61,7 +61,7 @@
     * Changed size of firs-letter class to avoid overflow in notices
     * Prepared for Grav 1.8
 
-# v1.3.1
+# 1.3.1
 ## 05/16/2024
 
 1.  [](#new)
@@ -70,7 +70,7 @@
     * Fixed no summary data on `thankyou` page [#14](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/14)
     * Fixed `alert-light` color in theme.css [#15](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/15)
   
-# v1.3.0
+# 1.3.0
 ## 04/24/2024
 
 1.  [](#improved)
@@ -78,7 +78,7 @@
     * Updated contact page in demo content
     * Added Shortcode-core to dependencies in theme blueprints
   
-# v1.2.1
+# 1.2.1
 ## 04/21/2024
 
 1.  [](#new)
@@ -89,7 +89,7 @@
     * Updated `taxonomylist` partial template to latest changes of [taxonomylist plugin](https://github.com/getgrav/grav-plugin-taxonomylist/releases/tag/1.3.6)
     * Improved design of partial templates for categories and related pages.
   
-# v1.2.0
+# 1.2.0
 ## 03/22/2024
 
 1.  [](#new)
@@ -99,7 +99,7 @@
 3.  [](#bugfix)
     * Fixed `featuredposts_tag` in base and allstories templates
 
-# v1.1.0
+# 1.1.0
 ## 03/17/2024
 
 1.  [](#new)
@@ -108,7 +108,7 @@
 2.  [](#improved)
     * Fixed translation for "Read article" in Sticky template (issue [#5](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/5))
   
-# v1.0.1
+# 1.0.1
 ## 12/31/2023
 
 1.  [](#new)
@@ -116,7 +116,7 @@
 2.  [](#bugfix)
     * Fixed menu options (issue [#1](https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues/1))
   
-# v1.0.0
+# 1.0.0
 ## 12/22/2023
 
 1.  [](#new)
