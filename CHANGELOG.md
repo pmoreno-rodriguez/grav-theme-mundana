@@ -1,3 +1,12 @@
+# v2.1.0
+# 09/25/2025
+
+1.  [](#improved)
+    * **Asset Management**: Replaced `file_exists()` method with `$grav['locator']->findResource()` for better stream compatibility and custom assets detection
+    * **WordCount Extension**: Complete rewrite with internationalization support and modern Twig standards
+    * **Twig Templates**: Updated output filtering practices following security best practices
+    * **Template Structure**: Moved avatar and author display to blog-specific templates for clearer content type separation
+
 # v2.0.0
 ## 09/15/2025
 
