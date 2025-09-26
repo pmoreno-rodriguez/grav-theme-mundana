@@ -1,77 +1,89 @@
+{# ===========================================
+   SEO & META TEMPLATE
+   =========================================== #}
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+{# -------------------------
+   Title
+   ------------------------- #}
 {% if meta_title %}
 <title>{{ meta_title }}</title>
 <meta itemprop="name" content="{{ meta_title }}">
 <meta property="og:title" content="{{ meta_title }}">
-<meta property="twitter:title" content="{{ meta_title }}">
+<meta name="twitter:title" content="{{ meta_title }}">
 {% endif %}
 
-{# URLs #}
+{# -------------------------
+   Canonical & URLs
+   ------------------------- #}
 {% if canonical_url %}
 <link rel="canonical" href="{{ canonical_url }}">
 <meta property="og:url" content="{{ canonical_url }}">
-<meta property="twitter:url" content="{{ canonical_url }}">
+<meta name="twitter:url" content="{{ canonical_url }}">
 {% endif %}
 
-{# Site Description #}
+{# -------------------------
+   Description
+   ------------------------- #}
 {% if meta_description %}
-<meta name="description" content="{{ meta_description|raw }}">
-<meta property="og:description" content="{{ meta_description|raw }}">
-<meta property="twitter:description" content="{{ meta_description|raw }}">
-<meta itemprop="description" content="{{ meta_description|raw }}">
+<meta name="description" content="{{ meta_description|striptags|trim }}">
+<meta property="og:description" content="{{ meta_description|striptags|trim }}">
+<meta name="twitter:description" content="{{ meta_description|striptags|trim }}">
+<meta itemprop="description" content="{{ meta_description|striptags|trim }}">
 {% endif %}
 
-{# Date Published #}
-{% set datePublished = include('partials/page/date.html.twig') %}
-
-{# Featured image #}
-{% set featured_image = page.media[page.header.featuredImage] ?: page.media.all|filter((v, k) => k != page.header.author.avatarImage and (v.type == 'image' or v.type == 'vector'))|first %}
-{% if featured_image %}
+{# -------------------------
+   Featured Image
+   ------------------------- #}
+{% if featuredImage %}
 <meta property="og:image" content="{{ featuredImage.url|e }}">
-<meta property="twitter:image" content="{{ featuredImage.url|e }}">
+<meta name="twitter:image" content="{{ featuredImage.url|e }}">
 <meta itemprop="image" content="{{ featuredImage.url|e }}">
 {% endif %}
 
-{# Social Media Type #}
+{# -------------------------
+   Social Media Defaults
+   ------------------------- #}
 <meta property="og:type" content="website">
-<meta property="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">
 
-{# Basic Schema.org json #}
-{% block javascripts %}
-  {% do assets.addInlineJs('
-      {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "' ~ canonical_url ~ '"
-        },
-        "headline": "' ~ page_title|raw ~ '",
-        "image": {
-            "@type": "ImageObject",
-            "url": "' ~ canonical_url ~ '/' ~ page.header.featuredImage ~ '"
-        },
-        "datePublished": "' ~ datePublished ~ '",
-        "inLanguage": "' ~ lang ~ '",
-        "wordCount": "' ~ page.content|wordcount ~ '",
-        "author": {
-            "@type": "Person",
-            "name": "' ~ author|raw ~ '",
-            "description": "' ~ author_bio|raw ~ '",
-            "url": "' ~ author_twitter ~ '"
-        },
-        "description": "' ~ meta_description|raw ~ '"
-      }', {group:'bottom', type: 'application/ld+json'}) %}
-  {% endblock %}
+{# -------------------------
+   Structured Data (JSON-LD)
+   ------------------------- #}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonical_url
+  },
+  "headline": page_title,
+  "image": featuredImage ? featuredImage.url : '',
+  "datePublished": page.date|date('c'),
+  "inLanguage": lang,
+  "wordCount": page.content|wordcount,
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "description": author_bio,
+    "url": author_twitter
+  },
+  "description": meta_description
+} | json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES')) | raw }}
+</script>
 
-{# Load Site and Page Specific Metadata Overloads #}
+{# -------------------------
+ Custom metadata only (excludes common duplicates)
+ ------------------------- #}
 {% for meta in page.metadata %}
-<meta {% if meta.name %}name="{{ meta.name|e }}" {% endif %}
-{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv|e }}" {% endif %}
-{% if meta.charset %}charset="{{ meta.charset|e }}" {% endif %}
-{% if meta.property %}property="{{ meta.property|e }}" {% endif %}
-{% if meta.content %}content="{{ meta.content|raw }}" {% endif %}>
+    {% if meta.name and meta.name not in ['description', 'generator', 'viewport', 'author', 'keywords'] %}
+<meta name="{{ meta.name|e }}" content="{{ meta.content|e }}">
+    {% elseif meta.http_equiv and meta.http_equiv != 'X-UA-Compatible' %}
+<meta http-equiv="{{ meta.http_equiv|e }}" content="{{ meta.content|e }}">
+    {% elseif meta.property and meta.property not in ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'] %}
+<meta property="{{ meta.property|e }}" content="{{ meta.content|e }}">
+    {% endif %}
 {% endfor %}

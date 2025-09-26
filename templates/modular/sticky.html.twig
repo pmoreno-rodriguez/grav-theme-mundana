@@ -10,7 +10,7 @@
 
 {% if page_title and show_title %}
 	<h4 class="font-weight-bold spanborder">
-		<span>{{ page_title|e('html') }}</span>
+		<span>{{ page_title|e }}</span>
 	</h4>
 	{% endif %}
 	{% if page.content is not empty %}
@@ -27,11 +27,11 @@
 		<div class="pr-0 h-100 tofront">
 			<div class="row justify-content-between">
 				<div class="col-md-6 {% if is_even %}order-md-2{% endif %} pt-6 pb-6 pl-lg-4 pr-lg-4 align-self-center">
-					<h2 class="mb-3 h1">{{post.title|e('html')}}</h2>
+					<h2 class="mb-3 h1">{{post.title|e}}</h2>
 					<div class="mb-3 lead">
 						{{ post.summary|striptags|raw }}
 					</div>
-					<a href="{{post.url}}" class="btn btn-{{ color_style }}" title="{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }} {{post.title|raw}}" role="button" aria-label="{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }} {{post.title|raw}}">{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }}</a>
+					<a href="{{post.url}}" class="btn btn-{{ color_style }}" title="{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }} {{post.title|e('html_attr')}}" role="button" aria-label="{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }} {{post.title|e('html_attr')}}">{{ 'MUNDANA.BLOG.READ_ARTICLE'|t }}</a>
 				</div>
 				{% if (blog_image ?? null) %}
 					<div class="col-md-6 {% if is_even %}order-md-1{% endif %} pr-0" style="background-size:cover;background-image:url({{ blog_image.url }});"></div>

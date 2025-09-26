@@ -13,7 +13,7 @@
 			{% if logo_enabled and logo %}
 				{% set logo_file = (logo|first).name %}
 				<div class="mr-3">
-					<img class="align-self-center w_logo" src="{{ url('theme://images/logo/' ~ logo_file) }}" alt="{{ site.title|raw }}" >
+					<img class="align-self-center w_logo" src="{{ url('theme://images/logo/' ~ logo_file) }}" alt="{{ site.title|e }}" >
 				</div>
 			{% endif %}
 
@@ -29,7 +29,7 @@
 				{# Show site name if enabled in theme options #}
 				{% if navbarSiteName %}
 					<div>
-						<strong>{{site.title|raw}}</strong>
+						<strong>{{site.title|e}}</strong>
 					</div>
 				{% endif %}
 			{% endif %}

@@ -10,12 +10,14 @@
 {# Navigation menu #}
 <ul class="navbar-nav mx-auto d-flex align-items-center">
 {% for page in pages.children.visible %}
-{% set icon_menu = page.header.icon_menu is defined ? '<i class="' ~ page.header.icon_menu ~ '"></i>' : '' %}
+{% set icon_menu = page.header.icon_menu is defined ? page.header.icon_menu : '' %}
     {% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
         {% if dropdown and page.children.visible.count > 0 %}
             <li class="nav-item dropdown {{ current_page }}">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ icon_menu|raw }}
+                    {% if icon_menu %}
+                    <i class="{{ icon_menu|e('html_attr') }}"></i>
+                    {% endif %}
                     {{page.menu}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -28,7 +30,9 @@
         {% else %}
         <li class="nav-item {{ current_page }}">
             <a class="nav-link" href="{{ page.url }}">
-                {{ icon_menu|raw }}
+                {% if icon_menu %}
+                    <i class="{{ icon_menu|e('html_attr') }}"></i>
+                {% endif %}
                 {{ page.menu }}
             </a>
         </li>
@@ -40,11 +44,11 @@
 {% if c_menu_enabled %}
     {% for c_item in c_menu_items %}
         <li class="nav-item">
-            <a href="{{ c_item.url }}" target="{{ c_item.target }}" class="nav-link">
+            <a href="{{ c_item.url|e }}" target="{{ c_item.target }}" class="nav-link">
                 {% if c_item.icon %}
-                    <i class="{{ c_item.icon }}"></i>
+                    <i class="{{ c_item.icon|e('html_attr') }}"></i>
                 {% endif %}
-                <span>{{ c_item.text }}</span>
+                <span>{{ c_item.text|e }}</span>
             </a>
         </li>
     {% endfor %}

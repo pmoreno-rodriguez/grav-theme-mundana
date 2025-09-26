@@ -25,14 +25,14 @@
 
         <div class="col-8">
             <span class="font-weight-bold">
-                <a class="text-dark" href="{{ related.url }}" title="{{ related_title }}" rel="nofollow">{{ related_title }}</a>
+                <a class="text-dark" href="{{ related.url }}" title="{{ related_title|e('html_attr') }}" rel="nofollow">{{ related_title|e }}</a>
             </span>
             
             {% if related.taxonomy.category %}
             <small class="d-block text-muted">
                 {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                 {% for category in related.taxonomy.category %}
-                    <a class="text-capitalize text-muted smoothscroll" href="{{ base_url }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                    <a class="text-capitalize text-muted smoothscroll" href="{{ base_url }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
                 {% endfor %}
                 </span>
             </small>

@@ -5,15 +5,16 @@
     <div class="h-100 tofront">
         <div class="row {{ (featuredImage and show_image) ? 'justify-content-between' : 'justify-content-center' }}">
             <div class="{{ (featuredImage and show_image) ? 'col-md-8' : 'col-md-12'}} pr-0 pr-md-4 pt-4 pb-4 align-self-center">
-                <h1 class="display-4 mb-4 article-headline">{{ page_title|raw }}</h1>
-                {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
+                <h1 class="display-4 mb-4 article-headline">{{ page_title|e }}</h1>
+                {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|markdown }}</p>{% endif %}
                 <div class="d-flex align-items-center">
-                    {% if avatar %}
+                     {# Avatar and author fields moved to blog templates only for better content separation #}
+                    {# {% if avatar %}
                         {% include 'partials/blog/avatar.html.twig' with {'avatar_width': 60} %}
-                    {% endif %}
+                    {% endif %} #}
                     <small class="ml-3">
-                        {% if author %}<span>{{ author|raw }}</span>{% endif %}
-                        {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">Follow</a></span>{% endif %}
+                        {# {% if author %}<span>{{ author|raw }}</span>{% endif %}
+                        {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">Follow</a></span>{% endif %} #}
                         {% include 'partials/blog/date.html.twig' %}
                         {% if config.plugins.readingtime.enabled %}
                             {% include 'partials/blog/readingtime.html.twig' %}
@@ -29,7 +30,7 @@
                 .attribute('height', img_height)
                 .derivatives(320,672,320)
 			    .sizes('(max-width: 768px) 100vw, 50vw')
-                .html(page_title|raw, page_title|raw,'w-100 h-auto rounded')|raw }}
+                .html(page_title, page_title,'w-100 h-auto rounded')|raw }}
             </div>
             {% endif %}
         </div>

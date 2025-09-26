@@ -4,7 +4,7 @@
 
     <div class="container mt-5">
         <h3 class="font-weight-bold spanborder"><span>{{ page_title|raw }}</span></h3>
-        {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|raw }}</p>{% endif %}
+        {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|markdown }}</p>{% endif %}
         <div class="row">
             {% if page.header.address is not empty %}
                 <!-- Left column with icon list -->
@@ -17,7 +17,7 @@
                             .attribute('height', '504')
                             .derivatives(320,672,320)
                             .sizes('(max-width: 768px) 100vw, 50vw')
-                            .html(page_title|raw, page_title|raw,'h-auto w-100 card-img-top')|raw }}
+                            .html(page_title, page_title,'h-auto w-100 card-img-top')|raw }}
                         {% endif %}
                         <div class="card-body">
                             <h4 class="card-title px-4">{{ 'MUNDANA.CONTACT.ADDRESS'|t }}</h4>
@@ -26,9 +26,9 @@
                                     {% if item.addressField ?? null %}
                                         <li class="list-group-item border-0">
                                             {% if item.fieldIcon ?? null %}
-                                                <span><i class="{{ item.fieldIcon }}"></i></span>
+                                                <span><i class="{{ item.fieldIcon|e('html_attr') }}"></i></span>
                                             {% endif %}
-                                            <span class="pl-2">{{ item.addressField|raw }}</span>
+                                            <span class="pl-2">{{ item.addressField|e }}</span>
                                         </li>
                                     {% endif %}
                                 {% endfor %}

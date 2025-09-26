@@ -24,7 +24,7 @@
 		{% block item %}
 			{% if page_title and show_title %}
 				<h2 class="h3 font-weight-bold spanborder">
-					<span>{{ page_title|e('html') }}</span>
+					<span>{{ page_title|e }}</span>
 				</h2>
 			{% endif %}
 			{% if page.content is not empty %}

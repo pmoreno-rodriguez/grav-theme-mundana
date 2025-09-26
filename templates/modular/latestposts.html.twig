@@ -10,7 +10,7 @@
 
 {% if page_title and show_title %}
 <h4 class="font-weight-bold spanborder">
-    <span>{{ page_title|e('html') }}</span>
+    <span>{{ page_title|e }}</span>
 </h4>
 {% endif %}
 {% if page.content is not empty %}
@@ -28,20 +28,20 @@
     <div class="col-md-6">
     <div class="card border-0 mb-4 box-shadow"> 
     {% if (blog_image ?? null) %}  
-    <a href="{{post.url}}" title="{{post.title}}" aria-label="{{post.title|e('html')}}">
+    <a href="{{post.url}}" title="{{post.title|e('html_attr')}}" aria-label="{{post.title|e('html_attr') }}">
     <div class="topfirstimage rounded" style="background-image: url({{ blog_image.url}}); height: 200px;background-size: cover;    background-repeat: no-repeat;"></div>     
     </a>
     {% endif %}
     <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
     <h2 class="h4 font-weight-bold">
-    <a class="text-dark" href="{{post.url}}">{{ post.title|e('html') }}</a>
+    <a class="text-dark" href="{{post.url}}">{{ post.title|e }}</a>
     </h2>
     {% include 'partials/blog/page-summary.html.twig' with {'page': post} %}
     <div>
         <small class="d-block text-muted">
             {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                 {% for category in post.taxonomy.category %}
-                    <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category }}</a><span class="sep">, </span>
+                    <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a><span class="sep">, </span>
                 {% endfor %}
                 </span>                   
         </small>
@@ -62,7 +62,7 @@
         <div class="mb-3 d-flex align-items-center">                
                 {% if (blog_image ?? null) %}
                 <div class="col-md-4">
-                <a href="{{post.url}}" title="{{ post_title }}" aria-label="{{ post_title|e('html') }}">
+                <a href="{{post.url}}" title="{{ post_title }}" aria-label="{{ post_title|e }}">
                     {{ blog_image.loading('lazy')
                         .attribute('decoding','async')
                         .attribute('width', img_width)
@@ -75,12 +75,12 @@
                 {% endif %}                
                 <div class="col-md-8">
                     <h3 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{post.url}}">{{ post_title }}</a>
+                    <a class="text-dark" href="{{post.url}}">{{ post_title|e }}</a>
                     </h3>
                     <small class="d-block text-muted">
                         {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                          {% for category in post.taxonomy.category %}
-                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category }}</a><span class="sep">, </span>
+                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a><span class="sep">, </span>
                         {% endfor %}
                         </span>                   
                     </small>

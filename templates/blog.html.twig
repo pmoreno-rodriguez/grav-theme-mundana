@@ -21,9 +21,9 @@
 {% embed 'partials/layout.html.twig' with { blog: page } %}
     {% block item %}
         <h2 class="font-weight-bold title h3 text-uppercase mb-4 spanborder">
-        <span>{{ titleFiltered|e('html') }}</span>
+        <span>{{ titleFiltered|e }}</span>
         </h2>
-        {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ subtitle|raw }}</p>{% endif %}
+        {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ subtitle|markdown }}</p>{% endif %}
         
         {# isFirstItem is used to pass loading attribute to blog list #}
         {# Loading the first item as "eager" in the blog list greatly improves page speed #}

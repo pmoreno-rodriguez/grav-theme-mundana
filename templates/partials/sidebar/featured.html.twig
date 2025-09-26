@@ -12,13 +12,13 @@
             <li class="mb-4">
                 <span>
                     <span class="font-weight-bold h6">
-                        <a href="{{ p.url }}" class="text-dark">{{ p.title|raw }}</a>
+                        <a href="{{ p.url }}" class="text-dark">{{ p.title|e }}</a>
                     </span>
                     <span class="d-block text-muted">
                         {{ 'MUNDANA.MISC.IN'|t }}
                         <span class="catlist">
                             {% for category in p.taxonomy.category %}
-                                <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>
+                                <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>
                                 <span class="sep">,	</span>
                             {% endfor %}
                         </span>

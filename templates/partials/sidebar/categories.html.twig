@@ -48,13 +48,13 @@
                 {% endif %}
                 <div class="col-8">
                     <span class="font-weight-bold text-uppercase">
-                        <a href="{{ blog.url ~ '/category:' ~ term }}" class="text-{{ color_style }}">{{ term|raw }}</a>
+                        <a href="{{ blog.url ~ '/category:' ~ term|e('url') }}" class="text-{{ color_style }}">{{ term|e }}</a>
                     </span>
                     <small class="d-block text-muted">
-                        <a href="{{ blog.url ~ '/category:' ~ term }}">
+                        <a href="{{ blog.url ~ '/category:' ~ term|e('url') }}">
                             <span class="text-muted mt-1">{{ catItemsCounts[term] }}
                                 {{ 'MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t }}
-                                {{ term|capitalize|raw }}</span>
+                                {{ term|capitalize|e }}</span>
                         </a>
                     </small>
                 </div>

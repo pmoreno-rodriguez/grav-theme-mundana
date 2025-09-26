@@ -8,15 +8,15 @@
         <div>
             <div class="d-flex flex-column">
                 <div>
-                    <span class="navbar-brand mr-2 mb-0"><strong>{{ site.title|raw}}</strong></span>
+                    <span class="navbar-brand mr-2 mb-0"><strong>{{ site.title|e}}</strong></span>
                 </div>
                 <div>
-                    {{ footerTextLeft|markdown|replace({'<p>': '', '</p>': ''})|raw }} 
+                    {{ footerTextLeft|markdown(false) }} 
                 </div>
             </div>
         </div>
         <div>
-            {{ footerTextRight|markdown|replace({'<p>': '', '</p>': ''})|raw }}
+            {{ footerTextRight|markdown(false) }}
         </div>
     </div>
     </div>

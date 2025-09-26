@@ -2,7 +2,7 @@
 	<div class="col-12 order-2 order-md-1 mt-4 mt-sm-0 col-sm-8">
 		{# Page post title #}
 		<{{title_level}} class="font-weight-bold mb-1">
-		<a class="text-dark" href="{{page.url}}">{{ page_title|e('html_attr') }}</a>
+		<a class="text-dark" href="{{page.url}}">{{ page_title|e }}</a>
 		</{{title_level}}>
 		{# If summary is enabled it will displayed #}
 		{% if page.header.summary.enabled ?? true %}
@@ -12,7 +12,7 @@
 		<small class="d-block text-muted">
 			{{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
 			{% for category in page.taxonomy.category %}
-				<a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+				<a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
 			{% endfor %}
 			</span>
 		</small>
@@ -31,7 +31,7 @@
             .attribute('height', '318')
 			.derivatives(320,424,320)
 			.sizes('(max-width: 768px) 100vw, 50vw')
-			.html(page_title|e('html'), page_title|e('html'),'w-100 h-auto rounded')|raw }}
+			.html(page_title, page_title,'w-100 h-auto rounded')|raw }}
 		</a>
 	</div>
 	{% endif %}

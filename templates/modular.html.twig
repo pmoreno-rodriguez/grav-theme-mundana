@@ -14,11 +14,11 @@
             {% if theme_var('custommenu_enabled') %}
             {% for mitem in theme_var('custommenu') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ mitem.url }}" target="{{ mitem.target }}">
+                    <a class="nav-link" href="{{ mitem.url|e }}" target="{{ mitem.target }}">
                         {% if mitem.icon %}
-                            <i class="fa fa-{{ mitem.icon }}"></i>
+                            <i class="fa fa-{{ mitem.icon|e('html_attr') }}"></i>
                         {% endif %}
-                        {{ mitem.text }}</span>
+                        {{ mitem.text|e }}</span>
                     </a>
                 </li>
             {% endfor %}

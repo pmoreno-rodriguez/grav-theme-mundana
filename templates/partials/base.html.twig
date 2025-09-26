@@ -1,14 +1,14 @@
 {% set version = (grav.theme.getBlueprint()).get('version') %}
 <!--
-    Original Mundana Theme from Jekyll is licensed under MIT,
-	designed & developed by Sal @wowthemes.net
+Original Mundana Theme from Jekyll is licensed under MIT,
+designed & developed by Sal @wowthemes.net
 
-	Ported to Grav CMS by Pedro Moreno
-	https://github.com/pmoreno-rodriguez/grav-theme-mundana
+Ported to Grav CMS by Pedro Moreno
+https://github.com/pmoreno-rodriguez/grav-theme-mundana
 
-	{% if version %}
-      Grav theme version: v{{ version }}
-  	{% endif %} 
+{% if version %}
+	Grav theme version: v{{ version }}
+{% endif %} 
 -->
 {% apply spaceless %}
 
@@ -20,10 +20,10 @@
 
 {# Tile settings #}
 {% set page_title = page.title %}
-{% set site_title = site.title|e('html') %}
+{% set site_title = site.title %}
 {% set page_subtitle = page.header.subtitle %}
 {% set classLead = page.header.subtitleLead|defined(true) ? 'lead' : '' %}
-{% set meta_title = page_title is defined ? page_title|e ~ ' | ' ~ site_title : site_title %}
+{% set meta_title = page_title is defined ? page_title ~ ' | ' ~ site_title : site_title %}
 
 {# Canonical URL #}
 {% set canonical_url = page.url(true, true) %}
@@ -40,9 +40,9 @@
 
 {# Description #}
 {% if not page.home() %}
-	{% set meta_description = page.summary|striptags|trim %}
+	{% set meta_description = page.summary %}
 {% elseif site.metadata.description %}
-  	{% set meta_description = site.metadata.description|striptags|trim %}
+  	{% set meta_description = site.metadata.description %}
 {% else %}
   	{% set meta_description = site_title %}
 {% endif %}

@@ -13,7 +13,7 @@
     {% if related %}
     <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
         <div class="card border-0">
-            <a href="{{ related.url }}" arial-label="{{ related_title|e('html') }}">
+            <a href="{{ related.url }}" arial-label="{{ related_title|e('html_attr') }}">
                 {{ related_image.loading('lazy')
                 .decoding('async')
                 .attribute('width', img_width)
@@ -25,7 +25,7 @@
 
             <div class="card-body">
                 <a href="{{ related.url }}" class="text-dark">
-                <h2 class="h5">{{ related_title|e('html') }}</h2>
+                <h2 class="h5">{{ related_title|e }}</h2>
                 </a>
                 <div class="small mt-auto">
                 <span class="author-meta">
@@ -38,7 +38,7 @@
                         {% endif %}
                         {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                         {% for category in related.taxonomy.category %}
-                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category }}">{{ category|e('html') }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
                         {% endfor %}
                     </span>
                     <div>
