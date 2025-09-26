@@ -26,7 +26,6 @@ class Mundana extends Theme
     public static function getSubscribedEvents()
     {
         return [
-            'onThemeInitialized'  => ['onThemeInitialized', 0],
             'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
             'onTwigInitialized' => ['onTwigInitialized', 0],
@@ -35,28 +34,25 @@ class Mundana extends Theme
     }
 
     /**
-    * Register custom CSS or JavaScript assets
-    **/ 
+     * Register custom CSS or JavaScript assets
+     **/
     public function onTwigSiteVariables()
     {
-        $activeTheme = $this->config->get('system.pages.theme');
-        $themePath   = GRAV_ROOT . "/user/themes/" . $activeTheme;
-
+        // Get active theme dynamically
+        $activeTheme = $this->grav['theme']->name;
         $themeConfig = $this->config->get("themes.$activeTheme");
-
-        if (!empty($themeConfig['custom_css']) && file_exists($themePath . '/assets/css/custom.css')) {
-            $this->grav['assets']->addCss("theme://assets/css/custom.css", ['priority' => 10]);
-        }
-
-        if (!empty($themeConfig['custom_js']) && file_exists($themePath . '/assets/js/custom.js')) {
-            $this->grav['assets']->addJs("theme://assets/js/custom.js", ['group' => 'bottom', 'priority' => 15]);
-        }
-    }
-    
-    public function onThemeInitialized()
-    {
         
-
+        // Register custom CSS
+        $custom_css_path = $this->grav['locator']->findResource('theme://assets/css/custom.css');
+        if (isset($themeConfig['custom_css']) && $themeConfig['custom_css'] && $custom_css_path) {
+            $this->grav['assets']->addCss('theme://assets/css/custom.css', ['priority' => 10]);
+        }
+        
+        // Register custom JavaScript
+        $custom_js_path = $this->grav['locator']->findResource('theme://assets/js/custom.js');
+        if (isset($themeConfig['custom_js']) && $themeConfig['custom_js'] && $custom_js_path) {
+            $this->grav['assets']->addJs('theme://assets/js/custom.js', ['group' => 'bottom', 'priority' => 15]);
+        }
     }
 
     /**
@@ -101,13 +97,9 @@ class Mundana extends Theme
             'form_field_radio_classes' => 'custom-control-input',
             'form_field_checkbox_classes' => 'custom-control-input',
             'form_label_checkbox_classes' => 'custom-control-label'
-
         ];
 
         $twig->twig_vars = array_merge($twig->twig_vars, $form_class_variables);
-
-        
-
     }
 
     public function onTwigExtensions()
