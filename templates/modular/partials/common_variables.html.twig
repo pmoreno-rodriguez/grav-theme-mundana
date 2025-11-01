@@ -1,0 +1,9 @@
+{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
+{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
+{% set collection = blog.collection().order('date', 'desc') %}
+{% set page_title = page.title %}
+{% set show_title = page.header.show_title|defined(false) %}
+{% set override_style = theme_var('override_page_style')|defined(false) %}
+{% set color_style = override_style ? theme_var('default_page_style')|default('primary') : page.parent.header.style|defined('primary') %}
+
+{% block module_content %}{% endblock %}
