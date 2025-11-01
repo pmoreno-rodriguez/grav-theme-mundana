@@ -1,3 +1,12 @@
+# 2.2.0
+## 11/01/2025
+
+1.  [](#improved)
+    * Removed [WordCount](https://learn.getgrav.org/17/themes/twig-tags-filters-functions/filters#wordcount) custom filter from theme (now part of Grav core)
+    * Moved dependencies from required to recommended during theme installation
+    * Added global Twig variables in `common_variables.html.twig` for consistent theming
+    * Standardized Twig template formatting using [CS fixer tool](https://github.com/VincentLanglet/Twig-CS-Fixer)
+
 # 2.1.0
 ## 09/25/2025
 

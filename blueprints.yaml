@@ -1,7 +1,7 @@
 name: Mundana
 slug: mundana
 type: theme
-version: 2.1.0
+version: 2.2.0
 description: Mundana Jekyll Theme ported to Grav
 icon:  microchip
 author:
@@ -10,16 +10,13 @@ author:
   url: 
 homepage: https://github.com/pmoreno-rodriguez/grav-theme-mundana
 demo: https://mundana.pmdesign.dev/
+docs: https://github.com/pmoreno-rodriguez/grav-theme-mundana/blob/main/README.md
 keywords: theme, core, modern, fast, responsive, html5, css3
 bugs: https://github.com/pmoreno-rodriguez/grav-theme-mundana/issues
 license: MIT
 
 dependencies:
-  - { name: grav, version: '>=1.7.8' }
-  - pagination
-  - simplesearch
-  - taxonomylist
-  - shortcode-core
+  - { name: grav, version: '>=1.7.50' }
 
 form:
   validation: loose
