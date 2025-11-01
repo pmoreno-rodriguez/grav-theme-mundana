@@ -18,7 +18,7 @@
                     {% if icon_menu %}
                     <i class="{{ icon_menu|e('html_attr') }}"></i>
                     {% endif %}
-                    {{page.menu}}
+                    {{ page.menu }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for child in page.children.visible %}
@@ -37,7 +37,7 @@
             </a>
         </li>
         {% endif %}
-        
+
 {% endfor %}
 
 {# Custom menu links #}
@@ -60,7 +60,7 @@
     {% if not grav.user.authenticated %}
         <a class="nav-link" href="{{ base_url }}/login"><b>{{ 'MUNDANA.MISC.LOGIN_LABEL'|t }}</b></a>
     {% else %}
-        {% include 'partials/login-status.html.twig' %}
+        {{ include('partials/login-status.html.twig') }}
     {% endif %}
 </li>
 {% endif %}
@@ -68,6 +68,5 @@
 
 {# Langswitcher (If langswitcher plugin is installed) #}
 {% if config.plugins.langswitcher.enabled and menu_lang and system.languages.supported is not null %}
-    {% include 'partials/langswitcher.html.twig' %}
+    {{ include('partials/langswitcher.html.twig') }}
 {% endif %}
-

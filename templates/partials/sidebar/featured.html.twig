@@ -1,6 +1,6 @@
 {# FEATURED SECTION - SIDEBAR #}
 
-{% set featured_posts = page.evaluate({'@taxonomy.tag':featuredposts_tag}).order('date', 'desc').slice(0,featuredposts_number) %}
+{% set featured_posts = page.evaluate({'@taxonomy.tag': featuredposts_tag}).order('date', 'desc').slice(0, featuredposts_number) %}
 
 {% if featured_posts.count() > 0 %}
 <div class="sidebar-content my-5">
@@ -19,7 +19,7 @@
                         <span class="catlist">
                             {% for category in p.taxonomy.category %}
                                 <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>
-                                <span class="sep">,	</span>
+                                <span class="sep">,    </span>
                             {% endfor %}
                         </span>
                     </span>

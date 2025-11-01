@@ -7,13 +7,12 @@ Ported to Grav CMS by Pedro Moreno
 https://github.com/pmoreno-rodriguez/grav-theme-mundana
 
 {% if version %}
-	Grav theme version: v{{ version }}
-{% endif %} 
+    Grav theme version: v{{ version }}
+{% endif %}
 -->
 {% apply spaceless %}
 
 {% set theme_config = attribute(config.themes, config.system.pages.theme) %}
-
 
 {# SET DEFAULT GRAV LANGUAGE #}
 {% set lang = grav.language.getActive ?: grav.config.site.default_lang %}
@@ -23,7 +22,6 @@ https://github.com/pmoreno-rodriguez/grav-theme-mundana
 {% set site_title = site.title %}
 {% set page_subtitle = page.header.subtitle %}
 {% set classLead = page.header.subtitleLead|defined(true) ? 'lead' : '' %}
-{% set meta_title = page_title is defined ? page_title ~ ' | ' ~ site_title : site_title %}
 
 {# Canonical URL #}
 {% set canonical_url = page.url(true, true) %}
@@ -35,16 +33,7 @@ https://github.com/pmoreno-rodriguez/grav-theme-mundana
 
 {# Set Avatar image #}
 {% if author %}
-    {% set avatar = page.media[page.header.author.avatarImage]  %}
-{% endif %}
-
-{# Description #}
-{% if not page.home() %}
-	{% set meta_description = page.summary %}
-{% elseif site.metadata.description %}
-  	{% set meta_description = site.metadata.description %}
-{% else %}
-  	{% set meta_description = site_title %}
+    {% set avatar = page.media[page.header.author.avatarImage] %}
 {% endif %}
 
 {# Style classes to apply to the body #}
@@ -55,14 +44,14 @@ https://github.com/pmoreno-rodriguez/grav-theme-mundana
 
 {# Styles defined in theme #}
 {% set override_style = theme_var('override_page_style')|defined(false) %}
-{% set hover_color_mapping = {	
-	'primary':'#007bff', 
-	'secondary': '#6c757d', 
-	'success': '#28a745', 
-	'info': '#17a2b8', 
-	'warning': '#ffc107', 
-	'danger': '#dc3545', 
-	'dark': '#0a0c0d'
+{% set hover_color_mapping = {
+    primary: '#007bff',
+    secondary: '#6c757d',
+    success: '#28a745',
+    info: '#17a2b8',
+    warning: '#ffc107',
+    danger: '#dc3545',
+    dark: '#0a0c0d',
 } %}
 
 {# Set page color style #}
@@ -113,9 +102,9 @@ https://github.com/pmoreno-rodriguez/grav-theme-mundana
 {% set share = theme_var('share_enable')|defined(false) %}
 
 {# Sidebar Settings #}
-{% set showRelatedPages = config.plugins.relatedpages.enabled and related_pages|length > 0 and theme_var('sidebar_showrelatedpages')|defined(true)%}
+{% set showRelatedPages = config.plugins.relatedpages.enabled and related_pages|length > 0 and theme_var('sidebar_showrelatedpages')|defined(true) %}
 {% set showTaxonomyList = config.plugins.taxonomylist.enabled and theme_var('sidebar_showtaxonomy')|defined(true) %}
-{% set random = config.plugins.random.enabled  and theme_var('sidebar_showrandom')|defined(true) %}
+{% set random = config.plugins.random.enabled and theme_var('sidebar_showrandom')|defined(true) %}
 {% set archives = config.plugins.archives.enabled and theme_var('sidebar_showarchives')|defined(true) %}
 {% set feeds = config.plugins.feed.enabled and theme_var('sidebar_showfeeds')|defined(true) %}
 {% set show_featured = header_var('show_featured')|defined(true) %}
@@ -134,45 +123,45 @@ https://github.com/pmoreno-rodriguez/grav-theme-mundana
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="{{ lang }}">
 
-	{% block head %}
-		{% include 'partials/head.html.twig' %}
-	{% endblock %}
+    {% block head %}
+        {{ include('partials/head.html.twig') }}
+    {% endblock %}
 
-	<body class="{% block body_classes %}{{ body_classes }}{% endblock %}">
+    <body class="{% block body_classes %}{{ body_classes }}{% endblock %}">
 
-		{% block navbar %}
-			<!-- Navbar -->
-			{% include 'partials/navbar.html.twig' %}
-		{% endblock %}
+        {% block navbar %}
+            <!-- Navbar -->
+            {{ include('partials/navbar.html.twig') }}
+        {% endblock %}
 
-		{% block main %}
-			<!-- Content -->
-			<main class="site-content">
-				<div class="{{ containerClass }}">
+        {% block main %}
+            <!-- Content -->
+            <main class="site-content">
+                <div class="{{ containerClass }}">
 
-					{# System messages block #}
-					{% block messages %}
-						{% include 'partials/messages.html.twig' ignore missing %}
-					{% endblock %}
+                    {# System messages block #}
+                    {% block messages %}
+                        {{ include('partials/messages.html.twig', [], true, true) }}
+                    {% endblock %}
 
-					{% block content %}{% endblock %}
-				</div>
-			</main>
-		{% endblock %}
+                    {% block content %}{% endblock %}
+                </div>
+            </main>
+        {% endblock %}
 
-		{% block footer %}
-			{% include 'partials/footer.html.twig' %}
-		{% endblock %}
+        {% block footer %}
+            {{ include('partials/footer.html.twig') }}
+        {% endblock %}
 
-		{% include 'partials/page/backtotop.html.twig' %}
+        {{ include('partials/page/backtotop.html.twig') }}
 
-		{% block bottom %}
-			<!-- Scripts: popper, bootstrap, theme, -->
-			{{ assets.js('bottom')|raw }}
-		{% endblock %}
+        {% block bottom %}
+            <!-- Scripts: popper, bootstrap, theme, -->
+            {{ assets.js('bottom')|raw }}
+        {% endblock %}
 
-		{% include 'partials/tracking-footer.html.twig' %}
+        {{ include('partials/tracking-footer.html.twig') }}
 
-	</body>
+    </body>
 
 </html>

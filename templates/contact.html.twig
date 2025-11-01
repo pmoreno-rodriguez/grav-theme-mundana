@@ -15,9 +15,9 @@
                             .decoding('async')
                             .attribute('width', '672')
                             .attribute('height', '504')
-                            .derivatives(320,672,320)
+                            .derivatives(320, 672, 320)
                             .sizes('(max-width: 768px) 100vw, 50vw')
-                            .html(page_title, page_title,'h-auto w-100 card-img-top')|raw }}
+                            .html(page_title, page_title, 'h-auto w-100 card-img-top')|raw }}
                         {% endif %}
                         <div class="card-body">
                             <h4 class="card-title px-4">{{ 'MUNDANA.CONTACT.ADDRESS'|t }}</h4>
@@ -42,8 +42,8 @@
                 <!-- Right column with the form (occupying 12 columns) -->
                 <div class="col-12 py-3">
             {% endif %}
-                {% include "forms/form.html.twig" with { form: forms('contact-form')} %}
-            </div> 
+                {{ include('forms/form.html.twig', {form: forms('contact-form')}) }}
+            </div>
         </div>
-    </div>  
+    </div>
 {% endblock %}

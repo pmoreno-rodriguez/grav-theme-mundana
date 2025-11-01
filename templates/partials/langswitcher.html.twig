@@ -10,6 +10,6 @@
 
 {% block language_item %}
     {% if show_language %}
-    <li class="nav-item"><a href="{{ lang_url ~ uri.params ~ (uri.query|length > 1 ? '?' ~ uri.query) }}" class="nav-link external {{ active_class }}">{% include 'partials/langswitcher-' ~ display_format ~ '.html.twig' %}</a></li>
+    <li class="nav-item"><a href="{{ lang_url ~ uri.params ~ (uri.query|length > 1 ? '?' ~ uri.query) }}" class="nav-link external {{ active_class }}">{{ include('partials/langswitcher-' ~ display_format ~ '.html.twig') }}</a></li>
     {% endif %}
 {% endblock %}

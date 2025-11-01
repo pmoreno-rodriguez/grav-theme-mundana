@@ -8,11 +8,12 @@
 {# -------------------------
    Title
    ------------------------- #}
+{% set meta_title = page_title is defined ? page_title ~ ' | ' ~ site_title : site_title %}
 {% if meta_title %}
-<title>{{ meta_title }}</title>
-<meta itemprop="name" content="{{ meta_title }}">
-<meta property="og:title" content="{{ meta_title }}">
-<meta name="twitter:title" content="{{ meta_title }}">
+<title>{{ meta_title|e }}</title>
+<meta itemprop="name" content="{{ meta_title|e }}">
+<meta property="og:title" content="{{ meta_title|e }}">
+<meta name="twitter:title" content="{{ meta_title|e }}">
 {% endif %}
 
 {# -------------------------
@@ -27,20 +28,25 @@
 {# -------------------------
    Description
    ------------------------- #}
+{% set meta_description = (not page.home() and page.summary)
+    ? page.summary
+    : (site.metadata.description ?: site_title) %}
 {% if meta_description %}
-<meta name="description" content="{{ meta_description|striptags|trim }}">
-<meta property="og:description" content="{{ meta_description|striptags|trim }}">
-<meta name="twitter:description" content="{{ meta_description|striptags|trim }}">
-<meta itemprop="description" content="{{ meta_description|striptags|trim }}">
+{% set clean_description = meta_description|striptags|trim %}
+<meta name="description" content="{{ clean_description|e }}">
+<meta property="og:description" content="{{ clean_description|e }}">
+<meta name="twitter:description" content="{{ clean_description|e }}">
+<meta itemprop="description" content="{{ clean_description|e }}">
 {% endif %}
 
 {# -------------------------
    Featured Image
    ------------------------- #}
 {% if featuredImage %}
-<meta property="og:image" content="{{ featuredImage.url|e }}">
-<meta name="twitter:image" content="{{ featuredImage.url|e }}">
-<meta itemprop="image" content="{{ featuredImage.url|e }}">
+{% set featuredImage_url = url(featuredImage.url, true) %}
+<meta property="og:image" content="{{ featuredImage_url }}">
+<meta name="twitter:image" content="{{ featuredImage_url }}">
+<meta itemprop="image" content="{{ featuredImage_url }}">
 {% endif %}
 
 {# -------------------------
@@ -54,25 +60,25 @@
    ------------------------- #}
 <script type="application/ld+json">
 {{ {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": canonical_url
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonical_url,
   },
-  "headline": page_title,
-  "image": featuredImage ? featuredImage.url : '',
-  "datePublished": page.date|date('c'),
-  "inLanguage": lang,
-  "wordCount": page.content|wordcount,
-  "author": {
-    "@type": "Person",
-    "name": author,
-    "description": author_bio,
-    "url": author_twitter
+  headline: meta_title|e,
+  image: featuredImage ? url(featuredImage.url, true) : '',
+  datePublished: page.date|date('c'),
+  inLanguage: lang,
+  wordCount: page.content|wordcount,
+  author: {
+    '@type': 'Person',
+    name: author,
+    description: author_bio,
+    url: author_twitter,
   },
-  "description": meta_description
-} | json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES')) | raw }}
+  description: clean_description,
+}|json_encode(constant('JSON_UNESCAPED_UNICODE') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
 </script>
 
 {# -------------------------

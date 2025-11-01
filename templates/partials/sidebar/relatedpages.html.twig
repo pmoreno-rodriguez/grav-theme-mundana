@@ -4,7 +4,7 @@
     <h3 class="h4 font-weight-bold spanborder">
         <span>{{ block_title }}</span>
     </h3>
-    
+
     {% for related_path, score in related_pages %}
     {% set related = grav['pages'].get(related_path) %}
     {% set related_title = related.title %}
@@ -17,8 +17,8 @@
         <div class="col-4">
             {{ related_image.loading('lazy')
             .decoding('async')
-            .attribute('width','100')
-            .attribute('height','60')
+            .attribute('width', '100')
+            .attribute('height', '60')
             .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
         </div>
         {% endif %}
@@ -27,7 +27,7 @@
             <span class="font-weight-bold">
                 <a class="text-dark" href="{{ related.url }}" title="{{ related_title|e('html_attr') }}" rel="nofollow">{{ related_title|e }}</a>
             </span>
-            
+
             {% if related.taxonomy.category %}
             <small class="d-block text-muted">
                 {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">

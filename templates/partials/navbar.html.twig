@@ -6,53 +6,53 @@
 {% set menu_search = theme_var('menu_search')|defined(true) %}
 
 {# Navigation bar #}
-<nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-{{navbarStyle}} fixed-top {{ navbarBgcolor }} navbarCustomStyles"  >
-	<div class="{{navbarContainer}}">
-		<a class="navbar-brand" href="{{ home_url }}">
-			{# Show logo if enabled in theme options #}
-			{% if logo_enabled and logo %}
-				{% set logo_file = (logo|first).name %}
-				<div class="mr-3">
-					<img class="align-self-center w_logo" src="{{ url('theme://images/logo/' ~ logo_file) }}" alt="{{ site.title|e }}" >
-				</div>
-			{% endif %}
+<nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-{{ navbarStyle }} fixed-top {{ navbarBgcolor }} navbarCustomStyles"  >
+    <div class="{{ navbarContainer }}">
+        <a class="navbar-brand" href="{{ home_url }}">
+            {# Show logo if enabled in theme options #}
+            {% if logo_enabled and logo %}
+                {% set logo_file = (logo|first).name %}
+                <div class="mr-3">
+                    <img class="align-self-center w_logo" src="{{ url('theme://images/logo/' ~ logo_file) }}" alt="{{ site.title|e }}" >
+                </div>
+            {% endif %}
 
-			{% if navbarSiteName or navbarIcon %}
+            {% if navbarSiteName or navbarIcon %}
 
-				{# If the navigation bar icon is on and the logo is off, it will be displayed next to the site title #}
-				{% if navbarIcon and logo_enabled == false %}
-					<div>
-						<i class="{{ navbarIconGroup }} fa-{{ navbarIcon }} {{ navbarIconSize }} pr-1"></i>
-					</div>
-				{% endif %}
+                {# If the navigation bar icon is on and the logo is off, it will be displayed next to the site title #}
+                {% if navbarIcon and logo_enabled == false %}
+                    <div>
+                        <i class="{{ navbarIconGroup }} fa-{{ navbarIcon }} {{ navbarIconSize }} pr-1"></i>
+                    </div>
+                {% endif %}
 
-				{# Show site name if enabled in theme options #}
-				{% if navbarSiteName %}
-					<div>
-						<strong>{{site.title|e}}</strong>
-					</div>
-				{% endif %}
-			{% endif %}
-		</a>
+                {# Show site name if enabled in theme options #}
+                {% if navbarSiteName %}
+                    <div>
+                        <strong>{{ site.title|e }}</strong>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </a>
 
-		{# Toggle navigation #}
-		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<div class="navbar-collapse collapse" id="navbarColor02">
-			{# Navigation menu #}
-			{% block navigation %}
-				{% include 'partials/navigation.html.twig' %}
-			{% endblock %}
-			{# Searchbox (If simplesearch plugin is installed) #}
-			{% if config.plugins.simplesearch.enabled and menu_search %}
-				<ul class="navbar-nav mx-auto d-flex align-items-center">
-					{% set buttonSearchColor = theme.navbar.custom_bgcolor ?: theme.navbar.bgcolor|defined('secondary')  %}
-					{% set iconSearchColor = 'text-' ~ (navbarStyle == 'dark' ? 'light' : 'dark') %}
-					<li>{% include 'partials/simplesearch_searchbox.html.twig' with { buttonSearchColor, iconSearchColor } %}</li>
-				</ul>
-			{% endif %}
-		</div>
-	</div>
+        {# Toggle navigation #}
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            {# Navigation menu #}
+            {% block navigation %}
+                {{ include('partials/navigation.html.twig') }}
+            {% endblock %}
+            {# Searchbox (If simplesearch plugin is installed) #}
+            {% if config.plugins.simplesearch.enabled and menu_search %}
+                <ul class="navbar-nav mx-auto d-flex align-items-center">
+                    {% set buttonSearchColor = theme.navbar.custom_bgcolor ?: theme.navbar.bgcolor|defined('secondary') %}
+                    {% set iconSearchColor = 'text-' ~ (navbarStyle == 'dark' ? 'light' : 'dark') %}
+                    <li>{{ include('partials/simplesearch_searchbox.html.twig', {buttonSearchColor: buttonSearchColor, iconSearchColor: iconSearchColor}) }}</li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
 </nav>

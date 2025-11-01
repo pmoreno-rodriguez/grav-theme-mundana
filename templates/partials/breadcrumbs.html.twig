@@ -11,7 +11,7 @@
             {% for crumb in crumbs %}
                 {% set active = loop.last ? 'active' : '' %}
                 {% set arialabel = loop.last ? 'aria-current=page' : '' %}
-                <li class="breadcrumb-item {{ active }}" {{ arialabel}}>
+                <li class="breadcrumb-item {{ active }}" {{ arialabel }}>
                     {%- if not loop.last or config.plugins.breadcrumbs.link_trailing -%}
                         <a href="{{ crumb.url }}" class="text-{{ color_style }}">{{ crumb.menu }}</a>
                     {%- else -%}

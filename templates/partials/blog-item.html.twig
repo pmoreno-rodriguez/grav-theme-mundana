@@ -17,26 +17,26 @@
                     {% endfor %}
                     </span>
                 </p>
-                <{{title_level}} class="display-4 mb-4 article-headline">{{ page_title|e }}</{{title_level}}>
+                <{{ title_level }} class="display-4 mb-4 article-headline">{{ page_title|e }}</{{ title_level }}>
                 {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|markdown }}</p>{% endif %}
                 {# If summary is enabled it will displayed #}
                 {% if page.header.summary.enabled ?? true and show_summary ?? true %}
-                    {% include 'partials/blog/page-summary.html.twig' %}
+                    {{ include('partials/blog/page-summary.html.twig') }}
                 {% endif %}
                 <div class="d-flex align-items-center">
                     {# Show avatar image if it's defined #}
                     {% if avatar %}
-                        {% include 'partials/blog/avatar.html.twig' with {'avatar_width': 60} %}
+                        {{ include('partials/blog/avatar.html.twig', {avatar_width: 60}) }}
                     {% endif %}
                     {# Show author if it's defined #}
                     <small class="ml-3">
                         {% if author %}<span>{{ author|titleize|e }}</span>{% endif %}
                         {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">{{ 'MUNDANA.MISC.FOLLOW'|t }}</a></span>{% endif %}
                         {# Show post date #}
-                        {% include 'partials/blog/date.html.twig' %}
+                        {{ include('partials/blog/date.html.twig') }}
                         {# Show post read time if the Reading Time plugin is enabled #}
                         {% if config.plugins.readingtime.enabled %}
-                            {% include 'partials/blog/readingtime.html.twig' %}
+                            {{ include('partials/blog/readingtime.html.twig') }}
                         {% endif %}
                     </small>
                 </div>
@@ -48,8 +48,8 @@
                 .decoding('async')
                 .attribute('width', img_width)
                 .attribute('height', img_height)
-                .derivatives(320,672,320).sizes('(max-width: 768px) 100vw, 50vw')
-                .html(page_title, page_title,'w-100 h-auto rounded')|raw }}
+                .derivatives(320, 672, 320).sizes('(max-width: 768px) 100vw, 50vw')
+                .html(page_title, page_title, 'w-100 h-auto rounded')|raw }}
             </div>
             {% endif %}
         </div>
@@ -57,16 +57,16 @@
 </div>
 <!-- Blog Item Content -->
 <div class="{{ sidebarClasses }}">
-	<div class="row justify-content-center">
+    <div class="row justify-content-center">
         {# Show share buttons if they are defined #}
         {% if share %}
-            {% include 'partials/blog/share.html.twig' %}
+            {{ include('partials/blog/share.html.twig') }}
         {% endif %}
-		<div class="{{ shareClasses }}">
+        <div class="{{ shareClasses }}">
             <!-- Article -->
-			<article class="article-post">                
-			    {{ page.content|raw }}                
-			</article>
+            <article class="article-post">
+                {{ page.content|raw }}
+            </article>
             <!-- Tags -->
             <div class="mb-4">
                 <span class="taglist">
@@ -76,22 +76,22 @@
                 </span>
             </div>
             {% if mailchimp is same as(true) %}
-                {% include 'partials/blog/mailchimp.html.twig' %}
+                {{ include('partials/blog/mailchimp.html.twig') }}
             {% endif %}
-            {% if author %}				
-                {% include 'partials/blog/author.html.twig' %}
+            {% if author %}
+                {{ include('partials/blog/author.html.twig') }}
             {% endif %}
             {% if disqus is same as(true) and disqus_name is not empty %}
-                {% include 'partials/blog/disqus.html.twig' with { 'short_name': disqus_name } %}
+                {{ include('partials/blog/disqus.html.twig', {short_name: disqus_name}) }}
             {% endif %}
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 
 {# Show related pages at the bottom of the page if they are disabled in the sidebar #}
 {% if not show_sidebar and showRelatedPages %}
-    {% include 'partials/blog/relatedpages.html.twig' with { 'block_title': 'MUNDANA.SIDEBAR.RELATEDPAGES'|t } %}
+    {{ include('partials/blog/relatedpages.html.twig', {block_title: 'MUNDANA.SIDEBAR.RELATEDPAGES'|t}) }}
 {% endif %}
 
 <!-- Alertbar Prev/Next -->
-{% include 'partials/blog/footer_pagination.html.twig' %}
+{{ include('partials/blog/footer_pagination.html.twig') }}

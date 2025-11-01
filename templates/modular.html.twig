@@ -25,15 +25,15 @@
             {% endif %}
             </ul>
         {% else %}
-            {% include 'partials/navigation.html.twig' %}
+            {{ include('partials/navigation.html.twig') }}
         {% endif %}
-    {% endblock %}   
+    {% endblock %}
 {% endembed %}
 {% endblock %}
 {% block content %}
 
     {{ page.content|raw }}
-    
+
     {% for module in page.collection() %}
         {% if show_onpage_menu == true %}
             <div id="{{ module.menu|hyphenize }}"></div>

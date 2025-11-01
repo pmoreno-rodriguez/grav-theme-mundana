@@ -9,13 +9,12 @@
     </h3>
     <div class="mb-4">
         <span class="taglist">
-        {% for tax,value in taxlist[taxonomy] %}
+        {% for tax, value in taxlist[taxonomy] %}
             {% if value is not empty %}
             <a class="mb-1 btn btn-outline-{{ color_style }} btn-sm" href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax|e }}</a>
-        {% endif %} 
+        {% endif %}
         {% endfor %}
         </span>
     </div>
 
 {% endif %}
-

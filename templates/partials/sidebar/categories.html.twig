@@ -15,34 +15,34 @@
             {% endif %}
         {% endfor %}
     {% endfor %}
-    
+
     {% set catItemsCounts = [] %}
     {% for item in published_posts %}
         {% for cat in item.taxonomy.category %}
             {% set catItemsCounts = catItemsCounts|merge({(cat): (catItemsCounts[cat]|default(0)) + 1}) %}
         {% endfor %}
     {% endfor %}
-    
+
     {% for term in terms %}
         {# Only show categories that have published posts #}
         {% if catItemsCounts[term] is defined and catItemsCounts[term] > 0 %}
             {% set blog_image = null %}
-            {% set category_posts = taxonomy.findTaxonomy({'category' : term}).published(true).order('date', 'desc') %}
-            
+            {% set category_posts = taxonomy.findTaxonomy({category: term}).published(true).order('date', 'desc') %}
+
             {# Check that the category collection is not empty before using random #}
             {% if category_posts|length > 0 %}
                 {% for p in category_posts.random(1) %}
                     {% set blog_image = p.media.images[p.header.featuredImage] ?: p.media.images|filter((v, k) => k != p.header.author.avatarImage)|first %}
                 {% endfor %}
             {% endif %}
-            
+
             <div class="row align-items-center py-2">
                 {% if blog_image %}
                 <div class="col-4">
                     {{ blog_image.loading('lazy')
                         .decoding('async')
-                        .attribute('width','100')
-                        .attribute('height','60')
+                        .attribute('width', '100')
+                        .attribute('height', '60')
                         .html(('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, ('MUNDANA.SIDEBAR.CATEGORIES.POSTS_IN'|t|capitalize) ~ ' ' ~ term|raw, 'w-100 h-auto mr-2 rounded')|raw }}
                 </div>
                 {% endif %}

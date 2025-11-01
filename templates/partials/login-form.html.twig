@@ -10,7 +10,7 @@
     <div class="row d-flex align-items-center justify-content-center">
         {% if featuredImage and show_image %}
         <div class="col-md-4">
-            {{ featuredImage.decoding('async').html(page_title|raw, page_title|raw,'')|raw }}
+            {{ featuredImage.decoding('async').html(page_title|raw, page_title|raw, '')|raw }}
         </div>
         {% endif %}
         {% set user = grav.user %}
@@ -20,7 +20,7 @@
             <a class="btn btn-danger" href="{{ uri.addNonce(base_url_relative ~ uri.path ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce')|e }}">{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}</a>
 
         {% elseif user.authenticated and user.twofa_enabled %}
-            {% include 'partials/login-twofa.html.twig' %}
+            {{ include('partials/login-twofa.html.twig') }}
 
         {% else %}
         <div class="col-md-6">
@@ -28,7 +28,7 @@
 
             {# NEW WAY OF INCLUDING 3RD PARTY LOGIN OPTIONS #}
             {% for template in grav.login.getProviderLoginTemplates %}
-                {% include template %}
+                {{ include(template) }}
             {% endfor %}
 
             <form method="post" action="{{ (base_url_relative ~ uri.path)|e }}" class="{{ form_outer_classes }}">
@@ -36,7 +36,7 @@
                 {# OLD WAY OF INCLUDING 3RD PARTY LOGIN OPTIONS #}
                 {% if grav.twig.plugins_hooked_loginPage %}
                     {% for label in grav.twig.plugins_hooked_loginPage %}
-                        {% include label %}
+                        {{ include(label) }}
                     {% endfor %}
                 {% endif %}
 
@@ -47,7 +47,7 @@
                       {# {% set value = form.value(field.name) %} #}
                       {% set field_templates = include_form_field(field.type, field_layout) %}
                       {% block field %}
-                        {% include field_templates ignore missing %}
+                        {{ include(field_templates, [], true, true) }}
                       {% endblock %}
                     {% endif %}
                 {% endfor %}
@@ -68,7 +68,7 @@
 
                 </div>
 
-                <button class="btn btn-{{color_style}} btn-lg btn-block" type="submit" name="task" value="login.login"><i class="fa fa-sign-in"></i> {{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}</button>
+                <button class="btn btn-{{ color_style }} btn-lg btn-block" type="submit" name="task" value="login.login"><i class="fa fa-sign-in"></i> {{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}</button>
 
                 {{ nonce_field('login-form', 'login-form-nonce')|raw }}
             </form>

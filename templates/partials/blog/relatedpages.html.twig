@@ -5,7 +5,7 @@
     <span>{{ block_title }}</span>
 </h4>
 <div class="row justify-content-between my-3">
-    {% for related_path, score in related_pages|slice(0,3) %}
+    {% for related_path, score in related_pages|slice(0, 3) %}
     {% set related = grav['pages'].get(related_path) %}
     {% set related_title = related.title %}
     {% set related_author = related.header.author.name ?? related.taxonomy.author[0] %}
@@ -18,7 +18,7 @@
                 .decoding('async')
                 .attribute('width', img_width)
                 .attribute('height', img_height)
-                .derivatives(320,672,320)
+                .derivatives(320, 672, 320)
                 .sizes('(max-width: 768px) 100vw, 50vw')
                 .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
             </a>
@@ -42,11 +42,11 @@
                         {% endfor %}
                     </span>
                     <div>
-                        <span class="post-date text-muted"> 
-                            {% include 'partials/blog/date.html.twig' with {'page': related} %}
+                        <span class="post-date text-muted">
+                            {{ include('partials/blog/date.html.twig', {page: related}) }}
                         </span>
                         {% if config.plugins.readingtime.enabled %}
-                            {% include 'partials/blog/readingtime.html.twig' with {'page': related} %}
+                            {{ include('partials/blog/readingtime.html.twig', {page: related}) }}
                         {% endif %}
                     </div>
                 </span>

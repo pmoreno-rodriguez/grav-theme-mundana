@@ -1,4 +1,4 @@
-{% extends "forms/field.html.twig" %}
+{% extends 'forms/field.html.twig' %}
 
 {% block label %}
 {% endblock %}
@@ -24,7 +24,7 @@
                 {% if required %}required="required"{% endif %}
                 {% if field.tabindex %}tabindex="{{ field.tabindex }}"{% endif %}
                 {% if field.attributes is defined %}
-                  {% for key,attribute in field.attributes %}
+                  {% for key, attribute in field.attributes %}
                     {% if attribute|of_type('array') %}
                       {{ attribute.name }}="{{ attribute.value|e('html_attr') }}"
                     {% else %}

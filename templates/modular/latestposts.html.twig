@@ -1,94 +1,92 @@
 {# MODULAR PAGE - LATEST POSTS #}
 
-{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
-{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
-{% set collection = blog.collection().order('date', 'desc') %}
-{% set page_title = page.title %}
-{% set show_title = page.header.show_title|defined(false) %}
-{% set override_style = theme_var('override_page_style')|defined(false) %}
-{% set color_style = override_style ? theme_var('default_page_style')|default('primary') : page.parent.header.style|defined('primary') %}
+{% embed 'modular/partials/common_variables.html.twig' %}
+    {% block module_content %}
 
-{% if page_title and show_title %}
-<h4 class="font-weight-bold spanborder">
-    <span>{{ page_title|e }}</span>
-</h4>
-{% endif %}
-{% if page.content is not empty %}
-<div class="page-content">
-    {{ page.content|raw }}
-</div>
-{% endif %}
-
-<!-- Begin post excerpts, let's highlight the first 4 posts on top -->
-
-<div class="row my-5">
-    <!-- latest post -->
-    {% for post in collection.slice(0, 1) %}
-    {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
-    <div class="col-md-6">
-    <div class="card border-0 mb-4 box-shadow"> 
-    {% if (blog_image ?? null) %}  
-    <a href="{{post.url}}" title="{{post.title|e('html_attr')}}" aria-label="{{post.title|e('html_attr') }}">
-    <div class="topfirstimage rounded" style="background-image: url({{ blog_image.url}}); height: 200px;background-size: cover;    background-repeat: no-repeat;"></div>     
-    </a>
+    {% if page_title and show_title %}
+    <h4 class="font-weight-bold spanborder">
+        <span>{{ page_title|e }}</span>
+    </h4>
     {% endif %}
-    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
-    <h2 class="h4 font-weight-bold">
-    <a class="text-dark" href="{{post.url}}">{{ post.title|e }}</a>
-    </h2>
-    {% include 'partials/blog/page-summary.html.twig' with {'page': post} %}
-    <div>
-        <small class="d-block text-muted">
-            {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
-                {% for category in post.taxonomy.category %}
-                    <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a><span class="sep">, </span>
-                {% endfor %}
-                </span>                   
-        </small>
-        <small class="d-block text-muted">
-            {% include 'partials/blog/date.html.twig' with { 'page': post } %}
-        </small>
+    {% if page.content is not empty %}
+    <div class="page-content">
+        {{ page.content|raw }}
     </div>
-    </div>
-    </div>
-    </div>
-    {% endfor %}
-    
-    <div class="col-md-6">
-        {% for post in blog.children.published(true).order('date', 'desc').slice(1, 3) %}
-        {% set post_title = post.title %}
+    {% endif %}
+
+    <!-- Begin post excerpts, let's highlight the first 4 posts on top -->
+
+    <div class="row my-5">
+        <!-- latest post -->
+        {% for post in collection.slice(0, 1) %}
         {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
-              
-        <div class="mb-3 d-flex align-items-center">                
-                {% if (blog_image ?? null) %}
-                <div class="col-md-4">
-                <a href="{{post.url}}" title="{{ post_title }}" aria-label="{{ post_title|e }}">
-                    {{ blog_image.loading('lazy')
-                        .attribute('decoding','async')
-                        .attribute('width', img_width)
-                        .attribute('height', img_height)
-                        .derivatives(320,672,320)
-                        .sizes('(max-width: 768px) 100vw, 50vw')
-                        .html(post_title, post_title,'w-100 h-auto rounded')|raw }}
-                </a>
-                </div>
-                {% endif %}                
-                <div class="col-md-8">
-                    <h3 class="mb-2 h6 font-weight-bold">
-                    <a class="text-dark" href="{{post.url}}">{{ post_title|e }}</a>
-                    </h3>
-                    <small class="d-block text-muted">
-                        {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
-                         {% for category in post.taxonomy.category %}
-                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a><span class="sep">, </span>
-                        {% endfor %}
-                        </span>                   
-                    </small>
-                    <small class="d-block text-muted">
-                        {% include 'partials/blog/date.html.twig' with { 'page': post } %}
-                    </small>
-                </div>
-            </div>
+        <div class="col-md-6">
+        <div class="card border-0 mb-4 box-shadow">
+        {% if (blog_image ?? null) %}
+        <a href="{{ post.url }}" title="{{ post.title|e('html_attr') }}" aria-label="{{ post.title|e('html_attr') }}">
+        <div class="topfirstimage rounded" style="background-image: url({{ blog_image.url }}); height: 200px;background-size: cover;    background-repeat: no-repeat;"></div>
+        </a>
+        {% endif %}
+        <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+        <h2 class="h4 font-weight-bold">
+        <a class="text-dark" href="{{ post.url }}">{{ post.title|e }}</a>
+        </h2>
+        {{ include('partials/blog/page-summary.html.twig', {page: post}) }}
+        <div>
+            <small class="d-block text-muted">
+                {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
+                    {% for category in post.taxonomy.category %}
+                        <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a><span class="sep">, </span>
+                    {% endfor %}
+                    </span>
+            </small>
+            <small class="d-block text-muted">
+                {{ include('partials/blog/date.html.twig', {page: post}) }}
+            </small>
+        </div>
+        </div>
+        </div>
+        </div>
         {% endfor %}
-    </div>    
-</div>
+
+        <div class="col-md-6">
+            {% for post in blog.children.published(true).order('date', 'desc').slice(1, 3) %}
+            {% set post_title = post.title %}
+            {% set blog_image = post.media.images[post.header.featuredImage] ?: post.media.images|filter((v, k) => k != post.header.author.avatarImage)|first %}
+
+            <div class="mb-3 d-flex align-items-center">
+                    {% if (blog_image ?? null) %}
+                    <div class="col-md-4">
+                    <a href="{{ post.url }}" title="{{ post_title }}" aria-label="{{ post_title|e }}">
+                        {{ blog_image.loading('lazy')
+                            .attribute('decoding', 'async')
+                            .attribute('width', img_width)
+                            .attribute('height', img_height)
+                            .derivatives(320, 672, 320)
+                            .sizes('(max-width: 768px) 100vw, 50vw')
+                            .html(post_title, post_title, 'w-100 h-auto rounded')|raw }}
+                    </a>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-8">
+                        <h3 class="mb-2 h6 font-weight-bold">
+                        <a class="text-dark" href="{{ post.url }}">{{ post_title|e }}</a>
+                        </h3>
+                        <small class="d-block text-muted">
+                            {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
+                            {% for category in post.taxonomy.category %}
+                                <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a><span class="sep">, </span>
+                            {% endfor %}
+                            </span>
+                        </small>
+                        <small class="d-block text-muted">
+                            {{ include('partials/blog/date.html.twig', {page: post}) }}
+                        </small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endblock %}
+{% endembed %}
