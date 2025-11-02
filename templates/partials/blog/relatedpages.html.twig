@@ -38,7 +38,7 @@
                         {% endif %}
                         {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                         {% for category in related.taxonomy.category %}
-                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
                         {% endfor %}
                     </span>
                     <div>
