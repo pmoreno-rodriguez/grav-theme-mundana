@@ -1,5 +1,8 @@
 {% extends 'partials/base.html.twig' %}
 
+{# Set blog settings #}
+{% set themeBlog = theme_var('blog_route')|defined('/blog') %}
+{% set blog = page.find(header_var('blog_url')|defined(themeBlog)) %}
 {# Set sidebar option for page #}
 {% set show_sidebar = header_var('show_sidebar', [page, blog])|defined(false) %}
 {# Set breadcrumbs option for page #}
@@ -14,7 +17,7 @@
             {{ include('partials/breadcrumbs.html.twig') }}
         {% endif %}
 
-        {{ include('partials/blog-item.html.twig', {title_level: 'h1'}) }}
+        {{ include('partials/blog-item.html.twig', {blog: blog, title_level: 'h1'}) }}
     {% endblock %}
 
     {% block sidebar %}
