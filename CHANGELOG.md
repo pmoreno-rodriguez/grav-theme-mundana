@@ -1,3 +1,10 @@
+# 2.2.1
+## 11/02/2025
+
+1.  [](#bugfix)
+    * **Date Logic**: Updated `date.html.twig` to fix datetime attribute using proper date reference via `rawDate` variable
+    * **URL Formatting**: Improved category links with `rtrim()` for trailing slashes and dynamic separator via `config.system.param_sep`
+
 # 2.2.0
 ## 11/01/2025
 
