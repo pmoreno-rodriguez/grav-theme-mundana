@@ -6,9 +6,11 @@ Mundana theme by Wowthemes, features a clean, minimalistic design, styling for a
 
 ![Mundana_Grav_Theme](readme.jpg)
 
-**If you enjoy this theme, please consider sponsoring:**
+### ❤️ Support This Project
 
-<a href="https://www.buymeacoffee.com/birdydesign" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+If you find this theme useful, consider supporting its development:
+
+[![Donate with PayPal](https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=A2H2GMZDJDKCC)
 
 ## Installation
 
