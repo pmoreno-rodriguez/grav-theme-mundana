@@ -1,3 +1,9 @@
+# v2.2.2
+## 11/11/2025
+
+1. [](#improved)
+   * Downgraded Grav version dependency from 1.7.50 to 1.7.49.5
+
 # 2.2.1
 ## 11/02/2025
 
