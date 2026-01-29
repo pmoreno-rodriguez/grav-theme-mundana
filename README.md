@@ -6,12 +6,6 @@ Mundana theme by Wowthemes, features a clean, minimalistic design, styling for a
 
 ![Mundana_Grav_Theme](readme.jpg)
 
-### ❤️ Support This Project
-
-If you find this theme useful, consider supporting its development:
-
-[![Donate with PayPal](https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=A2H2GMZDJDKCC)
-
 ## Installation
 
 Installing the Mundana theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
@@ -206,3 +200,11 @@ You can read extra documentation of Mundana Theme at [https://pmoreno-rodriguez.
 ## Credits
 
 * Thanks to Sal, from [WowThemes.net](https://www.wowthemes.net/) for develop the Jekyll theme.
+
+## ☕ Support This Project
+If you find this project useful and would like to support its development,
+you can buy me a coffee on Ko-fi:
+
+👉 **[Support me on Ko-fi](https://ko-fi.com/pmoreno)**
+
+Thank you for supporting open-source software! 🙌
