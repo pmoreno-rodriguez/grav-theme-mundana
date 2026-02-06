@@ -35,6 +35,11 @@ class Mundana extends Theme
      **/
     public function onTwigSiteVariables()
     {
+        // Only load theme assets on frontend
+        if ($this->isAdmin()) {
+            return;
+        }
+
         // Get active theme dynamically
         $activeTheme = $this->grav['theme']->name;
         $themeConfig = $this->config->get("themes.$activeTheme");
