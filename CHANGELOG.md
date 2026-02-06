@@ -1,3 +1,11 @@
+# 2.2.3
+## 02/06/2026
+
+1.  [](#improved)
+    * Updated alert colors for `alert-primary` and `alert-white` to improve contrast and differentiation
+2.  [](#bugfix)
+    * Only load `custom.css` and `custom.js` on the frontend (skip Admin)
+
 # v2.2.2
 ## 11/11/2025
 
