@@ -1,0 +1,257 @@
+MUNDANA:
+  ADMIN:
+    THEME:
+      OPTIONS: Ajustes del tema
+      DROPDOWN_MENU: Menú desplegable en barra de navegación
+      PRODUCTION_MODE: Modo producción
+      PRODUCTION_MODE_HELP: Si está activado, MUNDANA rederizará los estilos CSS minificados.
+      BACK_TO_TOP_BUTTON: 'Botón <strong>Volver arriba</strong>'
+      BACK_TO_TOP_BUTTON_HELP: 'Habilita el botón `Volver arriba` cuando se desplaza por la página.'
+      GOOGLE_FONTS_LOCAL: Usar fuentes de Google alojadas localmente
+      FONT_AWESOME_LOCAL: Usar fuentes de Font Awesome alojadas localmente
+      BOOTSTRAP_LOCAL: Usar archivos Bootstrap alojados localmente
+      HEADER_OPTIONS: Opciones de encabezado
+      FAVICON: Elige tu propio favicon
+      FAVICON_DESCRIPTION: Se usará en lugar del favicon predeterminado `theme://images/favicon.png`
+      CUSTOM_LOGO:
+        ENABLED: Habilitar logotipo
+        ENABLED_HELP: Muestra el logo en la barra de navegación si está habilitado.
+        WIDTH: Ancho del logotipo personalizado
+        FILE: Logotipo personalizado
+        DESCRIPTION: Se utilizará en lugar del logotipo predeterminado `theme://images/logo.png`
+        FILE_MOBILE: Logotipo personalizado móvil
+      CUSTOM_CSS: Cargar CSS personalizado
+      CUSTOM_CSS_HELP: Carga los estilos CSS personalizados desde theme://assets/css/custom.css
+      CUSTOM_JS: Cargar JS personalizado
+      CUSTOM_JS_HELP: Carga JS personalizado desde theme://assets/css/custom.js
+      MENU:
+        TITLE: Opciones de menú
+        LANGSWITCHER: Activar Selector de idioma
+        LANGSWITCHER_HELP: Con el plugin Langswitcher activado y la configuración multilingüe en su sitio, puede habilitar o deshabilitar la funcionalidad de seleccionar idioma que aparece en el menú de la barra de navegación.
+        SEARCH: Activar Caja de Búsqueda
+        SEARCH_HELP: Con el plugin SimpleSearch activado, puede habilitar o deshabilitar la caja de búsqueda en el menú de la barra de navegación.
+        LOGIN: Activar Login
+        LOGIN_HELP: Puede habilitar o deshabilitar el icono de inicio de sesión en el menú de la barra de navegación para mostrar el estado de inicio de sesión.
+      PAGE_STYLE:
+        TITLE: Estilos de página
+        LABEL: Estilo de color de página
+        HELP: Seleccione un estilo de color para las páginas.
+        DESCRIPTION: 'Clases de utilidad de color de <a href="https://getbootstrap.com/docs/4.0/utilities/colors/" target="_blank">Bootstrap 4</a>'
+        OVERRIDE_PAGE_STYLE: Anular el estilo de color de la página
+        OVERRIDE_PAGE_STYLE_HELP: Si está habilitado, el color elegido aquí se utilizará para todo el sitio.
+      NAVBAR:
+        OPTIONS: Opciones de la barra de navegación
+        CONTAINER_FLUID: Habilitar contenedor extenso
+        CONTAINER_FLUID_HELP: 'Use .container-fluid para un contenedor de ancho completo, que abarque todo el ancho de la ventana gráfica'
+        HEIGHT: Altura de la barra de navegación
+        DISPLAY_SITE_NAME: Mostrar nombre del sitio
+        DISPLAY_SITE_NAME_HELP: Muestra el nombre de tu sitio desde las opciones de Grav
+        STYLE:
+          LABEL: Estilo de la barra de navegación
+          HELP: "Estilo de color del texto para la barra de navegación. Cuando 'Usar color de página' está activado, esta configuración se calcula automáticamente según el color de la página y esta configuración manual se ignora."
+          LIGHT: Claro
+          DARK: Oscuro
+          USE_PAGE_COLOR: "Usar color de página"
+          USE_PAGE_COLOR_HELP: "Cuando está habilitado, la barra de navegación usará el mismo color que esté configurado para cada página individual. El estilo del texto (claro/oscuro) se ajustará automáticamente según el color elegido."
+        BGCOLOR: "Color por defecto de navbar"
+        BGCOLOR_HELP: "Color de Bootstrap usado para la barra de navegación cuando 'Usar color de página' está desactivado. Si 'Usar color de página' está activado, esta configuración se ignora y la navbar coincidirá con el color individual de cada página."
+        CUSTOM_BGCOLOR: Color de fondo de la barra de navegación personalizado
+        ICON_GROUP: Elegir grupo de iconos
+        ICON_SIZE: Tamaño del icono
+        ICON: Icono de la barra de navegación
+        ICON_HELP: Solo tienes que escribir el nombre del icono. Solo será visible si el logotipo está deshabilitado
+        ICON_DESCRIPTION: 'Mundana utiliza los iconos <a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Fontawesome</a>'
+      CUSTOM_MENU:
+        TITLE: Opciones de menú personalizadas
+        ENABLED:
+          LABEL: 'Mostrar elementos de menú personalizados'
+          HELP: 'Determina si se muestra alguna entrada de menú personalizada definida en la barra de menú.'
+        ITEMS:
+          LABEL: 'Elementos de menú personalizados'
+          TEXT: Texto
+          TEXT_DESCRIPTION: 'Etiqueta de texto para el elemento de menú.'
+          ICON: Icono
+          ICON_DESCRIPTION: '<a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Icono Fontawesome</a> para el elemento de menú.'
+          URL: URL
+          URL_DESCRIPTION: 'URL para el elmento del menú.'
+          TARGET:
+            LABEL: Destino
+            BLANK: 'Abrir en una nueva ventana'
+            PARENT: 'Abierta en el marco principal'
+            TOP: 'Abierto en todo el cuerpo de la ventana.'
+            SELF: 'Abrir en el mismo marco en el que se hizo clic'
+      BLOG:
+        TAB: 'Opciones de blog'
+        SIDEBAR:
+          LABEL: Configuración de la barra lateral
+          SHOW_TAXONOMY: Mostrar Etiquetas Populares
+          SHOW_TAXONOMY_HELP: 'El plugin Taxonomylist debe estar instalado'
+          SHOW_ARCHIVES: Mostrar Archivos
+          SHOW_ARCHIVES_HELP: 'El plugin Archives debe estar instalado'
+          SHOW_RELATED_PAGES: Mostrar Páginas Relacionadas
+          SHOW_RELATED_PAGES_HELP: 'El plugin Related pages debe estar instalado'
+          SHOW_FEEDS: Mostrar Feeds
+          SHOW_FEEDS_HELP: 'El plugin Feeds debe estar instalado'
+          SHOW_RANDOM: Mostrar Publicación Aleatoria
+          SHOW_RANDOM_HELP: 'El plugin Random debe estar instalado'
+        CONFIGURATION:
+          LABEL: Configuración de blog
+          BLOG_ROUTE: Ruta del blog
+          BLOG_ROUTE_HELP: La ruta a la página principal del blog
+          FEATURED_POSTS:
+            LABEL: Mostrar publicaciones destacadas
+            TAG: Etiqueta de publicaciones destacadas
+            TAG_HELP: 'Establezca el nombre en la etiqueta de publicaciones destacadas. Debe incluir este nombre en Opciones -> Taxonomía -> Etiqueta'
+            NUMBER: Número de publicaciones destacadas para mostrar
+            NUMBER_HELP: Número de publicaciones destacadas que se mostrarán en la barra lateral
+      SHARE:
+        TAB: 'Opciones de compartir'
+        SECTION: Configuración de compartir
+        ENABLED: Habilitar la opción Compartir en las publicaciones
+        ICONS: Iconos de compartir
+        ICONS_HELP: 'Escriba solo el nombre del icono (ej, Facebook, Twitter, etc.)'
+        ICONS_DESCRIPTION: Vea los íconos disponibles en <a href="https://www.addtoany.com/share/preferences" target="_blank">AddToAny</a>
+        ICON_NAME: Nombre del icono
+      MAILCHIMP:
+        SECTION: Configuración de Mailchimp
+        ENABLED: Habilitar Mailchimp en publicaciones
+        TITLE: Título de Mailchimp
+        TITLE_HELP: Establece el título de la caja de Mailchimp
+        DESCRIPTION: Descripción de Mailchimp
+        DESCRIPTION_HELP: Establece algún texto descriptivo para la caja de Mailchimp
+        ADDRESS: Dirección de Mailchimp
+      DISQUS:
+        SECTION: Comentarios de Disqus
+        ENABLED: Activar comentarios de Disqus
+        SHORT_NAME: Nombre corto de Disqus
+      FOOTER:
+        TAB: Opciones de pie de página
+        TEXT_RIGHT: Texto del pie de página derecho
+        TEXT_LEFT: Texto del pie de página izquierdo
+        TEXT_RIGHT_HELP: Texto del pie de página situado a la derecha. Soporte para Markdown y HTML
+        TEXT_LEFT_HELP: Texto del pie de página situado a la izquierda. Soporte para Markdown y HTML
+    DEFAULT:
+      CONTENT: Contenido
+      SUBTITLE: Subtítulo
+      SUBTITLE_LEAD: Clase Lead
+      SUBTITLE_LEAD_HELP: Haga que un párrafo se destaque agregando una clase Bootstrap **'<a href="https://getbootstrap.com/docs/4.6/content/typography/#lead" target="_blank">lead</a>'**
+      HEADINGS_SECTION: Opciones de encabezados
+      SHOW_TITLE: Mostrar título
+      SHOW_TITLE_HELP: Muestra u oculta el título de la página
+      IMAGE_OPTIONS: Opciones de imagen
+      FEATURED_IMAGE:
+        LABEL: Imagen destacada
+        HELP: Establece la imagen principal de la página
+        WIDTH: Ancho
+        HEIGHT: Alto
+      SHOW_FEATURED_IMAGE: Mostrar imagen
+      SHOW_FEATURED_IMAGE_HELP: Muestra la imagen destacada si está definida o la primera imagen de la página de medios.
+      PAGE_OPTIONS: Opciones de Página
+      BODY_CLASSES: Clases del body
+      BODY_CLASSES_HELP: Puede crear nuevas clases de CSS para el cuerpo y agregarlas aquí
+      BODY_CLASSES_DESCRIPTION: 'Clases disponibles en el tema Mundana (separadas por espacios):<br />`homefirstpage`'
+      ICON_MENU: Icono de menú
+      ICON_MENU_DESCRIPTION: 'Simplemente escribe el nombre del ícono con el prefijo apropiado. Puedes buscar íconos en `<a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Iconos de Fontawesome</a>`'
+      SETTINGS: Configuración de página
+      STYLES_SECTION: Sección Estilos
+    MODULAR:
+      SHOW_ONPAGE_MENU: Mostrar navegación en sitios de una página
+      SHOW_ONPAGE_MENU_HELP: En sitios de una sola página, agrega un desplazamiento suave al hacer clic en la navegación y selecciona automáticamente los elementos de navegación correctos a medida que se desplaza por las diferentes secciones.
+      ORDER_DIR_HELP: '"desc" o "asc" son valores válidos'
+    BLOG:
+      TAB: Configuración del blog
+      CONFIGURATION:
+        LABEL: Configuración
+        BLOG_ROUTE: Ruta de blog
+        BLOG_ROUTE_HELP: La ruta a la página principal del blog que contiene la configuración "Mostrar..."
+        SHOW_BREADCRUMBS: Mostrar migas de pan
+        SIDEBAR_SETTINGS: Configuración Barra Lateral
+        SHOW_SIDEBAR: Mostrar barra lateral
+        SHOW_FEATURED_POSTS: Mostrar Publicaciones Destacadas
+        SHOW_CATEGORIES: Mostrar Categorías
+      CONTENT:
+        LABEL: Definición de contenido
+        ITEMS:
+          LABEL: Publicaciones
+          LIMIT: Límite de publicaciones
+          ORDER:
+            BY: Ordenar por
+            BY_DATE: Fecha
+            BY_TITLE: Título
+            BY_FOLDER: Carpeta
+            BY_DEFAULT: Por defecto
+            DIR: Sentido
+            DIR_ASC: Ascendente
+            DIR_DESC: Descendente
+          PAGINATION: Paginación
+          URL_TAXONOMY_FILTERS: Filtros de taxonomía de URL
+    ITEM:
+      TAB: Artículo de Blog
+      AUTHOR_OPTIONS:
+        LABEL: Opciones de autor
+        NAME: Nombre del autor
+        AVATAR: Imagen de avatar
+        BIOGRAPHY: Biografía del autor
+        TWITTER: URL de Twitter del autor
+      CONFIGURATION:
+        STICKY: Publicación fija
+        STICKY_HELP: Marca esta publicación para que se muestre como fija
+      CONTENT:
+        SUMMARY:
+          LABEL: Resumen del artículo
+          SHOW: Mostrar resumen en la página
+          SHOW_HELP: Mostrar resumen en la página, debajo del subtítulo. Esto es independiente del resumen en la lista del blog.
+          ENABLED: Activar resumen del artículo
+          FORMAT:
+            LABEL: Formato del resumen
+            SHORT: Utilice la primera aparición de delimitador o tamaño
+            LONG: Se ignorará el delimitador de resumen
+          SIZE: Tamaño
+          DELIMITER: Delimitador de resumen
+    CONTACT:
+      TAB: Opciones de contacto
+      ADDRESS:
+        LABEL: Dirección
+        HELP: Configure su dirección aquí.
+        FIELD: Campo
+        ICON: Icono
+        ICON_DESCRIPTION: 'Simplemente escribe el nombre del ícono con el prefijo apropiado. Puedes buscar íconos en <a href="https://fontawesome.com/v5/search?o=r&f=brands" target="_blank">Íconos de Fontawesome</a>'
+        INSTRUCTIONS: Instrucciones
+  BLOG:
+    LISTING_TITLE_CATEGORY: 'Publicaciones en la categoría: '
+    LISTING_TITLE_TAG: 'Publicaciones con la etiqueta: '
+    LISTING_TITLE_AUTHOR: 'Publicaciones escritas por: '
+    LISTING_TITLE_MONTH: 'Publicaciones del mes: '
+    PAGINATION:
+      PREV: Anterior
+      NEXT: Siguiente
+    READ_ARTICLE: Leer artículo
+    ALL_POSTS: Ver todos los artículos
+  ITEM:
+    POSTED_ON: Publicado el
+    SEE_OTHER_POSTS_OF: Ver otras publicaciones de
+    SEE_OTHER_POSTS_IN: Ver otras publicaciones en
+    WRITTEN_BY: Escrito por
+  CONTACT:
+    ADDRESS: Dirección
+  SIDEBAR:
+    CATEGORIES:
+      LABEL: Categorías
+      POSTS_IN: publicaciones en
+    FEATURED: Destacados
+    TAXONOMYLIST: Etiquetas populares
+    RELATEDPAGES: Páginas relacionadas
+    RANDOM_ARTICLE:
+      LABEL: Publicación Aleatoria
+      BUTTON: Voy a tener suerte!
+    ARCHIVES: Archivos
+    FEEDS: RSS
+  FORM_SUMMARY: Aquí está el resumen de lo que nos escribió.
+  SHARE:
+    MAILCHIMP_SUSCRIBE: Suscribir
+  MISC:
+    IN: en
+    BACK_TO_TOP: Volver arriba
+    LOGIN_LABEL: Acceder
+    SHARE_THIS: Compartir esto
+    FOLLOW: Seguir
