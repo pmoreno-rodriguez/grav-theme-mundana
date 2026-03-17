@@ -1,16 +1,16 @@
 {# RELATED SECTION - SIDEBAR #}
 
 <div class="sidebar-content my-5">
-    <h3 class="h4 font-weight-bold spanborder">
+    <h2 class="h4 font-weight-bold spanborder">
         <span>{{ block_title }}</span>
     </h3>
 
     {% for related_path, score in related_pages %}
     {% set related = grav['pages'].get(related_path) %}
-    {% set related_title = related.title %}
-    {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
 
     {% if related %}
+    {% set related_title = related.title %}
+    {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
     <div class="row align-items-center py-2">
 
         {% if related_image %}
@@ -19,7 +19,7 @@
             .decoding('async')
             .attribute('width', '100')
             .attribute('height', '60')
-            .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
+            .html(related_title|e, related_title|e, 'w-100 h-auto mr-2 rounded')|raw }}
         </div>
         {% endif %}
 
