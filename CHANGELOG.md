@@ -1,3 +1,12 @@
+# 2.3.0
+## 03/17/2026
+
+1.  [](#improved)
+    * Security hardening: systematic escaping, rel attributes for external links, dynamic CSS sanitization, JS defer, refactored category/related loops, JS escaping for Disqus config.
+    * Performance: optimized queries and loops in blog/sidebar partials.
+    * Accessibility: improved heading hierarchy, aria-labels for links, aria-current for active category, alt attributes for images.
+    * Fixed pagination URL construction in pagination.html.twig
+
 # 2.2.3
 ## 02/06/2026
 
@@ -11,14 +20,6 @@
 
 1. [](#improved)
    * Downgraded Grav version dependency from 1.7.50 to 1.7.49.5
-
-# 2.2.1
-## 11/02/2025
-
-1.  [](#bugfix)
-    * fix(date): use `rawDate` variable for correct datetime attribute in `date.html.twig`
-    * fix(categories): improve category links with `rtrim()` and dynamic param separator
-    * fix(item): define `blog` variable in `item.html.twig` for correct partial URLs
 
 # 2.2.0
 ## 11/01/2025
