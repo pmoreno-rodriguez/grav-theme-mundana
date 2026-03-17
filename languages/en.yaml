@@ -237,6 +237,7 @@ MUNDANA:
     CATEGORIES:
       LABEL: Categories
       POSTS_IN: posts in
+      LINK_TO: Link to category
     FEATURED: Featured
     TAXONOMYLIST: Popular Tags
     RELATEDPAGES: Related pages

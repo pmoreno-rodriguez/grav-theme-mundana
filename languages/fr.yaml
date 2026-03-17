@@ -234,11 +234,12 @@ MUNDANA:
     CATEGORIES:
       LABEL: Catégories
       POSTS_IN: Publications dans
+      LINK_TO: Lien vers la catégorie
     FEATURED: En vedette
-    TAXONOMYLIST: Etiquettes populaires
-    RELATEDPAGES: Pages en rlation
+    TAXONOMYLIST: Étiquettes populaires
+    RELATEDPAGES: Pages en relation
     RANDOM_ARTICLE:
-      LABEL: Un article au hazard
+      LABEL: Un article au hasard
       BUTTON: Je vais avoir de la chance !
     ARCHIVES: Archives
     FEEDS: RSS
