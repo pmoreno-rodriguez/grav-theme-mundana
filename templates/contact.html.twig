@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="container mt-5">
-        <h3 class="font-weight-bold spanborder"><span>{{ page_title|raw }}</span></h3>
+        <h3 class="font-weight-bold spanborder"><span>{{ page_title|e }}</span></h3>
         {% if page_subtitle %}<p class="{{ classLead }} font-weight-light">{{ page_subtitle|markdown }}</p>{% endif %}
         <div class="row">
             {% if page.header.address is not empty %}

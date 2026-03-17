@@ -12,7 +12,7 @@
         {% set icon = icon_mapping[scope] %}
 
         <div class="alert alert-{{ type }} {{ scope }} alert-dismissible my-3 p-3 fade show" role="alert">
-          <i class="fas fa-{{ icon }}"></i> {{ message.message|raw }}
+          <i class="fas fa-{{ icon }}"></i> {{ message.message|e }}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

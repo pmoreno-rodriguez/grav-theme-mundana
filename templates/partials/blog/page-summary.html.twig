@@ -2,8 +2,8 @@
 
 <div class="excerpt mb-3 text-body">
     {% if page.summary != page.content %}
-        {{ page.summary|striptags|truncate(header.summary.size)|replace({'&hellip;': ''})|raw }}
+        {{ page.summary|striptags|truncate(header.summary.size)|replace({'&hellip;': ''})|e }}
     {% else %}
-        {{ page.content|striptags|truncate(site.summary.size)|replace({'&hellip;': ''})|raw }}
+        {{ page.content|striptags|truncate(site.summary.size)|replace({'&hellip;': ''})|e }}
     {% endif %}
 </div>

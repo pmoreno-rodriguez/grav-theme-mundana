@@ -3,8 +3,6 @@
 namespace Grav\Theme;
 
 use Grav\Common\Theme;
-use RocketTheme\Toolbox\Event\Event;
-use Grav\Common\Page\Interfaces\PageInterface;
 
 /**
  * Mundana Theme
@@ -53,7 +51,7 @@ class Mundana extends Theme
         // Register custom JavaScript
         $custom_js_path = $this->grav['locator']->findResource('theme://assets/js/custom.js');
         if (isset($themeConfig['custom_js']) && $themeConfig['custom_js'] && $custom_js_path) {
-            $this->grav['assets']->addJs('theme://assets/js/custom.js', ['group' => 'bottom', 'priority' => 15]);
+            $this->grav['assets']->addJs('theme://assets/js/custom.js', ['group' => 'bottom', 'priority' => 15, 'loading' => 'defer']);
         }
     }
 

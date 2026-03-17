@@ -16,7 +16,7 @@
             <span class="search-date">{{ page.date|date(config.system.pages.dateformat.short) }}</span>
         </div>
 
-        <p>{{ page.summary|striptags|raw }}</p>
+        <p>{{ page.summary|striptags|e }}</p>
 
         <hr/>
     </div>

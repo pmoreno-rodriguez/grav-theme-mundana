@@ -11,13 +11,13 @@
                     required
                     placeholder="{{ 'PLUGIN_SIMPLESEARCH.SEARCH_PLACEHOLDER'|t }}"
                     value="{{ query|e }}"
-                    data-search-invalid="{{ 'PLUGIN_SIMPLESEARCH.SEARCH_FIELD_MINIMUM_CHARACTERS'|t(min_chars)|raw }}"
-                    data-search-separator="{{ config.system.param_sep }}"
-                    data-search-input="{{ base_url }}{{ config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route) }}/query"
+                    data-search-invalid="{{ 'PLUGIN_SIMPLESEARCH.SEARCH_FIELD_MINIMUM_CHARACTERS'|t(min_chars)|e('html_attr') }}"
+                    data-search-separator="{{ config.system.param_sep|e('html_attr') }}"
+                    data-search-input="{{ (base_url ~ (config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route)) ~ '/query')|e('html_attr') }}"
                 >
         {% if config.plugins.simplesearch.display_button %}
             <span class="input-group-append rounded-right">
-                <button class="btn btn-{{ buttonSearchColor }}" type="submit"><i class="fas fa-search {{ iconSearchColor }}" ></i></button>
+                <button class="btn btn-{{ buttonSearchColor|e('html_attr') }}" type="submit"><i class="fas fa-search {{ iconSearchColor|e('html_attr') }}" ></i></button>
             </span>
         {% endif %}
         </div>

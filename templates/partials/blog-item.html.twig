@@ -13,7 +13,7 @@
                 <p class="text-uppercase font-weight-bold">
                     <span class="catlist">
                     {% for category in page.taxonomy.category %}
-                        <a class="sscroll text-{{ color_style }}" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category|raw }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                        <a class="sscroll text-{{ color_style|e('html_attr') }}" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|url_encode }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
                     {% endfor %}
                     </span>
                 </p>
@@ -31,7 +31,7 @@
                     {# Show author if it's defined #}
                     <small class="ml-3">
                         {% if author %}<span>{{ author|titleize|e }}</span>{% endif %}
-                        {% if author_twitter %}<span><a target="_blank" href="{{ author_twitter }}" class="btn btn-outline-{{ color_style }} btn-sm btn-round ml-2">{{ 'MUNDANA.MISC.FOLLOW'|t }}</a></span>{% endif %}
+                        {% if author_twitter %}<span><a target="_blank" rel="noopener noreferrer nofollow" href="{{ author_twitter|e('html_attr') }}" class="btn btn-outline-{{ color_style|e('html_attr') }} btn-sm btn-round ml-2">{{ 'MUNDANA.MISC.FOLLOW'|t }}</a></span>{% endif %}
                         {# Show post date #}
                         {{ include('partials/blog/date.html.twig') }}
                         {# Show post read time if the Reading Time plugin is enabled #}
@@ -49,7 +49,7 @@
                 .attribute('width', img_width)
                 .attribute('height', img_height)
                 .derivatives(320, 672, 320).sizes('(max-width: 768px) 100vw, 50vw')
-                .html(page_title, page_title, 'w-100 h-auto rounded')|raw }}
+                .html(page_title|e, page_title|e, 'w-100 h-auto rounded')|raw }}
             </div>
             {% endif %}
         </div>
@@ -71,7 +71,7 @@
             <div class="mb-4">
                 <span class="taglist">
                 {% for tag in page.taxonomy.tag %}
-                    <a class="sscroll btn btn-outline-{{ color_style }} btn-sm font-weight-bold" href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag|raw }}</a>
+                    <a class="sscroll btn btn-outline-{{ color_style|e('html_attr') }} btn-sm font-weight-bold" href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag|url_encode }}">{{ tag|e }}</a>
                 {% endfor %}
                 </span>
             </div>

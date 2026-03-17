@@ -1,27 +1,29 @@
 {# PARTIAL RELATED PAGES #}
 {# Show at the bottom of the page, the Related Pages section if it is disabled show them in the sidebar #}
 
-<h2 class="font-weight-bold spanborder my-5 h4">
+<h2 class="font-weight-bold spanborder my-5">
     <span>{{ block_title }}</span>
-</h4>
+</h2>
 <div class="row justify-content-between my-3">
     {% for related_path, score in related_pages|slice(0, 3) %}
     {% set related = grav['pages'].get(related_path) %}
+    {% if related %}
     {% set related_title = related.title %}
     {% set related_author = related.header.author.name ?? related.taxonomy.author[0] %}
     {% set related_image = related.media.images[related.header.featuredImage] ?: related.media.images|filter((v, k) => k != related.header.author.avatarImage)|first %}
-    {% if related %}
     <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
         <div class="card border-0">
-            <a href="{{ related.url }}" arial-label="{{ related_title|e('html_attr') }}">
+            {% if related_image %}
+            <a href="{{ related.url }}" aria-label="{{ related_title|e('html_attr') }}">
                 {{ related_image.loading('lazy')
                 .decoding('async')
                 .attribute('width', img_width)
                 .attribute('height', img_height)
                 .derivatives(320, 672, 320)
                 .sizes('(max-width: 768px) 100vw, 50vw')
-                .html(related_title, related_title, 'w-100 h-auto mr-2 rounded')|raw }}
+                .html(related_title|e, related_title|e, 'w-100 h-auto mr-2 rounded')|raw }}
             </a>
+            {% endif %}
 
             <div class="card-body">
                 <a href="{{ related.url }}" class="text-dark">
@@ -32,13 +34,13 @@
                     {% if related_author %}
                     <span class="post-name">
                         <a class="text-muted text-capitalize" href="https://themepush.com/demo-mundana/author/wowthemesnet/ ">
-                            {{ related_author }}
+                            {{ related_author|e }}
                         </a>
                         </span>
                         {% endif %}
                         {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
                         {% for category in related.taxonomy.category %}
-                            <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                            <a class="text-capitalize text-{{ color_style|e('html_attr') }} smoothscroll" href="{{ blog.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
                         {% endfor %}
                     </span>
                     <div>

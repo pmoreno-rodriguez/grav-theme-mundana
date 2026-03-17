@@ -12,7 +12,7 @@
         <small class="d-block text-muted">
             {{ 'MUNDANA.MISC.IN'|t }} <span class="catlist">
             {% for category in page.taxonomy.category %}
-                <a class="text-capitalize text-{{ color_style }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
+                <a class="text-capitalize text-{{ color_style|e('html_attr') }} smoothscroll" href="{{ blog.url }}/category{{ config.system.param_sep }}{{ category|e('url') }}">{{ category|e }}</a>{% if not loop.last %}<span class="sep">, </span>{% endif %}
             {% endfor %}
             </span>
         </small>
@@ -31,7 +31,7 @@
             .attribute('height', '318')
             .derivatives(320, 424, 320)
             .sizes('(max-width: 768px) 100vw, 50vw')
-            .html(page_title, page_title, 'w-100 h-auto rounded')|raw }}
+            .html(page_title|e, page_title|e, 'w-100 h-auto rounded')|raw }}
         </a>
     </div>
     {% endif %}

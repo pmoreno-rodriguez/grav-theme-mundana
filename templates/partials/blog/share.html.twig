@@ -22,7 +22,7 @@
             <!-- AddToAny BEGIN -->
             <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="{{ a2a_icon_color }}">
                 {% for item in theme_config.share_icons %}
-                <a class="a2a_button_{{ item.name|raw }}"></a>
+                <a class="a2a_button_{{ item.name|e('html_attr') }}"></a>
                 {% endfor %}
                 <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
             </div>

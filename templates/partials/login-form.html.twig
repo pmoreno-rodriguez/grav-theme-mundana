@@ -1,16 +1,17 @@
 {% set layout = layout ?? form.layout ?? 'default' %}
 {% set field_layout = layout %}
+{% set safeNavbarHeight = navbarHeight ? navbarHeight|int : 0 %}
 
 {% set client_side_validation = form.client_side_validation is not null ? form.client_side_validation : config.plugins.form.client_side_validation|default(true) %}
 {% set inline_errors = form.inline_errors is not null ? form.inline_errors : config.plugins.form.inline_errors(false) %}
-<section style='height: calc(80vh - {{ navbarHeight }}px )'>
+<section style='height: calc(80vh - {{ safeNavbarHeight }}px )'>
 <div class="container py-5">
 
     {% if page.template == 'login' or show_login_form %}
     <div class="row d-flex align-items-center justify-content-center">
         {% if featuredImage and show_image %}
         <div class="col-md-4">
-            {{ featuredImage.decoding('async').html(page_title|raw, page_title|raw, '')|raw }}
+            {{ featuredImage.decoding('async').html(page_title|e, page_title|e, '')|raw }}
         </div>
         {% endif %}
         {% set user = grav.user %}
@@ -68,7 +69,7 @@
 
                 </div>
 
-                <button class="btn btn-{{ color_style }} btn-lg btn-block" type="submit" name="task" value="login.login"><i class="fa fa-sign-in"></i> {{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}</button>
+                <button class="btn btn-{{ color_style|e('html_attr') }} btn-lg btn-block" type="submit" name="task" value="login.login"><i class="fa fa-sign-in"></i> {{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}</button>
 
                 {{ nonce_field('login-form', 'login-form-nonce')|raw }}
             </form>
