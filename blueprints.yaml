@@ -1,13 +1,13 @@
 name: Mundana
 slug: mundana
 type: theme
-version: 2.3.0
+version: 2.4.0
 description: Mundana Jekyll Theme ported to Grav
 icon:  microchip
 author:
   name: Pedro Moreno
   email: pmoreno@pmdesign.dev
-  url: 
+  url: https://pmdesign.dev
 homepage: https://github.com/pmoreno-rodriguez/grav-theme-mundana
 demo: https://mundana.pmdesign.dev/
 docs: https://github.com/pmoreno-rodriguez/grav-theme-mundana/blob/main/README.md
@@ -17,6 +17,11 @@ license: MIT
 
 dependencies:
   - { name: grav, version: '>=1.7.49.5' }
+
+compatibility:
+  grav:
+    - '1.7'
+    - '2.0'
 
 form:
   validation: loose
@@ -29,29 +34,27 @@ form:
         theme_info:
           type: tab
           title: MUNDANA.ADMIN.THEME.OPTIONS
-          import@: 
+          import@:
             type: theme/settings.yaml
             context: blueprints://
-            
+
         blog_info:
           type: tab
           title: MUNDANA.ADMIN.THEME.BLOG.TAB
-          import@: 
+          import@:
             type: theme/blog.yaml
             context: blueprints://
-            
+
         share_options:
           type: tab
           title: MUNDANA.ADMIN.THEME.SHARE.TAB
-          import@: 
+          import@:
             type: theme/share.yaml
             context: blueprints://
-            
+
         footer_options:
           type: tab
           title: MUNDANA.ADMIN.THEME.FOOTER.TAB
-          import@: 
+          import@:
             type: theme/footer.yaml
             context: blueprints://
-            
-
