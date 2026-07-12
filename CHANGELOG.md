@@ -1,3 +1,13 @@
+# 2.4.0
+## 07/12/2026
+ 
+1.  [](#improved)
+    * Added `compatibility.grav: ['1.7', '2.0']` flag
+    * Fixed inline `for ... if` loop filters (removed in Twig 3) in modular templates, replaced with `|filter(...)`
+    * Added explicit `: array` return type in `mundana.php`
+2.  [](#bugfix)
+    * Fixed incorrect `theme_var` call in `base.html.twig`
+
 # 2.3.0
 ## 03/17/2026
 
