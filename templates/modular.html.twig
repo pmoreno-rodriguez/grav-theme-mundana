@@ -7,7 +7,7 @@
     {% block navigation %}
         {% if show_onpage_menu == true %}
             <ul class="navbar-nav mx-auto d-flex align-items-center">
-            {% for module in page.collection() if module.header.visible is not same as(false) %}
+            {% for module in page.collection()|filter(module => module.header.visible is not same as(false)) %}
                 {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
                 <li class="nav-item"><a class="nav-link" data-scroll class="{{ current_module }}" href="#{{ module.menu|hyphenize }}">{{ module.menu }}</a></li>
             {% endfor %}
