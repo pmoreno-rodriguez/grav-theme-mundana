@@ -19,7 +19,7 @@ use Grav\Common\Theme;
 class Mundana extends Theme
 {
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
@@ -41,13 +41,13 @@ class Mundana extends Theme
         // Get active theme dynamically
         $activeTheme = $this->grav['theme']->name;
         $themeConfig = $this->config->get("themes.$activeTheme");
-        
+
         // Register custom CSS
         $custom_css_path = $this->grav['locator']->findResource('theme://assets/css/custom.css');
         if (isset($themeConfig['custom_css']) && $themeConfig['custom_css'] && $custom_css_path) {
             $this->grav['assets']->addCss('theme://assets/css/custom.css', ['priority' => 10]);
         }
-        
+
         // Register custom JavaScript
         $custom_js_path = $this->grav['locator']->findResource('theme://assets/js/custom.js');
         if (isset($themeConfig['custom_js']) && $themeConfig['custom_js'] && $custom_js_path) {
