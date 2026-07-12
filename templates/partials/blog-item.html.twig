@@ -75,13 +75,13 @@
                 {% endfor %}
                 </span>
             </div>
-            {% if mailchimp is same as(true) %}
+            {% if mailchimp %}
                 {{ include('partials/blog/mailchimp.html.twig') }}
             {% endif %}
             {% if author %}
                 {{ include('partials/blog/author.html.twig') }}
             {% endif %}
-            {% if disqus is same as(true) and disqus_name is not empty %}
+            {% if disqus and disqus_name is not empty %}
                 {{ include('partials/blog/disqus.html.twig', {short_name: disqus_name}) }}
             {% endif %}
         </div>
